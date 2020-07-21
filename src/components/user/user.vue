@@ -25,9 +25,11 @@
 
 <style scoped>
 *{margin:0;padding:0;}
-
+#User-container{
+    margin-bottom:50px;
+}
 #bar{
-    position:absolute;
-    bottom:0;
+    /*position:absolute;*/
+    /*bottom:0;*/
 }
 </style>
