@@ -9,6 +9,7 @@ import user_msg from "../components/user/user_msg"
 import user_my from "../components/user/user_my"
 
 import com from "../components/company/com"
+import com_home from "../components/company/com-home"
 
 import err404 from "../components/404"
 
@@ -35,7 +36,11 @@ Vue.use(VueRouter);
   {
     path: '/com',
     name:'com',
-    component: com
+    component: com,
+    redirect:'/com/home',
+    children:[
+      { path: '/com/home', name: 'com_home', component: com_home}
+    ]
   },
   {
     path: '*',
