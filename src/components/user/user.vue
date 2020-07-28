@@ -29,7 +29,7 @@
     margin-bottom:50px;
 }
 #bar{
-    /*position:absolute;*/
-    /*bottom:0;*/
+    position:absolute;
+    bottom:0;
 }
 </style>

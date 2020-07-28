@@ -11,5 +11,7 @@
 </script>
 
 <style scoped>
-
+#user-msg{
+    margin-bottom:50px;
+}
 </style>

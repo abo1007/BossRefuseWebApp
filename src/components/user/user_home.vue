@@ -71,6 +71,26 @@
                     <span class="right">廊坊市 龙河</span>
                 </p>
             </div>
+            <div class="work-info">
+                <p class="title">
+                    <span class="name">富士康普工</span>
+                    <span class="money">4-8K</span>
+                </p>
+                <p class="cla">
+                    <van-tag>经验不限</van-tag>
+                    <van-tag>学历不限</van-tag>
+                    <van-tag>五险</van-tag>
+                    <van-tag>包食宿</van-tag>
+                </p>
+                <p class="com">
+                    <span>鸿海精密 </span>
+                    <span>10000+</span>人
+                </p>
+                <p class="hr">
+                    <span class="left">张先生·人事</span>
+                    <span class="right">廊坊市 龙河</span>
+                </p>
+            </div>
         </div>
 
     </div>
@@ -95,6 +115,7 @@
 <style lang="scss" scoped>
 
 #user-home{
+    margin-bottom:50px;
     width:100%;
     .icon1{
         height:34px;

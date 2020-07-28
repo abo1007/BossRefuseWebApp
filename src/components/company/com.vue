@@ -26,4 +26,8 @@
 <style scoped>
 *{margin:0;padding:0;}
 #Com-container{margin-bottom:50px;}
+#bar{
+    position:absolute;
+    bottom:0;
+}
 </style>
