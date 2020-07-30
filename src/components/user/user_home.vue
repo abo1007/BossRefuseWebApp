@@ -115,7 +115,6 @@
 <style lang="scss" scoped>
 
 #user-home{
-    margin-bottom:50px;
     width:100%;
     .icon1{
         height:34px;

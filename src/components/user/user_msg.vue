@@ -1,12 +1,22 @@
 <template>
     <div id="user-msg">
-        <h1>msg</h1>
+        <van-nav-bar :title="getMsgTitle()" />
     </div>
 </template>
 
 <script>
     export default {
-        name: "login-msg"
+        name: "login-msg",
+        data(){
+            return{
+                msgNum:10
+            }
+        },
+        methods:{
+            getMsgTitle(){
+                return '消息('+this.msgNum+')'
+            }
+        }
     }
 </script>
 
