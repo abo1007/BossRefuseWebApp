@@ -4,7 +4,16 @@
             <van-icon name="setting-o" color="#fff" size="30" class="icon"/>
         </div>
         <div class="user">
-
+            <div class="left">
+                <div class="img"></div>
+            </div>
+            <div class="right">
+                <p class="username">老杨同志Abo</p>
+                <p class="level">一切的伟大，源自一个勇敢的开始</p>
+            </div>
+        </div>
+        <div class="userinfo">
+            <van-icon name="ellipsis" color="#fff" size="30" />
         </div>
         <van-button type="primary" @click="goback">主页</van-button>
     </div>
@@ -42,6 +51,37 @@
     .user{
         height:100px;
         background-color:#55cac4;
+        display:flex;
+        padding:20px;
+        .left{
+            flex:3;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            .img{
+                height:80px;
+                width:80px;
+                background-color: #fff;
+            }
+        }
+        .right{
+            flex:7;
+            color:#fff;
+            .username{
+                margin-top:20px;
+                margin-bottom:0;
+                font-size:1.2em;
+            }
+            .level{
+                margin:5px 0 0 0;
+            }
+        }
+    }
+    .userinfo{
+        height:30px;
+        background-color:#55cac4;
+        display:flex;
+        justify-content:center;
     }
 }
 </style>
