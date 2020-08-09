@@ -5,7 +5,7 @@ import store from './store'
 
 Vue.config.productionTip = false;
 
-import { Button,Tabbar,TabbarItem,Search,Toast,Icon,Grid,GridItem,NoticeBar, Tag, Tab, Tabs, NavBar } from 'vant'
+import { Button,Tabbar,TabbarItem,Search,Toast,Icon,Grid,GridItem,NoticeBar, Tag, Tab, Tabs, NavBar, PullRefresh } from 'vant'
 import 'vant/lib/button/style';
 import 'vant/lib/tabbar/style';
 import 'vant/lib/tabbar-item/style';
@@ -19,6 +19,7 @@ import 'vant/lib/tag/style';
 import 'vant/lib/tab/style';
 import 'vant/lib/tabs/style';
 import 'vant/lib/nav-bar/style';
+import 'vant/lib/pull-refresh'
 Vue.use(Button);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -32,6 +33,7 @@ Vue.use(Tag);
 Vue.use(Tab);
 Vue.use(Tabs);
 Vue.use(NavBar);
+Vue.use(PullRefresh);
 
 new Vue({
   router,
