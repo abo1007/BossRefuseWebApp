@@ -6,10 +6,11 @@
                 success-text="刷新成功"
                 @refresh="onRefresh"
                 style="text-align:center;"
+                class="msg-container"
         >
-            <p>刷新次数: {{ count }}</p>
-            <msg-item></msg-item>
-            <msg-item></msg-item>
+                <p>刷新次数: {{ count }}</p>
+                <msg-item :info="MsgTest"></msg-item>
+                <msg-item :info="MsgTest"></msg-item>
         </van-pull-refresh>
 
     </div>
@@ -23,7 +24,10 @@ import msg_item from "../child/msg_item";
             return{
                 msgNum:10,
                 isLoading:false,
-                count:0
+                count:0,
+                MsgTest:{
+                    url:"/img/boss.jpg",name:'AAA廊坊富士康 人事经理',time:'23:08',content:'我们这试学一月不收取任何费用...'
+                }
             }
         },
         methods:{
@@ -43,8 +47,12 @@ import msg_item from "../child/msg_item";
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #user-msg{
     margin-bottom:50px;
+    .msg-container{
+
+    }
 }
+
 </style>

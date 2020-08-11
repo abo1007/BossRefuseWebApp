@@ -1,19 +1,19 @@
 <template>
     <div class="work-info">
         <p class="title">
-            <span class="title">{{name}}</span>
-            <span class="money">{{money}}</span>
+            <span class="title">{{workmsg.name}}</span>
+            <span class="money">{{workmsg.money}}</span>
         </p>
         <p class="cla">
-            <van-tag v-for="item in tag">{{item}}</van-tag>
+            <van-tag v-for="item in workmsg.tag">{{item}}</van-tag>
         </p>
         <p class="com">
-            <span>{{com}} </span>
-            <span>{{person}}</span>人
+            <span>{{workmsg.com}} </span>
+            <span>{{workmsg.person}}</span>人
         </p>
         <p class="hr">
-            <span class="left">{{hr}}</span>
-            <span class="right">{{adr}}</span>
+            <span class="left">{{workmsg.hr}}</span>
+            <span class="right">{{workmsg.adr}}</span>
         </p>
     </div>
 </template>
@@ -21,7 +21,7 @@
 <script>
     export default {
         name: "user_work",
-        props:['name','money','tag','com','person','hr','adr']
+        props:['workmsg']
     }
 </script>
 

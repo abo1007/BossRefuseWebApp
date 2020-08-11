@@ -15,9 +15,7 @@
         </van-search>
         <van-tabs color="#55cac4" animated>
             <van-tab v-for="item in tabsName" :title="item">
-                <user-work :name="testMsg.name" :money="testMsg.money" :tag="testMsg.tag"
-                           :com="testMsg.com" :person="testMsg.person" :hr="testMsg.hr" :adr="testMsg.adr"
-                ></user-work>
+                <user-work :workmsg="testMsg"></user-work>
             </van-tab>
         </van-tabs>
     </div>

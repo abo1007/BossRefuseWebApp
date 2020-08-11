@@ -1,7 +1,7 @@
 <template>
     <div id="User-container">
         <transition>
-            <router-view></router-view>
+            <router-view style="height:100%;"></router-view>
         </transition>
         <van-tabbar v-model="active" route id="bar" active-color="#55cac4">
             <van-tabbar-item replace to="/user/home" name="home" icon="home-o">主页</van-tabbar-item>

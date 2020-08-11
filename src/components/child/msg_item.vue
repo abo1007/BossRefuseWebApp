@@ -1,15 +1,15 @@
 <template>
     <div class="msg-item">
         <div class="left">
-            <div class="img"></div>
+            <img :src="info.url" alt="" class="img">
         </div>
         <div class="right">
             <div class="title">
-                <span class="titleName">AAA廊坊富士康 人事经理</span>
-                <span class="time">23:08</span>
+                <span class="titleName">{{info.name}}</span>
+                <span class="time">{{info.time}}</span>
             </div>
             <div class="content">
-                <p>我们这试学一月不收取任何费用...</p>
+                <p>{{info.content}}</p>
             </div>
         </div>
     </div>
@@ -17,7 +17,8 @@
 
 <script>
     export default {
-        name: "msg_item"
+        name: "msg_item",
+        props:['info']
     }
 </script>
 
