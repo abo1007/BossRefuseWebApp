@@ -12,6 +12,24 @@
                 <p class="level">一切的伟大，源自一个勇敢的开始</p>
             </div>
         </div>
+        <div class="userdata">
+            <div class="view">
+                <p class="num">{{userdata.chat}}</p>
+                <p class="name">沟通中</p>
+            </div>
+            <div class="view">
+                <p class="num">{{userdata.interview}}</p>
+                <p class="name">待面试</p>
+            </div>
+            <div class="view">
+                <p class="num">{{userdata.offer}}</p>
+                <p class="name">录用</p>
+            </div>
+            <div class="view">
+                <p class="num">{{userdata.star}}</p>
+                <p class="name">收藏</p>
+            </div>
+        </div>
         <div class="userinfo">
             <van-icon name="ellipsis" color="#fff" size="30" />
         </div>
@@ -24,7 +42,9 @@
         name: "login-my",
         data(){
             return{
-
+                userdata:{
+                    chat:0,interview:0,offer:0,star:0
+                }
             }
         },
         methods:{
@@ -74,6 +94,33 @@
             }
             .level{
                 margin:5px 0 0 0;
+            }
+        }
+    }
+    .userdata{
+        height:80px;
+        background-color:#55cac4;
+        display:flex;
+        padding:10px;
+        .view{
+            flex:1;
+            display:flex;
+            /*text-align:center;*/
+            align-items:center;
+            flex-direction:column;
+            padding:20px 0;
+
+            p{
+                margin:0;
+                font-family: 微软雅黑;
+                color:#fff;
+            }
+            .num{
+                font-size:18px;
+                font-weight:800;
+            }
+            .name{
+                font-size:14px;
             }
         }
     }
