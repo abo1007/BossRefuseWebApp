@@ -7,6 +7,7 @@ import user_home from "../components/user/user_home"
 import user_focus from "../components/user/user_focus"
 import user_msg from "../components/user/user_msg"
 import user_my from "../components/user/user_my"
+import user_option from "../components/user/user_option";
 
 import Design from "../components/user_category/Design"
 import market from "../components/user_category/market"
@@ -51,6 +52,7 @@ Vue.use(VueRouter);
     { path: '/user/home/operate', name: 'operate', component: operate },
     { path: '/user/home/product', name: 'product', component: product },
     { path: '/user/home/technology', name: 'technology', component: technology },
+    { path: '/user/option', name: 'user_option', component: user_option },
   {
     path: '/com',
     name:'com',

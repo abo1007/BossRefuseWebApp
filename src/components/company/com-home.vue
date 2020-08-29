@@ -13,7 +13,7 @@
                 </div>
             </template>
         </van-search>
-        <img src="../../../public/user-home-img.png" alt="">
+        <img src="../../assets/user-home-img.png" alt="">
         <van-notice-bar
                 left-icon="volume-o"
                 text="巴里阿阿集团的社会责任是向社会输送大量人才"
@@ -31,7 +31,7 @@
         },
         methods:{
             onSearch(){
-                
+
             }
         }
     }
