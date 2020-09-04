@@ -5,7 +5,9 @@
         </div>
         <div class="user">
             <div class="left">
-                <div class="img"></div>
+                <div class="img">
+                    <img src="http://localhost/boss.jpg" alt="">
+                </div>
             </div>
             <div class="right">
                 <p class="username">老杨同志Abo</p>
@@ -163,6 +165,11 @@
                 height:80px;
                 width:80px;
                 background-color: #fff;
+                border:1px solid #fff;
+                img{
+                    width:100%;
+                    height:100%;
+                }
             }
         }
         .right{

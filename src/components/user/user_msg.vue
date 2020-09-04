@@ -8,7 +8,7 @@
                 style="text-align:center;"
                 class="msg-container"
         >
-                <p>刷新次数: {{ count }}</p>
+<!--                <p>刷新次数: {{ count }}</p>-->
                 <msg-item :info="MsgTest"></msg-item>
                 <msg-item :info="MsgTest"></msg-item>
         </van-pull-refresh>
@@ -22,7 +22,7 @@ import msg_item from "../child/msg_item";
         name: "login-msg",
         data(){
             return{
-                msgNum:10,
+                msgNum:20,
                 isLoading:false,
                 count:0,
                 MsgTest:{
