@@ -19,12 +19,12 @@
                 text="巴里阿阿集团的宗旨是让世界没有好做的生意"
         />
         <van-grid :column-num="3">
-            <van-grid-item icon="fire-o" text="技术" />
-            <van-grid-item icon="gift-o" text="产品" />
-            <van-grid-item icon="eye-o" text="设计" />
-            <van-grid-item icon="chart-trending-o" text="运营" />
-            <van-grid-item icon="photo-o" text="市场" />
-            <van-grid-item icon="more-o" text="更多" />
+            <van-grid-item icon="fire-o" text="技术" @click="goTab('technology')"/>
+            <van-grid-item icon="gift-o" text="产品" @click="goTab('product')"/>
+            <van-grid-item icon="eye-o" text="设计" @click="goTab('design')"/>
+            <van-grid-item icon="chart-trending-o" text="运营" @click="goTab('operate')"/>
+            <van-grid-item icon="photo-o" text="市场" @click="goTab('market')"/>
+            <van-grid-item icon="more-o" text="更多" @click="goTab('more')"/>
         </van-grid>
         <p class="focus">
             您可能感兴趣的岗位
@@ -107,6 +107,9 @@
         methods:{
             onSearch(){
                 this.$toast('诶呀，没写！')
+            },
+            goTab(name){
+                this.$router.push({name:name});
             }
         }
     }

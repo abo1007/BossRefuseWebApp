@@ -46,13 +46,13 @@ Vue.use(VueRouter);
       { path: '/user/my', name: 'user_my', component: user_my}
     ]
   },
-    { path: '/user/home/design', name: 'design', component: Design },
-    { path: '/user/home/market', name: 'market', component: market },
-    { path: '/user/home/more', name: 'more', component: more },
-    { path: '/user/home/operate', name: 'operate', component: operate },
-    { path: '/user/home/product', name: 'product', component: product },
-    { path: '/user/home/technology', name: 'technology', component: technology },
-    { path: '/user/option', name: 'user_option', component: user_option },
+    { path: '/user/home/design', name: 'design', component: Design },     // 设计
+    { path: '/user/home/market', name: 'market', component: market },     // 市场
+    { path: '/user/home/more', name: 'more', component: more },           // 更多
+    { path: '/user/home/operate', name: 'operate', component: operate },  // 运营
+    { path: '/user/home/product', name: 'product', component: product },  // 产品
+    { path: '/user/home/technology', name: 'technology', component: technology }, // 技术
+    { path: '/user/option', name: 'user_option', component: user_option },  // 用户设置
   {
     path: '/com',
     name:'com',
