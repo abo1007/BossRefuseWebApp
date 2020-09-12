@@ -109,7 +109,7 @@
                 this.$toast('诶呀，没写！')
             },
             goTab(name){
-                this.$router.push({name:name});
+                this.$router.push({name:'user_category', params:{name:name}});
             }
         }
     }

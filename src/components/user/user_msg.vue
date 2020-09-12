@@ -9,8 +9,8 @@
                 class="msg-container"
         >
 <!--                <p>刷新次数: {{ count }}</p>-->
-                <msg-item :info="MsgTest"></msg-item>
-                <msg-item :info="MsgTest"></msg-item>
+            <msg-item :info="MsgTest"/>
+            <msg-item :info="MsgTest"/>
         </van-pull-refresh>
 
     </div>

@@ -32,7 +32,7 @@
                 <p class="name">收藏</p>
             </div>
         </div>
-        <div class="userinfo">
+        <div class="userinfo" @click="InfoMore">
             <van-icon name="ellipsis" color="#fff" size="30" />
         </div>
         <div class="content1">
@@ -133,6 +133,9 @@
             },
             goOption(){
                 this.$router.push({ name: "user_option" })
+            },
+            InfoMore(){
+                this.$toast("偷偷告诉你，没有更多功能了")
             }
         }
     }

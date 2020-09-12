@@ -8,13 +8,7 @@ import user_focus from "../components/user/user_focus"
 import user_msg from "../components/user/user_msg"
 import user_my from "../components/user/user_my"
 import user_option from "../components/user/user_option";
-
-import Design from "../components/user_category/Design"
-import market from "../components/user_category/market"
-import more from "../components/user_category/more"
-import operate from "../components/user_category/operate"
-import product from "../components/user_category/product"
-import technology from "../components/user_category/technology"
+import user_category from "../components/user/user_category";
 
 import com from "../components/company/com"
 import com_home from "../components/company/com-home"
@@ -46,13 +40,8 @@ Vue.use(VueRouter);
       { path: '/user/my', name: 'user_my', component: user_my}
     ]
   },
-    { path: '/user/home/design', name: 'design', component: Design },     // 设计
-    { path: '/user/home/market', name: 'market', component: market },     // 市场
-    { path: '/user/home/more', name: 'more', component: more },           // 更多
-    { path: '/user/home/operate', name: 'operate', component: operate },  // 运营
-    { path: '/user/home/product', name: 'product', component: product },  // 产品
-    { path: '/user/home/technology', name: 'technology', component: technology }, // 技术
-    { path: '/user/option', name: 'user_option', component: user_option },  // 用户设置
+    { path: '/user/home/category/:name', name: 'user_category', component: user_category },     // 分类通用
+    { path: '/user/home/option', name:'user_option', component: user_option },
   {
     path: '/com',
     name:'com',
