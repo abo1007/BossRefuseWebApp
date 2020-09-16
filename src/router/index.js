@@ -16,6 +16,7 @@ import com_focus from  "../components/company/com-focus"
 import com_msg from "../components/company/com-msg"
 import com_my from "../components/company/com-my"
 
+import work_info from "../components/child/work_info";
 
 
 import err404 from "../components/404"
@@ -42,6 +43,7 @@ Vue.use(VueRouter);
   },
     { path: '/user/home/category/:name', name: 'user_category', component: user_category },     // 分类通用
     { path: '/user/home/option', name:'user_option', component: user_option },
+    { path: '/user/home/workinfo/:workid', name: 'work_info', component: work_info },
   {
     path: '/com',
     name:'com',

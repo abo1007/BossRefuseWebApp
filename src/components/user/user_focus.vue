@@ -30,7 +30,7 @@ import user_work from "./user_work";
                 SearchValue:'',
                 tabsName:['前端','后端','全栈','Java','Node'],
                 testMsg:{
-                    name:'全栈工程师',money:'1-2k',tag:['3-5年','硕士研究生','Vue','Java'],
+                    id:0, name:'全栈工程师',money:'1-2k',tag:['3-5年','硕士研究生','Vue','Java'],
                     com:'白嫖科技',person:'0-9',hr:'刘先生·人事',adr:'南京市 鼓楼区'
                 }
             }

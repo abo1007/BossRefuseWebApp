@@ -1,5 +1,5 @@
 <template>
-    <div class="work-info">
+    <div class="work-item" @click="goWorkInfo(workmsg.id)">
         <p class="title">
             <span class="title">{{workmsg.name}}</span>
             <span class="money">{{workmsg.money}}</span>
@@ -21,12 +21,17 @@
 <script>
     export default {
         name: "user_work",
-        props:['workmsg']
+        props:['workmsg'],
+        methods:{
+            goWorkInfo(id){
+                this.$router.push({ name:'work_info', params:{workid:id}});
+            }
+        }
     }
 </script>
 
 <style lang="scss" scoped>
-    .work-info{
+    .work-item{
         margin-bottom:5px;
         padding:10px 15px;
         background-color:#fff;
