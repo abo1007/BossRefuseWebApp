@@ -31,77 +31,97 @@
             <van-tag type="success" style="margin:0 6px;">前端</van-tag>
         </p>
         <div class="work-container">
-            <div class="work-info">
-                <p class="title">
-                    <span class="title">全栈工程师</span>
-                    <span class="money">1-2K</span>
-                </p>
-                <p class="cla">
-                    <van-tag>3-5年</van-tag>
-                    <van-tag>本科</van-tag>
-                    <van-tag>Vue</van-tag>
-                    <van-tag>Java</van-tag>
-                </p>
-                <p class="com">
-                    <span>白嫖浮云 </span>
-                    <span>0-9</span>人
-                </p>
-                <p class="hr">
-                    <span class="left">李先生·人事</span>
-                    <span class="right">北京市 海淀区</span>
-                </p>
-            </div>
-            <div class="work-info">
-                <p class="title">
-                    <span class="name">富士康普工</span>
-                    <span class="money">4-8K</span>
-                </p>
-                <p class="cla">
-                    <van-tag>经验不限</van-tag>
-                    <van-tag>学历不限</van-tag>
-                    <van-tag>五险</van-tag>
-                    <van-tag>包食宿</van-tag>
-                </p>
-                <p class="com">
-                    <span>鸿海精密 </span>
-                    <span>10000+</span>人
-                </p>
-                <p class="hr">
-                    <span class="left">张先生·人事</span>
-                    <span class="right">廊坊市 龙河</span>
-                </p>
-            </div>
-            <div class="work-info">
-                <p class="title">
-                    <span class="name">富士康普工</span>
-                    <span class="money">4-8K</span>
-                </p>
-                <p class="cla">
-                    <van-tag>经验不限</van-tag>
-                    <van-tag>学历不限</van-tag>
-                    <van-tag>五险</van-tag>
-                    <van-tag>包食宿</van-tag>
-                </p>
-                <p class="com">
-                    <span>鸿海精密 </span>
-                    <span>10000+</span>人
-                </p>
-                <p class="hr">
-                    <span class="left">张先生·人事</span>
-                    <span class="right">廊坊市 龙河</span>
-                </p>
-            </div>
-        </div>
+            <user-work
+                    v-for="(item,index) in testMsgList"
+                    :workmsg="testMsgList[index]"
+                    :key="item.id" />
 
+<!--            <div class="work-info">-->
+<!--                <p class="title">-->
+<!--                    <span class="title">全栈工程师</span>-->
+<!--                    <span class="money">1-2K</span>-->
+<!--                </p>-->
+<!--                <p class="cla">-->
+<!--                    <van-tag>3-5年</van-tag>-->
+<!--                    <van-tag>本科</van-tag>-->
+<!--                    <van-tag>Vue</van-tag>-->
+<!--                    <van-tag>Java</van-tag>-->
+<!--                </p>-->
+<!--                <p class="com">-->
+<!--                    <span>白嫖浮云 </span>-->
+<!--                    <span>0-9</span>人-->
+<!--                </p>-->
+<!--                <p class="hr">-->
+<!--                    <span class="left">李先生·人事</span>-->
+<!--                    <span class="right">北京市 海淀区</span>-->
+<!--                </p>-->
+<!--            </div>-->
+
+<!--            <div class="work-info">-->
+<!--                <p class="title">-->
+<!--                    <span class="name">富士康普工</span>-->
+<!--                    <span class="money">4-8K</span>-->
+<!--                </p>-->
+<!--                <p class="cla">-->
+<!--                    <van-tag>经验不限</van-tag>-->
+<!--                    <van-tag>学历不限</van-tag>-->
+<!--                    <van-tag>五险</van-tag>-->
+<!--                    <van-tag>包食宿</van-tag>-->
+<!--                </p>-->
+<!--                <p class="com">-->
+<!--                    <span>鸿海精密 </span>-->
+<!--                    <span>10000+</span>人-->
+<!--                </p>-->
+<!--                <p class="hr">-->
+<!--                    <span class="left">张先生·人事</span>-->
+<!--                    <span class="right">廊坊市 龙河</span>-->
+<!--                </p>-->
+<!--            </div>-->
+<!--            <div class="work-info">-->
+<!--                <p class="title">-->
+<!--                    <span class="name">富士康普工</span>-->
+<!--                    <span class="money">4-8K</span>-->
+<!--                </p>-->
+<!--                <p class="cla">-->
+<!--                    <van-tag>经验不限</van-tag>-->
+<!--                    <van-tag>学历不限</van-tag>-->
+<!--                    <van-tag>五险</van-tag>-->
+<!--                    <van-tag>包食宿</van-tag>-->
+<!--                </p>-->
+<!--                <p class="com">-->
+<!--                    <span>鸿海精密 </span>-->
+<!--                    <span>10000+</span>人-->
+<!--                </p>-->
+<!--                <p class="hr">-->
+<!--                    <span class="left">张先生·人事</span>-->
+<!--                    <span class="right">廊坊市 龙河</span>-->
+<!--                </p>-->
+<!--            </div>-->
+        </div>
     </div>
 </template>
 
 <script>
+import user_work from "./user_work";
     export default {
         name: "login-home",
         data(){
             return{
-                SearchValue:''
+                SearchValue:'',
+                testMsgList:[
+                    {
+                        id:0, name:'全栈工程师',money:'1-2k',tag:['3-5年','硕士研究生','Vue','Java'],
+                        com:'白嫖科技',person:'0-9',hr:'刘先生·人事',adr:'南京市 鼓楼区'
+                    },
+                    {
+                        id:1, name:'富士康普工',money:'4-8K',tag:['经验不限','学历不限','五险','包食宿'],
+                        com:'鸿海精密',person:'10000+',hr:'张先生·人事',adr:'廊坊市 龙河'
+                    },
+                    {
+                        id:2, name:'富士康普工',money:'4-8K',tag:['经验不限','学历不限','五险','包食宿'],
+                        com:'鸿海精密',person:'10000+',hr:'张先生·人事',adr:'廊坊市 龙河'
+                    }
+                ]
             }
         },
         methods:{
@@ -111,6 +131,9 @@
             goTab(name){
                 this.$router.push({name:'user_category', params:{name:name}});
             }
+        },
+        components:{
+            'user-work':user_work
         }
     }
 </script>
@@ -133,49 +156,49 @@
     }
     .work-container{
         background-color:#F5F5F5;
-        .work-info{
-            margin-bottom:5px;
-            padding:10px 15px;
-            background-color:#fff;
-            .title{
-                display:flex;
-                justify-content:space-between;
-                font-weight:600;
-                line-height:12px;
-                .name{
+        /*.work-info{*/
+        /*    margin-bottom:5px;*/
+        /*    padding:10px 15px;*/
+        /*    background-color:#fff;*/
+        /*    .title{*/
+        /*        display:flex;*/
+        /*        justify-content:space-between;*/
+        /*        font-weight:600;*/
+        /*        line-height:12px;*/
+        /*        .name{*/
 
-                }
-                .money{
-                    color:#55cac4;
-                }
-            }
-            .cla{
-                font-size:12px;
-                position:relative;
-                span{
-                    height:14px;
-                    margin:0 2px;
-                    position:relative;
-                    top:0;
-                }
-            }
-            .com{
-                font-size:13px;
-                line-height:14px;
-                font-weight:300;
-            }
-            .hr{
-                display:flex;
-                justify-content:space-between;
-                font-size:12px;
-                .left{
+        /*        }*/
+        /*        .money{*/
+        /*            color:#55cac4;*/
+        /*        }*/
+        /*    }*/
+        /*    .cla{*/
+        /*        font-size:12px;*/
+        /*        position:relative;*/
+        /*        span{*/
+        /*            height:14px;*/
+        /*            margin:0 2px;*/
+        /*            position:relative;*/
+        /*            top:0;*/
+        /*        }*/
+        /*    }*/
+        /*    .com{*/
+        /*        font-size:13px;*/
+        /*        line-height:14px;*/
+        /*        font-weight:300;*/
+        /*    }*/
+        /*    .hr{*/
+        /*        display:flex;*/
+        /*        justify-content:space-between;*/
+        /*        font-size:12px;*/
+        /*        .left{*/
 
-                }
-                .right{
-                    color:#808080;
-                }
-            }
-        }
+        /*        }*/
+        /*        .right{*/
+        /*            color:#808080;*/
+        /*        }*/
+        /*    }*/
+        /*}*/
     }
 }
 </style>

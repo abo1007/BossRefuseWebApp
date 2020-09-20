@@ -1,7 +1,7 @@
 <template>
     <div id="work-info-container">
         <van-nav-bar
-                :title="this.$route.params.workid"
+                :title="getWorkName(this.$route.params.workid)"
                 left-text="返回"
                 left-arrow
                 @click-left="onClickLeft"
@@ -16,6 +16,9 @@
         methods:{
             onClickLeft() {
                 this.$router.push({name:'user_home'})
+            },
+            getWorkName(id){
+                return "工作编号" + id;
             }
         }
     }
