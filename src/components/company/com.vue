@@ -5,7 +5,7 @@
         </transition>
         <van-tabbar v-model="active" route id="bar" active-color="#55cac4">
             <van-tabbar-item replace to="/com/home" name="home" icon="home-o">主页</van-tabbar-item>
-            <van-tabbar-item replace to="/com/focus" name="search" icon="eye-o">关注</van-tabbar-item>
+            <van-tabbar-item replace to="/com/focus" name="search" icon="eye-o">发布</van-tabbar-item>
             <van-tabbar-item replace to="/com/msg" name="friends" icon="chat-o" badge="20">消息</van-tabbar-item>
             <van-tabbar-item replace to="/com/my" name="setting" icon="contact">我的</van-tabbar-item>
         </van-tabbar>
