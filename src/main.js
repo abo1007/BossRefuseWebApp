@@ -5,7 +5,8 @@ import store from './store'
 
 Vue.config.productionTip = false;
 
-import { Button,Tabbar,TabbarItem,Search,Toast,Icon,Grid,GridItem,NoticeBar, Tag, Tab, Tabs, NavBar, PullRefresh, Picker, Field, Popup } from 'vant'
+import { Button,Tabbar,TabbarItem,Search,Toast,Icon,Grid,GridItem,NoticeBar,
+  Tag, Tab, Tabs, NavBar, PullRefresh, Picker, Field, Popup, Form, RadioGroup, Radio } from 'vant'
 import 'vant/lib/button/style';
 import 'vant/lib/tabbar/style';
 import 'vant/lib/tabbar-item/style';
@@ -23,6 +24,9 @@ import 'vant/lib/pull-refresh';
 import 'vant/lib/picker/style';
 import 'vant/lib/field/style';
 import 'vant/lib/popup/style';
+import 'vant/lib/form/style';
+import 'vant/lib/radio/style';
+import 'vant/lib/radio-group/style';
 Vue.use(Button);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -40,6 +44,9 @@ Vue.use(PullRefresh);
 Vue.use(Picker);
 Vue.use(Field);
 Vue.use(Popup);
+Vue.use(Form);
+Vue.use(Radio);
+Vue.use(RadioGroup);
 
 new Vue({
   router,
