@@ -21,6 +21,9 @@
                     @confirm="onConfirm"
             />
         </van-popup>
+        <van-cell-group>
+            <van-field v-model="titleValue" label="标题" placeholder="请输入招聘标题" />
+        </van-cell-group>
         <van-field name="radio" label="薪资类型">
             <template #input>
                 <van-radio-group v-model="workMoney" direction="horizontal">
@@ -32,9 +35,7 @@
         <van-field v-model="workMoney_min" type="digit" label="最低薪资" />
         <van-field v-model="workMoney_max" type="digit" label="最高薪资" />
 
-        <van-cell-group>
-            <van-field v-model="titleValue" label="标题" placeholder="请输入招聘标题" />
-        </van-cell-group>
+
         <van-field
                 v-model="workMsg"
                 rows="2"
