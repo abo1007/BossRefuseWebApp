@@ -32,9 +32,9 @@
                 </van-radio-group>
             </template>
         </van-field>
+
         <van-field v-model="workMoney_min" type="digit" label="最低薪资" />
         <van-field v-model="workMoney_max" type="digit" label="最高薪资" />
-
 
         <van-field
                 v-model="workMsg"
@@ -42,10 +42,24 @@
                 autosize
                 label="工作描述"
                 type="textarea"
-                maxlength="200"
+                maxlength="300"
                 placeholder="请输入工作描述"
                 show-word-limit
         />
+        <van-field
+                v-model="tagPush"
+                center
+                clearable
+                label="标签"
+                placeholder="请输入要添加的特点标签"
+        >
+            <template #button>
+                <van-button size="small" type="primary" @click="tagPushList">添加标签</van-button>
+            </template>
+        </van-field>
+
+
+
     </div>
 </template>
 
@@ -61,7 +75,9 @@
                 workMsg:'',
                 workMoney:'1',
                 workMoney_min:'',
-                workMoney_max:''
+                workMoney_max:'',
+                tagPush:'',
+                tagList:[]
             }
         },
         methods:{
@@ -71,6 +87,9 @@
             onConfirm(value) {
                 this.value = value;
                 this.showPicker = false;
+            },
+            tagPushList(){
+
             }
         }
     }
