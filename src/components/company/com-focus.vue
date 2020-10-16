@@ -46,17 +46,25 @@
                 placeholder="请输入工作描述"
                 show-word-limit
         />
-        <van-field
-                v-model="tagPush"
-                center
-                clearable
-                label="标签"
-                placeholder="请输入要添加的特点标签"
-        >
-            <template #button>
-                <van-button size="small" type="primary" @click="tagPushList">添加标签</van-button>
-            </template>
-        </van-field>
+        <van-cell-group>
+            <van-field
+                    v-model="tagPush"
+                    center
+                    clearable
+                    label="标签"
+                    placeholder="请输入要添加的特点标签"
+            >
+                <template #button>
+                    <van-button size="small" type="primary" @click="tagPushList">添加标签</van-button>
+                </template>
+            </van-field>
+            <van-field label="标签" :value="tagShow" disabled />
+        </van-cell-group>
+
+
+        <div class="btn-container">
+            <van-button type="primary" size="large" plain @click="publishWork">点击发布</van-button>
+        </div>
 
 
 
@@ -77,24 +85,34 @@
                 workMoney_min:'',
                 workMoney_max:'',
                 tagPush:'',
-                tagList:[]
+                tagList:[],
+                tagShow:''
             }
         },
         methods:{
             rightClick(){
-
+                this.$toast("这位客官是想切换到哪里呢？");
             },
             onConfirm(value) {
                 this.value = value;
                 this.showPicker = false;
             },
             tagPushList(){
-
+                this.$toast("暂未制作");
+            },
+            publishWork(){
+                this.$toast("ok");
             }
         }
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    #com-focus{
+
+        .btn-container{
+            padding:0 10px;
+        }
+    }
 
 </style>
