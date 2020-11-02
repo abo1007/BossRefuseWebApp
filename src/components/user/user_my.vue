@@ -103,7 +103,7 @@
                     <van-icon name="arrow" class="icon2"/>
                 </span>
             </div>
-            <div class="item">
+            <div class="item" @click="gofunc('about')">
                 <span>
                     <van-icon name="info-o" size="26px" class="icon"/>
                     关于
@@ -136,6 +136,9 @@
             },
             InfoMore(){
                 this.$toast("偷偷告诉你，没有更多功能了")
+            },
+            gofunc(Routername){
+                this.$router.push({ name:Routername });
             }
         }
     }

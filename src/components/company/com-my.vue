@@ -35,6 +35,84 @@
         <div class="userinfo" @click="InfoMore">
             <van-icon name="ellipsis" color="#fff" size="30" />
         </div>
+        <div class="content1">
+            <div class="item">
+                <span>
+                    <van-icon name="balance-list-o" size="26px" class="icon"/>
+                    急速招聘
+                </span>
+                <span>
+                    VIP
+                    <van-icon name="arrow" class="icon2"/>
+                </span>
+            </div>
+            <div class="item">
+                <span>
+                    <van-icon name="todo-list-o" size="26px" class="icon"/>
+                    公司介绍
+                </span>
+                <span>
+                    <van-icon name="arrow" class="icon2"/>
+                </span>
+            </div>
+            <div class="item">
+                <span>
+                    <van-icon name="add-o" size="26px" class="icon"/>
+                    招聘意向
+                </span>
+                <span>
+                    <van-icon name="arrow" class="icon2"/>
+                </span>
+            </div>
+        </div>
+        <div class="content1">
+            <div class="item">
+                <span>
+                    <van-icon name="home-o" size="26px" class="icon"/>
+                    公司主页
+                </span>
+                <span>
+                    <van-icon name="arrow" class="icon2"/>
+                </span>
+            </div>
+            <div class="item">
+                <span>
+                    <van-icon name="chart-trending-o" size="26px" class="icon"/>
+                    薪资查询
+                </span>
+                <span>
+                    NEW
+                    <van-icon name="arrow" class="icon2"/>
+                </span>
+            </div>
+            <div class="item">
+                <span>
+                    <van-icon name="question-o" size="26px" class="icon"/>
+                    帮助与反馈
+                </span>
+                <span>
+                    <van-icon name="arrow" class="icon2"/>
+                </span>
+            </div>
+            <div class="item">
+                <span>
+                    <van-icon name="more-o" size="26px" class="icon"/>
+                    客服
+                </span>
+                <span>
+                    <van-icon name="arrow" class="icon2"/>
+                </span>
+            </div>
+            <div class="item">
+                <span>
+                    <van-icon name="info-o" size="26px" class="icon"/>
+                    关于
+                </span>
+                <span>
+                    <van-icon name="arrow" class="icon2"/>
+                </span>
+            </div>
+        </div>
         <van-button type="primary" @click="goback">主页</van-button>
     </div>
 </template>
@@ -139,6 +217,27 @@
             background-color:#55cac4;
             display:flex;
             justify-content:center;
+        }
+        .content1{
+            border-bottom:1px solid #808080;
+            margin:0 15px;
+            .item{
+                height:55px;
+                margin:0;
+                display:flex;
+                justify-content:space-between;
+                font-size:15px;
+                span{
+                    display:flex;
+                    align-items:center;
+                }
+                span:nth-child(2){
+                    color:#808080;
+                }
+                .icon,.icon2{
+                    margin:0 15px;
+                }
+            }
         }
     }
 </style>

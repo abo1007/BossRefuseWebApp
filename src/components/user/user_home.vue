@@ -120,6 +120,10 @@ import user_work from "./user_work";
                     {
                         id:2, name:'富士康普工',money:'4-8K',tag:['经验不限','学历不限','五险','包食宿'],
                         com:'鸿海精密',person:'10000+',hr:'张先生·人事',adr:'廊坊市 龙河'
+                    },
+                    {
+                        id:3, name:'PHP工程师',money:'6-10K',tag:['1年以上','大专','Laravel','双休'],
+                        com:'智为科技',person:'20-50',hr:'杨先生·人事',adr:'武汉市 江岸区'
                     }
                 ]
             }

@@ -20,6 +20,7 @@ import work_info from "../components/child/work_info";
 
 
 import err404 from "../components/404"
+import about from "../components/view/about";
 
 Vue.use(VueRouter);
 
@@ -56,6 +57,7 @@ Vue.use(VueRouter);
       { path: '/com/my', name: 'com_my', component: com_my}
     ]
   },
+  {path: '/about', name: 'about', component: about },
   {
     path: '*',
     name: '404',
