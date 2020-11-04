@@ -21,6 +21,8 @@ import work_info from "../components/child/work_info";
 
 import err404 from "../components/404"
 import about from "../components/view/about";
+import service from "../components/view/service";
+import help from "../components/view/help";
 
 Vue.use(VueRouter);
 
@@ -58,6 +60,8 @@ Vue.use(VueRouter);
     ]
   },
   {path: '/about', name: 'about', component: about },
+  {path: '/service', name: 'service', component: service },
+  {path: '/help', name: 'help', component: help },
   {
     path: '*',
     name: '404',
