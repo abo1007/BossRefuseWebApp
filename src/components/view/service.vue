@@ -2,9 +2,9 @@
     <div id="service-container">
         <div class="header">
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
-            <p>客服中心</p>
+            <p>客服</p>
         </div>
-        <h1>客服中心</h1>
+        <h1>客服</h1>
     </div>
 </template>
 
@@ -44,6 +44,9 @@
             color:#fff;
             font-weight:500;
         }
+    }
+    h1{
+        font-weight:100;
     }
 }
 </style>

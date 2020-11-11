@@ -4,6 +4,7 @@
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
             <p>帮助</p>
         </div>
+        <h1>帮助</h1>
     </div>
 </template>
 
@@ -38,6 +39,10 @@
             color:#fff;
             font-weight:500;
         }
+    }
+    h1{
+        font-weight:100;
+        color:rgb(255,0,0);
     }
 
 }
