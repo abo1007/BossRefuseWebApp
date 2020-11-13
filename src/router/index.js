@@ -23,6 +23,7 @@ import err404 from "../components/404"
 import about from "../components/view/about";
 import service from "../components/view/service";
 import help from "../components/view/help";
+import wages from "../components/view/wages";
 
 Vue.use(VueRouter);
 
@@ -62,6 +63,7 @@ Vue.use(VueRouter);
   {path: '/about', name: 'about', component: about },
   {path: '/service', name: 'service', component: service },
   {path: '/help', name: 'help', component: help },
+  {path: '/wages', name: 'wages', component: wages },
   {
     path: '*',
     name: '404',
