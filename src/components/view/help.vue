@@ -3,6 +3,7 @@
         <div class="header">
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
             <p>帮助</p>
+
         </div>
         <h1>帮助</h1>
     </div>
@@ -11,9 +12,14 @@
 <script>
     export default {
         name: "help",
+        data(){
+            return{
+                from:this.$route.params.from
+            }
+        },
         methods:{
             goback(){
-                this.$router.push("/user/my");
+                this.$router.push("/" + this.from + "/my");
             }
         }
     }

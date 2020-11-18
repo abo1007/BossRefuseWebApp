@@ -132,13 +132,13 @@
                 this.$router.push('../')
             },
             goOption(){
-                this.$router.push({ name: "user_option" })
+                this.$router.push({ name: "user_option"})
             },
             InfoMore(){
                 this.$toast("偷偷告诉你，没有更多功能了")
             },
             gofunc(Routername){
-                this.$router.push({ name:Routername });
+                this.$router.push({ name:Routername, params:{from:'user'}  });
             }
         }
     }

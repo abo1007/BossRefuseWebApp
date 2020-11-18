@@ -2,7 +2,7 @@
     <div id="wages">
         <div class="header">
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
-            <p>帮助</p>
+            <p>薪酬查询</p>
         </div>
         <h1>薪酬查询</h1>
     </div>
