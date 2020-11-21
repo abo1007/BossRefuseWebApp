@@ -1,16 +1,16 @@
 <template>
-    <div id="wages">
+    <div id="homePage-container">
         <div class="header">
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
-            <p>薪酬查询</p>
+            <p>帮助</p>
         </div>
-        <h1>薪酬查询</h1>
+        <h1>个人主页</h1>
     </div>
 </template>
 
 <script>
     export default {
-        name: "wages",
+        name: "homePage",
         data(){
             return{
                 from:this.$store.state.currentPosition
@@ -25,7 +25,7 @@
 </script>
 
 <style lang="scss" scoped>
-#wages{
+#homePage-container{
     .header{
         height:50px;
         width:100%;
@@ -44,6 +44,9 @@
             color:#fff;
             font-weight:500;
         }
+    }
+    h1{
+        font-weight:100;
     }
 }
 </style>

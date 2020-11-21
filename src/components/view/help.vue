@@ -14,11 +14,12 @@
         name: "help",
         data(){
             return{
-                from:this.$route.params.from
+                from:this.$store.state.currentPosition
             }
         },
         methods:{
             goback(){
+                // console.log(this.from);  输出页面来自何处
                 this.$router.push("/" + this.from + "/my");
             }
         }

@@ -19,6 +19,9 @@
             return{
                 active:'home'
             }
+        },
+        created() {
+            this.$store.commit("updatePosition","com")
         }
     }
 </script>

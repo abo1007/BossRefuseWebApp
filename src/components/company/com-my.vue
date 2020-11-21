@@ -32,7 +32,7 @@
                 <p class="name">收藏</p>
             </div>
         </div>
-        <div class="userinfo" @click="InfoMore">
+        <div class="userinfo">
             <van-icon name="ellipsis" color="#fff" size="30" />
         </div>
         <div class="content1">

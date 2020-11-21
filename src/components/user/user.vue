@@ -20,6 +20,9 @@
                 active:'home',
                 msgNum:20
             }
+        },
+        created() {
+            this.$store.commit("updatePosition","user");
         }
     }
 </script>

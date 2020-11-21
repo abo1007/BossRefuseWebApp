@@ -16,9 +16,14 @@
 <script>
     export default {
         name: "about",
+        data(){
+          return{
+              from:this.$store.state.currentPosition
+          }
+        },
         methods:{
             goback(){
-                this.$router.push("/user/my");
+                this.$router.push("/" + this.from + "/my");
             }
         }
     }
