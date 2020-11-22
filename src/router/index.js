@@ -24,6 +24,7 @@ import about from "../components/view/about";
 import service from "../components/view/service";
 import help from "../components/view/help";
 import wages from "../components/view/wages";
+import homePage from "../components/view/homePage";
 
 Vue.use(VueRouter);
 
@@ -64,6 +65,7 @@ Vue.use(VueRouter);
   {path: '/service', name: 'service', component: service },
   {path: '/help', name: 'help', component: help },
   {path: '/wages', name: 'wages', component: wages },
+  {path: '/homepage', name: 'homepage', component: homePage },
   {
     path: '*',
     name: '404',

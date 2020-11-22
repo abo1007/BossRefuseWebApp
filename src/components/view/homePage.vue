@@ -2,9 +2,9 @@
     <div id="homePage-container">
         <div class="header">
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
-            <p>帮助</p>
+            <p>{{pageName}}主页</p>
         </div>
-        <h1>个人主页</h1>
+        <h1>{{pageName}}主页</h1>
     </div>
 </template>
 
@@ -13,13 +13,20 @@
         name: "homePage",
         data(){
             return{
-                from:this.$store.state.currentPosition
+                from:this.$store.state.currentPosition,
+                pageName:''
             }
         },
         methods:{
             goback(){
                 this.$router.push("/" + this.from + "/my");
+            },
+            getName(){
+                this.pageName = this.from==="com"?"公司":"个人";
             }
+        },
+        created() {
+            this.getName();
         }
     }
 </script>

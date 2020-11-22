@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="content1">
-            <div class="item">
+            <div class="item" @click="gofunc('homepage')">
                 <span>
                     <van-icon name="home-o" size="26px" class="icon"/>
                     个人主页
