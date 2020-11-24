@@ -4,11 +4,14 @@
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
             <p>关于</p>
         </div>
-        <img src="../../assets/user-home-img.png" alt="">
-        <div class="content">
+        <img src="../../assets/user-home-img.png" alt="Logo" @click="egg">
+        <div class="content" ref="content">
             <h1>Boss直拒</h1>
             <p>您身边的求职专家</p>
             <p>版本 0.1.0</p>
+            <transition>
+                <p v-show="show">Yangbo & Yueying</p>
+            </transition>
         </div>
     </div>
 </template>
@@ -18,12 +21,25 @@
         name: "about",
         data(){
           return{
-              from:this.$store.state.currentPosition
+              from:this.$store.state.currentPosition,
+              show:false,
+              showi:0
           }
         },
         methods:{
             goback(){
                 this.$router.push("/" + this.from + "/my");
+            },
+            egg(){
+                if(this.showi >= 5){
+                   this.addegg();
+                }else{
+                    this.$toast("还有"+(5-this.showi)+"次");
+                    this.showi++;
+                }
+            },
+            addegg(){
+                this.show = true;
             }
         }
     }
@@ -61,6 +77,17 @@
             }
             p{
                 font-weight:100;
+            }
+            .show{
+                transition:all 0.4s ease;
+                display:block;
+
+            }
+            .fade-enter-active, .fade-leave-active {
+                transition: opacity .5s;
+            }
+            .fade-enter, .fade-leave-to{
+                opacity: 0;
             }
         }
     }
