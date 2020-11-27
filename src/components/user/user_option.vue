@@ -5,7 +5,7 @@
             <p>设置</p>
         </div>
         <div class="content1">
-            <div class="item">
+            <div class="item" @click="gofunc('setting')">
                 <span>
                     <van-icon name="home-o" size="26px" class="icon"/>
                     通用
@@ -14,16 +14,16 @@
                     <van-icon name="arrow" class="icon2"/>
                 </span>
             </div>
-            <div class="item">
+            <div class="item" @click="gofunc('account')">
                 <span>
                     <van-icon name="chart-trending-o" size="26px" class="icon"/>
-                    账号与绑定
+                    账号与安全
                 </span>
                 <span>
                     <van-icon name="arrow" class="icon2"/>
                 </span>
             </div>
-            <div class="item">
+            <div class="item" @click="gofunc('help')">
                 <span>
                     <van-icon name="question-o" size="26px" class="icon"/>
                     帮助与反馈
@@ -32,7 +32,7 @@
                     <van-icon name="arrow" class="icon2"/>
                 </span>
             </div>
-            <div class="item">
+            <div class="item" @click="gofunc('privacy')">
                 <span>
                     <van-icon name="more-o" size="26px" class="icon"/>
                     隐私

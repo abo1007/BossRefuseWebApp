@@ -25,6 +25,11 @@ import service from "../components/view/service";
 import help from "../components/view/help";
 import wages from "../components/view/wages";
 import homePage from "../components/view/homePage";
+import setting from "../components/view/setting";
+import account from "../components/view/account";
+import privacy from "../components/view/privacy";
+
+
 
 Vue.use(VueRouter);
 
@@ -66,6 +71,9 @@ Vue.use(VueRouter);
   {path: '/help', name: 'help', component: help },
   {path: '/wages', name: 'wages', component: wages },
   {path: '/homepage', name: 'homepage', component: homePage },
+  {path: '/setting', name: 'setting', component: setting },
+  {path: '/account', name: 'account', component: account },
+  {path: '/privacy', name: 'privacy', component: privacy },
   {
     path: '*',
     name: '404',
