@@ -18,7 +18,6 @@ import com_my from "../components/company/com-my"
 
 import work_info from "../components/child/work_info";
 
-
 import err404 from "../components/404"
 import about from "../components/view/about";
 import service from "../components/view/service";
@@ -28,8 +27,6 @@ import homePage from "../components/view/homePage";
 import setting from "../components/view/setting";
 import account from "../components/view/account";
 import privacy from "../components/view/privacy";
-
-
 
 Vue.use(VueRouter);
 

@@ -13,7 +13,9 @@
                 </div>
             </template>
         </van-search>
-        <img src="../../assets/user-home-img.png" alt="">
+        <div class="banner">
+            <img src="../../assets/user-home-img.png" alt="">
+        </div>
         <van-notice-bar
                 left-icon="volume-o"
                 text="巴里阿阿集团的宗旨是让世界没有好做的生意"
@@ -149,8 +151,15 @@ import user_work from "./user_work";
     .icon1{
         height:34px;
     }
-    img{
+    .banner{
         width:100%;
+        height:110px;
+        margin:0;
+        img{
+            width:100%;
+            margin:0;
+            height:110px;
+        }
     }
     .focus{
         color:#808080;
