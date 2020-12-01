@@ -10,6 +10,7 @@
             </div>
             <div class="content">
                 <p>{{info.content}}</p>
+                <span class="msg-toast">{{info.count}}</span>
             </div>
         </div>
     </div>
@@ -65,10 +66,21 @@
         .content{
             height:22px;
             display:flex;
+            justify-content: space-between;
             p{
                 margin:0;
                 font-size:14px;
                 color:#4d4d4d;
+            }
+            .msg-toast{
+                display: block;
+                font-size:14px;
+                background-color:#ff0000;
+                height:20px;
+                line-height:20px;
+                padding:0 10px;
+                color:#fff;
+                border-radius:10px;
             }
         }
 
