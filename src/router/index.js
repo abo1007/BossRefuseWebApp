@@ -18,6 +18,7 @@ import com_my from "../components/company/com-my"
 
 import work_info from "../components/child/work_info";
 
+// 通用
 import err404 from "../components/404"
 import about from "../components/view/about";
 import service from "../components/view/service";
@@ -27,6 +28,14 @@ import homePage from "../components/view/homePage";
 import setting from "../components/view/setting";
 import account from "../components/view/account";
 import privacy from "../components/view/privacy";
+
+// 应聘者
+import intention from "../components/view/intention"; // 求职意向
+import assistant from "../components/view/assistant"; // 求职助手
+import resume from "../components/view/resume";       //个人简历
+
+// 公司
+
 
 Vue.use(VueRouter);
 
