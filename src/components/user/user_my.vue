@@ -112,6 +112,24 @@
                     <van-icon name="arrow" class="icon2"/>
                 </span>
             </div>
+            <div class="item" @click="gofunc('account')">
+                <span>
+                    <van-icon name="info-o" size="26px" class="icon"/>
+                    账号与安全
+                </span>
+                <span>
+                    <van-icon name="arrow" class="icon2"/>
+                </span>
+            </div>
+            <div class="item" @click="gofunc('privacy')">
+                <span>
+                    <van-icon name="info-o" size="26px" class="icon"/>
+                    隐私
+                </span>
+                <span>
+                    <van-icon name="arrow" class="icon2"/>
+                </span>
+            </div>
         </div>
         <van-button type="primary" @click="goback">主页</van-button>
     </div>

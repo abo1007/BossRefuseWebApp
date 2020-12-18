@@ -4,59 +4,25 @@
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
             <p>设置</p>
         </div>
-        <div class="content1">
-            <div class="item" @click="gofunc('setting')">
-                <span>
-                    <van-icon name="home-o" size="26px" class="icon"/>
-                    通用
-                </span>
-                <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
-            </div>
-            <div class="item" @click="gofunc('account')">
-                <span>
-                    <van-icon name="chart-trending-o" size="26px" class="icon"/>
-                    账号与安全
-                </span>
-                <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
-            </div>
-            <div class="item" @click="gofunc('help')">
-                <span>
-                    <van-icon name="question-o" size="26px" class="icon"/>
-                    帮助与反馈
-                </span>
-                <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
-            </div>
-            <div class="item" @click="gofunc('privacy')">
-                <span>
-                    <van-icon name="more-o" size="26px" class="icon"/>
-                    隐私
-                </span>
-                <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
-            </div>
-            <div class="item" @click="gofunc('about')">
-                <span>
-                    <van-icon name="info-o" size="26px" class="icon"/>
-                    关于
-                </span>
-                <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
-            </div>
-        </div>
+        <van-cell-group>
+            <van-cell center title="深色模式">
+                <template #right-icon>
+                    <van-switch v-model="blackmode" size="24" active-color="#55cac4" inactive-color="#ffffff"/>
+                </template>
+            </van-cell>
+        </van-cell-group>
+
     </div>
 </template>
 
 <script>
     export default {
         name: "user_option",
+        data(){
+          return{
+              blackmode:false
+          }
+        },
         methods:{
             goback(){
                 this.$router.push("/user/my");
