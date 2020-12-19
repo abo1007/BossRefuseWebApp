@@ -7,11 +7,16 @@
         <van-cell-group>
             <van-cell center title="深色模式">
                 <template #right-icon>
-                    <van-switch v-model="blackmode" size="24" active-color="#55cac4" inactive-color="#ffffff"/>
+                    <van-switch v-model="blackmode" size="24" active-color="#55cac4" inactive-color="#ffffff" disabled/>
+                </template>
+            </van-cell>
+            <van-cell center title="隐私状态">
+                <template #right-icon>
+                    <van-switch :value="privatemode" @input="onInput" />
                 </template>
             </van-cell>
         </van-cell-group>
-
+        <van-button plain type="danger" class="out_btn" block @click="goOut">退出登录</van-button>
     </div>
 </template>
 
@@ -20,7 +25,8 @@
         name: "user_option",
         data(){
           return{
-              blackmode:false
+              blackmode:false,
+              privatemode:true
           }
         },
         methods:{
@@ -29,7 +35,19 @@
             },
             gofunc(Routername){
                 this.$router.push({ name:Routername });
-            }
+            },
+            goOut(){
+                this.$router.push("/");
+            },
+            onInput(privatemode) {
+                let msg = this.privatemode?"确定要关闭吗？关闭后HR将无法主动联系你":"确定要打开吗？大家将能够发现你";
+                this.$dialog.confirm({
+                    title: '提醒',
+                    message: msg,
+                }).then(() => {
+                    this.privatemode = privatemode;
+                });
+            },
         }
     }
 </script>
@@ -76,6 +94,9 @@
                 margin:0 15px;
             }
         }
+    }
+    .out_btn{
+        margin:5px 0;
     }
 }
 </style>
