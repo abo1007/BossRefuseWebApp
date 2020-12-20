@@ -8,7 +8,7 @@
         <div class="content" ref="content">
             <h1>Boss直拒</h1>
             <p>您身边的求职专家</p>
-            <p>版本 0.1.0</p>
+            <p>版本 0.1.5</p>
             <transition>
                 <p v-show="show">Yangbo & Yueying</p>
             </transition>

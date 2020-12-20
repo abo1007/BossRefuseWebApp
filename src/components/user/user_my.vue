@@ -15,19 +15,19 @@
             </div>
         </div>
         <div class="userdata">
-            <div class="view">
+            <div class="view" @click="goOverview('chat')">
                 <p class="num">{{userdata.chat}}</p>
                 <p class="name">沟通中</p>
             </div>
-            <div class="view">
+            <div class="view" @click="goOverview('interview')">
                 <p class="num">{{userdata.interview}}</p>
                 <p class="name">待面试</p>
             </div>
-            <div class="view">
+            <div class="view" @click="goOverview('offer')">
                 <p class="num">{{userdata.offer}}</p>
                 <p class="name">录用</p>
             </div>
-            <div class="view">
+            <div class="view" @click="goOverview('star')">
                 <p class="num">{{userdata.star}}</p>
                 <p class="name">收藏</p>
             </div>
@@ -65,7 +65,7 @@
                 </span>
             </div>
         </div>
-        <div class="content1">
+        <div class="content1 content2">
             <div class="item" @click="gofunc('homepage')">
                 <span>
                     <van-icon name="home-o" size="26px" class="icon"/>
@@ -131,7 +131,7 @@
                 </span>
             </div>
         </div>
-        <van-button type="primary" @click="goback">主页</van-button>
+
     </div>
 </template>
 
@@ -146,17 +146,20 @@
             }
         },
         methods:{
-            goback(){
+            goback() {
                 this.$router.push('../')
             },
-            goOption(){
-                this.$router.push({ name: "user_option"})
+            goOption() {
+                this.$router.push({name: "user_option"})
             },
-            InfoMore(){
+            InfoMore() {
                 this.$toast("偷偷告诉你，没有更多功能了")
             },
-            gofunc(Routername){
-                this.$router.push({ name:Routername, params:{from:'user'}  });
+            gofunc(Routername) {
+                this.$router.push({name: Routername, params: {from: 'user'}});
+            },
+            goOverview(viewName) {
+                this.$router.push({name: 'user_overview', params: {type: viewName}})
             }
         }
     }
@@ -243,7 +246,7 @@
         justify-content:center;
     }
     .content1{
-        border-bottom:1px solid #808080;
+        border-bottom:1px solid #cccccc;
         margin:0 15px;
         .item{
             height:55px;
@@ -262,6 +265,9 @@
                 margin:0 15px;
             }
         }
+    }
+    .content2{
+        border-bottom:0;
     }
 }
 </style>

@@ -15,24 +15,24 @@
             </div>
         </div>
         <div class="userdata">
-            <div class="view">
-                <p class="num">{{userdata.chat}}</p>
+            <div class="view" @click="goOverview('chat')">
+                <p class="num">{{comData.chat}}</p>
                 <p class="name">沟通中</p>
             </div>
-            <div class="view">
-                <p class="num">{{userdata.interview}}</p>
+            <div class="view" @click="goOverview('interview')">
+                <p class="num">{{comData.interview}}</p>
                 <p class="name">待面试</p>
             </div>
-            <div class="view">
-                <p class="num">{{userdata.offer}}</p>
+            <div class="view" @click="goOverview('offer')">
+                <p class="num">{{comData.offer}}</p>
                 <p class="name">录用</p>
             </div>
-            <div class="view">
-                <p class="num">{{userdata.star}}</p>
+            <div class="view" @click="goOverview('star')">
+                <p class="num">{{comData.star}}</p>
                 <p class="name">收藏</p>
             </div>
         </div>
-        <div class="userinfo">
+        <div class="userinfo" @click="InfoMore">
             <van-icon name="ellipsis" color="#fff" size="30" />
         </div>
         <div class="content1">
@@ -113,7 +113,6 @@
                 </span>
             </div>
         </div>
-        <van-button type="primary" @click="goback">主页</van-button>
     </div>
 </template>
 
@@ -122,20 +121,26 @@
         name: "com-my",
         data(){
             return{
-                userdata:{
+                comData:{
                     chat:0,interview:0,offer:0,star:0
                 }
             }
         },
         methods:{
             goback(){
-                this.$router.push('../')
+                this.$router.push('../');
             },
             goOption(){
-                this.$router.push({ name: "user_option" })
+                this.$router.push({ name: "com_option" });
+            },
+            InfoMore() {
+                this.$toast("这里什么都没有啦");
             },
             gofunc(Routername){
                 this.$router.push({ name:Routername, params:{from:'com'}  });
+            },
+            goOverview(viewName) {
+                this.$router.push({name: 'com_overview', params: {type: viewName}});
             }
         }
     }
@@ -200,7 +205,6 @@
                 align-items:center;
                 flex-direction:column;
                 padding:20px 0;
-
                 p{
                     margin:0;
                     font-family: 微软雅黑;

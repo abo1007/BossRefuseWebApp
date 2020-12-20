@@ -50,5 +50,7 @@
 </script>
 
 <style lang="scss" scoped>
+#category{
 
+}
 </style>

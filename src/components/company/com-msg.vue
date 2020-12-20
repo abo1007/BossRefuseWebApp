@@ -25,7 +25,8 @@ import msg_item from "../child/msg_item";
                 isLoading:false,
                 count:0,
                 MsgTest:{
-                    url:"http://localhost/boss.jpg",name:'AAA廊坊富士康 人事经理',time:'23:08',content:'我们这试学一月不收取任何费用...'
+                    url:"http://localhost/boss.jpg",name:'AAA廊坊富士康 人事经理',time:'23:08',
+                    content:'我们这试学一月不收取任何费用...',count:2
                 }
             }
         },
@@ -46,6 +47,6 @@ import msg_item from "../child/msg_item";
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
