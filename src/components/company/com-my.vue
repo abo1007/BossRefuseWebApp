@@ -14,24 +14,26 @@
                 <p class="level">一切的伟大，源自一个勇敢的开始</p>
             </div>
         </div>
-        <div class="userdata">
-            <div class="view" @click="goOverview('chat')">
-                <p class="num">{{comData.chat}}</p>
-                <p class="name">沟通中</p>
+        <transition name="fade">
+            <div class="userdata" v-show="strWindow">
+                <div class="view" @click="goOverview('chat')">
+                    <p class="num">{{comData.chat}}</p>
+                    <p class="name">沟通中</p>
+                </div>
+                <div class="view" @click="goOverview('interview')">
+                    <p class="num">{{comData.interview}}</p>
+                    <p class="name">待面试</p>
+                </div>
+                <div class="view" @click="goOverview('offer')">
+                    <p class="num">{{comData.offer}}</p>
+                    <p class="name">录用</p>
+                </div>
+                <div class="view" @click="goOverview('star')">
+                    <p class="num">{{comData.star}}</p>
+                    <p class="name">收藏</p>
+                </div>
             </div>
-            <div class="view" @click="goOverview('interview')">
-                <p class="num">{{comData.interview}}</p>
-                <p class="name">待面试</p>
-            </div>
-            <div class="view" @click="goOverview('offer')">
-                <p class="num">{{comData.offer}}</p>
-                <p class="name">录用</p>
-            </div>
-            <div class="view" @click="goOverview('star')">
-                <p class="num">{{comData.star}}</p>
-                <p class="name">收藏</p>
-            </div>
-        </div>
+        </transition>
         <div class="userinfo" @click="InfoMore">
             <van-icon name="ellipsis" color="#fff" size="30" />
         </div>
@@ -123,7 +125,8 @@
             return{
                 comData:{
                     chat:0,interview:0,offer:0,star:0
-                }
+                },
+                strWindow:true
             }
         },
         methods:{
@@ -134,7 +137,8 @@
                 this.$router.push({ name: "com_option" });
             },
             InfoMore() {
-                this.$toast("这里什么都没有啦");
+                // this.$toast("这里什么都没有啦");
+                this.strWindow = !this.strWindow;
             },
             gofunc(Routername){
                 this.$router.push({ name:Routername, params:{from:'com'}  });
@@ -164,6 +168,7 @@
             background-color:#55cac4;
             display:flex;
             padding:20px;
+            z-index:99;
             .left{
                 flex:3;
                 display:flex;
@@ -197,7 +202,8 @@
             height:80px;
             background-color:#55cac4;
             display:flex;
-            padding:10px;
+            padding:0 10px;
+            z-index:0;
             .view{
                 flex:1;
                 display:flex;
@@ -220,13 +226,14 @@
             }
         }
         .userinfo{
+            position: relative;
             height:30px;
             background-color:#55cac4;
             display:flex;
             justify-content:center;
         }
         .content1{
-            border-bottom:1px solid #808080;
+            border-bottom:1px solid #cccccc;
             margin:0 15px;
             .item{
                 height:55px;
@@ -245,6 +252,15 @@
                     margin:0 15px;
                 }
             }
+        }
+        .fade-leave-active ,.fade-enter-active{
+            transition:max-height 0.6s;
+        }
+        .fade-enter, .fade-leave-to {
+            max-height:0px;
+        }
+        .fade-enter-to, .fade-leave{
+            max-height:100px;
         }
     }
 </style>

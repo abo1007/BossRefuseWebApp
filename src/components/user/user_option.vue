@@ -16,7 +16,10 @@
                 </template>
             </van-cell>
         </van-cell-group>
-        <van-button plain type="danger" class="out_btn" block @click="goOut">退出登录</van-button>
+        <van-button type="danger" @click="goOut"
+                    class="out_btn" block
+                    color="linear-gradient(to right,#AFEEEE,#008B8B)"
+        >退出登录</van-button>
     </div>
 </template>
 
@@ -54,12 +57,13 @@
 
 <style lang="scss" scoped>
 #option{
-    /*background-color: #55cac4;*/
+
     width:100%;
     .header{
+        background-image: linear-gradient(to right,#55cac4,#008B8B);
         height:40px;
         width:100%;
-        background-color:#55cac4;
+        /*background-color:#55cac4;*/
         display:flex;
         align-items:center;
         .icon{
@@ -98,7 +102,7 @@
     }
     .out_btn{
         border-radius:10px;
-        margin:5px auto;
+        margin:10px auto;
         width:90%;
         font-size:17px;
     }

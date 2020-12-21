@@ -14,24 +14,27 @@
                 <p class="level">一切的伟大，源自一个勇敢的开始</p>
             </div>
         </div>
-        <div class="userdata">
-            <div class="view" @click="goOverview('chat')">
-                <p class="num">{{userdata.chat}}</p>
-                <p class="name">沟通中</p>
+        <transition name="fade">
+            <div class="userdata" v-show="strWindow">
+                <div class="view" @click="goOverview('chat')">
+                    <p class="num">{{userdata.chat}}</p>
+                    <p class="name">沟通中</p>
+                </div>
+                <div class="view" @click="goOverview('interview')">
+                    <p class="num">{{userdata.interview}}</p>
+                    <p class="name">待面试</p>
+                </div>
+                <div class="view" @click="goOverview('offer')">
+                    <p class="num">{{userdata.offer}}</p>
+                    <p class="name">录用</p>
+                </div>
+                <div class="view" @click="goOverview('star')">
+                    <p class="num">{{userdata.star}}</p>
+                    <p class="name">收藏</p>
+                </div>
             </div>
-            <div class="view" @click="goOverview('interview')">
-                <p class="num">{{userdata.interview}}</p>
-                <p class="name">待面试</p>
-            </div>
-            <div class="view" @click="goOverview('offer')">
-                <p class="num">{{userdata.offer}}</p>
-                <p class="name">录用</p>
-            </div>
-            <div class="view" @click="goOverview('star')">
-                <p class="num">{{userdata.star}}</p>
-                <p class="name">收藏</p>
-            </div>
-        </div>
+        </transition>
+
         <div class="userinfo" @click="InfoMore">
             <van-icon name="ellipsis" color="#fff" size="30" />
         </div>
@@ -142,7 +145,8 @@
             return{
                 userdata:{
                     chat:0,interview:0,offer:0,star:0
-                }
+                },
+                strWindow:true
             }
         },
         methods:{
@@ -153,7 +157,13 @@
                 this.$router.push({name: "user_option"})
             },
             InfoMore() {
-                this.$toast("偷偷告诉你，没有更多功能了")
+                // this.$toast("偷偷告诉你，没有更多功能了")
+                this.strWindow = !this.strWindow;
+                // if(this.$refs.userdata.className == "userdata"){
+                //     this.$refs.userdata.className = "userdata userdata_active";
+                // }else{
+                //     this.$refs.userdata.className = "userdata";
+                // }
             },
             gofunc(Routername) {
                 this.$router.push({name: Routername, params: {from: 'user'}});
@@ -183,6 +193,7 @@
         background-color:#55cac4;
         display:flex;
         padding:20px;
+        z-index:99;
         .left{
             flex:3;
             display:flex;
@@ -216,7 +227,8 @@
         height:80px;
         background-color:#55cac4;
         display:flex;
-        padding:10px;
+        padding:0 10px;
+        z-index:0;
         .view{
             flex:1;
             display:flex;
@@ -238,8 +250,10 @@
                 font-size:14px;
             }
         }
+
     }
     .userinfo{
+        position: relative;
         height:30px;
         background-color:#55cac4;
         display:flex;
@@ -269,5 +283,17 @@
     .content2{
         border-bottom:0;
     }
+
+
+    .fade-leave-active ,.fade-enter-active{
+        transition:max-height 0.6s;
+    }
+    .fade-enter, .fade-leave-to {
+        max-height:0px;
+    }
+    .fade-enter-to, .fade-leave{
+        max-height:100px;
+    }
+
 }
 </style>
