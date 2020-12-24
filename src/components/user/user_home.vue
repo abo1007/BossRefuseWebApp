@@ -38,67 +38,7 @@
                     :workmsg="testMsgList[index]"
                     :key="item.id" />
 
-<!--            <div class="work-info">-->
-<!--                <p class="title">-->
-<!--                    <span class="title">全栈工程师</span>-->
-<!--                    <span class="money">1-2K</span>-->
-<!--                </p>-->
-<!--                <p class="cla">-->
-<!--                    <van-tag>3-5年</van-tag>-->
-<!--                    <van-tag>本科</van-tag>-->
-<!--                    <van-tag>Vue</van-tag>-->
-<!--                    <van-tag>Java</van-tag>-->
-<!--                </p>-->
-<!--                <p class="com">-->
-<!--                    <span>白嫖浮云 </span>-->
-<!--                    <span>0-9</span>人-->
-<!--                </p>-->
-<!--                <p class="hr">-->
-<!--                    <span class="left">李先生·人事</span>-->
-<!--                    <span class="right">北京市 海淀区</span>-->
-<!--                </p>-->
-<!--            </div>-->
 
-<!--            <div class="work-info">-->
-<!--                <p class="title">-->
-<!--                    <span class="name">富士康普工</span>-->
-<!--                    <span class="money">4-8K</span>-->
-<!--                </p>-->
-<!--                <p class="cla">-->
-<!--                    <van-tag>经验不限</van-tag>-->
-<!--                    <van-tag>学历不限</van-tag>-->
-<!--                    <van-tag>五险</van-tag>-->
-<!--                    <van-tag>包食宿</van-tag>-->
-<!--                </p>-->
-<!--                <p class="com">-->
-<!--                    <span>鸿海精密 </span>-->
-<!--                    <span>10000+</span>人-->
-<!--                </p>-->
-<!--                <p class="hr">-->
-<!--                    <span class="left">张先生·人事</span>-->
-<!--                    <span class="right">廊坊市 龙河</span>-->
-<!--                </p>-->
-<!--            </div>-->
-<!--            <div class="work-info">-->
-<!--                <p class="title">-->
-<!--                    <span class="name">富士康普工</span>-->
-<!--                    <span class="money">4-8K</span>-->
-<!--                </p>-->
-<!--                <p class="cla">-->
-<!--                    <van-tag>经验不限</van-tag>-->
-<!--                    <van-tag>学历不限</van-tag>-->
-<!--                    <van-tag>五险</van-tag>-->
-<!--                    <van-tag>包食宿</van-tag>-->
-<!--                </p>-->
-<!--                <p class="com">-->
-<!--                    <span>鸿海精密 </span>-->
-<!--                    <span>10000+</span>人-->
-<!--                </p>-->
-<!--                <p class="hr">-->
-<!--                    <span class="left">张先生·人事</span>-->
-<!--                    <span class="right">廊坊市 龙河</span>-->
-<!--                </p>-->
-<!--            </div>-->
         </div>
     </div>
 </template>
@@ -124,15 +64,16 @@ import user_work from "./user_work";
                         com:'智为科技',person:'20-50',hr:'杨先生·人事',adr:'武汉市 江岸区'
                     },
                     {
-                        id:3, name:'',money:'6-10K',tag:['1年以上','大专','Laravel','双休'],
-                        com:'智为科技',person:'20-50',hr:'杨先生·人事',adr:'武汉市 江岸区'
+                        id:3, name:'Laravel开发',money:'8-10K',tag:['2年以上','学历不限','Laravel','双休'],
+                        com:'云集有赞',person:'1000+',hr:'李先生·人事',adr:'杭州市 萧山区'
                     }
                 ]
             }
         },
         methods:{
             onSearch(){
-                this.$toast('诶呀，没写！')
+                // this.$toast('诶呀，没写！')
+                this.$router.push({name:'user_searchRes', query:{value:this.SearchValue}})
             },
             goTab(name){
                 this.$router.push({name:'user_category', params:{name:name}});
@@ -140,6 +81,9 @@ import user_work from "./user_work";
         },
         components:{
             'user-work':user_work
+        },
+        created() {
+            console.log(this.$API)
         }
     }
 </script>

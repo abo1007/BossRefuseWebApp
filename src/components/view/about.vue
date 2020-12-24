@@ -10,7 +10,7 @@
             <p>您身边的求职专家</p>
             <p>版本 0.1.5</p>
             <transition>
-                <p v-show="show">Yangbo & Yueying</p>
+                <p v-show="show" class="hi">Yangbo & Yueying</p>
             </transition>
         </div>
     </div>
@@ -88,6 +88,15 @@
             }
             .fade-enter, .fade-leave-to{
                 opacity: 0;
+            }
+            .hi{
+                font-size:18px;
+                user-select: none;
+            }
+            .hi:active{
+                transition:all 0.1s ease;
+                font-size:20px;
+                color:red;
             }
         }
     }

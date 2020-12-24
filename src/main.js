@@ -5,6 +5,9 @@ import store from './store'
 
 Vue.config.productionTip = false;
 
+import APIUtil from "./util/APIUtil";
+Vue.prototype.$API = APIUtil;
+
 
 import { Button,Tabbar,TabbarItem,Search,Toast,Icon,Grid,GridItem,NoticeBar,
   Tag, Tab, Tabs, NavBar, PullRefresh, Picker, Field, Popup, Form, RadioGroup, Radio,

@@ -10,6 +10,7 @@ import user_my from "../components/user/user_my"
 import user_option from "../components/user/user_option";
 import user_category from "../components/user/user_category";
 import user_overview from "../components/user/user_overview"; // 用户数据总览
+import user_searchRes from "../components/user/user_searchRes"; // 用户搜索结果页面
 
 import com from "../components/company/com"
 import com_home from "../components/company/com-home"
@@ -63,6 +64,7 @@ Vue.use(VueRouter);
     { path: '/user/home/category/:name', name: 'user_category', component: user_category },     // 分类通用
     { path: '/user/home/option', name:'user_option', component: user_option },
     { path: '/user/home/data', name:'user_overview', component: user_overview },
+    { path: '/user/home/search', name:'user_searchRes', component: user_searchRes },
     { path: '/user/home/workinfo/:workid', name: 'work_info', component: work_info },
   {
     path: '/com',
