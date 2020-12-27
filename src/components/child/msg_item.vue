@@ -20,6 +20,7 @@
     export default {
         name: "msg_item",
         props:['info']
+
     }
 </script>
 
@@ -67,6 +68,7 @@
             height:22px;
             display:flex;
             justify-content: space-between;
+            margin-top:3px;
             p{
                 margin:0;
                 font-size:14px;

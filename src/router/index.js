@@ -11,6 +11,8 @@ import user_option from "../components/user/user_option";
 import user_category from "../components/user/user_category";
 import user_overview from "../components/user/user_overview"; // 用户数据总览
 import user_searchRes from "../components/user/user_searchRes"; // 用户搜索结果页面
+import user_chat from "../components/user/user_chat"; // 用户聊天界面
+
 
 import com from "../components/company/com"
 import com_home from "../components/company/com-home"
@@ -29,7 +31,6 @@ import service from "../components/view/service";
 import help from "../components/view/help";
 import wages from "../components/view/wages";
 import homePage from "../components/view/homePage";
-// import setting from "../components/view/setting";
 import account from "../components/view/account";
 import privacy from "../components/view/privacy";
 
@@ -66,6 +67,7 @@ Vue.use(VueRouter);
     { path: '/user/home/data', name:'user_overview', component: user_overview },
     { path: '/user/home/search', name:'user_searchRes', component: user_searchRes },
     { path: '/user/home/workinfo/:workid', name: 'work_info', component: work_info },
+    { path: '/user/home/chat/:msgid', name: 'user_chat', component: user_chat },
   {
     path: '/com',
     name:'com',

@@ -18,7 +18,7 @@
         data(){
             return{
                 active:'home',
-                msgNum:20
+                msgNum:this.$store.state.msgNum
             }
         },
         created() {

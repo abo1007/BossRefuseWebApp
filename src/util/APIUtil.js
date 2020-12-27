@@ -1,7 +1,7 @@
 
-const serverBase = "http://127.0.0.1:8090";
+const serverBase = "http://127.0.0.1:8090/public/"; // 请根据启动方式自行修改
 
-const A1 = serverBase + "/public/api/";
+const A1 = serverBase + "api/";
 
 export default {
     // 服务器地址
