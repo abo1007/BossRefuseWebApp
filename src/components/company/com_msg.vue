@@ -18,7 +18,7 @@
 <script>
 import msg_item from "../child/msg_item";
     export default {
-        name: "com-msg",
+        name: "com_msg",
         data(){
             return{
                 msgNum:20,

@@ -23,7 +23,7 @@
 
 <script>
     export default {
-        name: "com-home",
+        name: "com_home",
         data(){
             return{
                 SearchValue:""

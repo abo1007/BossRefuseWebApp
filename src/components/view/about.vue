@@ -9,6 +9,7 @@
             <h1>Boss直拒</h1>
             <p>您身边的求职专家</p>
             <p>版本 0.1.5</p>
+            <p>Yangbo@2021</p>
             <transition>
                 <p v-show="show" class="hi">Yangbo & Yueying</p>
             </transition>

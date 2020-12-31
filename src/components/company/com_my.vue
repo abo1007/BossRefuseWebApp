@@ -120,7 +120,7 @@
 
 <script>
     export default {
-        name: "com-my",
+        name: "com_my",
         data(){
             return{
                 comData:{

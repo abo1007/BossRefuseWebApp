@@ -15,14 +15,14 @@ import user_chat from "../components/user/user_chat"; // 用户聊天界面
 
 
 import com from "../components/company/com"
-import com_home from "../components/company/com-home"
-import com_focus from  "../components/company/com-focus"
-import com_msg from "../components/company/com-msg"
-import com_my from "../components/company/com-my"
+import com_home from "../components/company/com_home"
+import com_focus from "../components/company/com_focus"
+import com_msg from "../components/company/com_msg"
+import com_my from "../components/company/com_my"
 import com_option from "../components/company/com_option";  // 公司设置
 import com_overview from "../components/company/com_overview";
 
-import work_info from "../components/child/work_info";
+import work_info from "../components/child/work_info";  // 工作详情页面
 
 // 通用
 import err404 from "../components/404"

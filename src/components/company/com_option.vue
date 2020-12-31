@@ -25,7 +25,7 @@
 
 <script>
     export default {
-        name: "com-option",
+        name: "com_option",
         data(){
             return{
                 blackmode:false,
@@ -40,7 +40,7 @@
                 this.$router.push("/");
             },
             onInput(privatemode) {
-                let msg = this.privatemode?"确定要关闭吗？关闭后HR将无法主动联系你":"确定要打开吗？大家将能够发现你";
+                let msg = this.privatemode?"确定要关闭吗？关闭后应聘者将无法发现你":"确定要打开吗？大家将能够发现你";
                 this.$dialog.confirm({
                     title: '提醒',
                     message: msg,

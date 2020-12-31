@@ -73,7 +73,7 @@
 
 <script>
     export default {
-        name: "com-focus",
+        name: "com_focus",
         data(){
             return{
                 work_category:["技术","产品","设计","运营","市场","更多"],

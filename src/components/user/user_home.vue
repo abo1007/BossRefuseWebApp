@@ -38,7 +38,9 @@
                     :workmsg="testMsgList[index]"
                     :key="item.id" />
 
-
+        </div>
+        <div class="statement">
+            <p class="title1">Yangbo@2021</p>
         </div>
     </div>
 </template>
@@ -46,7 +48,7 @@
 <script>
 import user_work from "./user_work";
     export default {
-        name: "login-home",
+        name: "user_home",
         data(){
             return{
                 SearchValue:'',
@@ -113,6 +115,7 @@ import user_work from "./user_work";
     }
     .work-container{
         background-color:#F5F5F5;
+        padding-bottom:5px;
         /*.work-info{*/
         /*    margin-bottom:5px;*/
         /*    padding:10px 15px;*/
@@ -156,6 +159,17 @@ import user_work from "./user_work";
         /*        }*/
         /*    }*/
         /*}*/
+    }
+    .statement{
+        p{
+            font-weight:100;
+            text-align:center;
+            margin:5px 0;
+        }
+        .title1{
+            font-size:12px;
+            color:#808080;
+        }
     }
 }
 </style>
