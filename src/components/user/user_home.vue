@@ -13,9 +13,21 @@
                 </div>
             </template>
         </van-search>
-        <div class="banner">
-            <img src="../../assets/user-home-img.png" alt="">
-        </div>
+        <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+            <van-swipe-item>
+                <img src="../../assets/slide1.png" alt="">
+            </van-swipe-item>
+            <van-swipe-item>
+                <img src="../../assets/slide2.png" alt="">
+            </van-swipe-item>
+            <van-swipe-item>
+                <img src="../../assets/slide3.png" alt="">
+            </van-swipe-item>
+        </van-swipe>
+
+<!--        <div class="banner">-->
+<!--            <img src="../../assets/slide3.png" alt="">-->
+<!--        </div>-->
         <van-notice-bar
                 left-icon="volume-o"
                 text="巴里阿阿集团的宗旨是让世界没有好做的生意"
@@ -97,13 +109,19 @@ import user_work from "./user_work";
     .icon1{
         height:34px;
     }
-    .banner{
-        width:100%;
-        height:110px;
-        margin:0;
+    /*.banner{*/
+    /*    width:100%;*/
+    /*    height:110px;*/
+    /*    margin:0;*/
+    /*    img{*/
+    /*        width:100%;*/
+    /*        margin:0;*/
+    /*        height:110px;*/
+    /*    }*/
+    /*}*/
+    .my-swipe{
         img{
             width:100%;
-            margin:0;
             height:110px;
         }
     }

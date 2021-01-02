@@ -11,7 +11,7 @@ Vue.prototype.$API = APIUtil;
 
 import { Button,Tabbar,TabbarItem,Search,Toast,Icon,Grid,GridItem,NoticeBar,
   Tag, Tab, Tabs, NavBar, PullRefresh, Picker, Field, Popup, Form, RadioGroup, Radio,
-  Cell, CellGroup, Card, Switch, Dialog } from 'vant'
+  Cell, CellGroup, Card, Switch, Dialog , Swipe, SwipeItem  } from 'vant'
 import 'vant/lib/button/style';
 import 'vant/lib/tabbar/style';
 import 'vant/lib/tabbar-item/style';
@@ -37,6 +37,8 @@ import 'vant/lib/cell/style';
 import 'vant/lib/card/style';
 import 'vant/lib/switch/style';
 import 'vant/lib/dialog/style';
+import 'vant/lib/swipe/style';
+import 'vant/lib/swipe-item/style';
 Vue.use(Button);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -62,6 +64,8 @@ Vue.use(CellGroup);
 Vue.use(Card);
 Vue.use(Switch);
 Vue.use(Dialog);
+Vue.use(Swipe);
+Vue.use(SwipeItem);
 Vue.prototype.$dialog = Dialog;
 
 new Vue({

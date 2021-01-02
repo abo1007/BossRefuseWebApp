@@ -4,7 +4,7 @@
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
             <p>关于</p>
         </div>
-        <img src="../../assets/user-home-img.png" alt="Logo" @click="egg">
+        <img src="../../assets/slide1.png" alt="Logo" @click="egg">
         <div class="content" ref="content">
             <h1>Boss直拒</h1>
             <p>您身边的求职专家</p>
