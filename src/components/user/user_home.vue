@@ -25,7 +25,7 @@
             </van-swipe-item>
         </van-swipe>
 
-<!--        <div class="banner">-->
+<!--        <div class="s-banner">-->
 <!--            <img src="../../assets/slide3.png" alt="">-->
 <!--        </div>-->
         <van-notice-bar
@@ -40,6 +40,9 @@
             <van-grid-item icon="photo-o" text="市场" @click="goTab('market')"/>
             <van-grid-item icon="more-o" text="更多" @click="goTab('more')"/>
         </van-grid>
+        <div class="banner">
+            <img src="../../assets/fupin.png" alt="">
+        </div>
         <p class="focus">
             您可能感兴趣的岗位
             <van-tag type="success" style="margin:0 6px;">前端</van-tag>
@@ -109,7 +112,7 @@ import user_work from "./user_work";
     .icon1{
         height:34px;
     }
-    /*.banner{*/
+    /*.s-banner{*/
     /*    width:100%;*/
     /*    height:110px;*/
     /*    margin:0;*/
@@ -123,6 +126,19 @@ import user_work from "./user_work";
         img{
             width:100%;
             height:110px;
+        }
+    }
+    .banner{
+        margin:5px 0;
+        display: flex;
+        justify-content: center;
+        width:100%;
+        height:150px;
+        img{
+            width:96%;
+            height:100%;
+            border-radius:10px;
+            box-shadow:#cccccc 0px 5px 5px,0px -2px 5px #cccccc;
         }
     }
     .focus{
