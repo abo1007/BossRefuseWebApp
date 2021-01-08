@@ -14,8 +14,8 @@
             </template>
         </van-search>
         <van-tabs color="#55cac4" animated>
-            <van-tab v-for="item in tabsName" :title="item">
-                <user-work :workmsg="testMsg"></user-work>
+            <van-tab v-for="item,index in tabsName" :title="item">
+                <user-work v-for="item in testMsg[index]" :workmsg="item"></user-work>
             </van-tab>
         </van-tabs>
     </div>
@@ -29,10 +29,15 @@ import user_work from "./user_work";
             return{
                 SearchValue:'',
                 tabsName:['前端','后端','全栈','Java','Node'],
-                testMsg:{
-                    id:0, name:'全栈工程师',money:'1-2k',tag:['3-5年','硕士研究生','Vue','Java'],
-                    com:'白嫖科技',person:'0-9',hr:'刘先生·人事',adr:'南京市 鼓楼区'
-                }
+                testMsg:[
+                    [
+                        {
+                            id:0, name:'全栈工程师',money:'1-2k',tag:['3-5年','硕士研究生','Vue','Java'],
+                            com:'白嫖科技',person:'0-9',hr:'刘先生·人事',adr:'南京市 鼓楼区'
+                        }
+                    ]
+
+                ]
             }
         },
         methods:{
