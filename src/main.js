@@ -8,8 +8,10 @@ Vue.config.productionTip = false;
 import APIUtil from "./util/APIUtil";
 Vue.prototype.$API = APIUtil;
 
+import axios from 'axios';
+Vue.prototype.$axios = axios;
 
-import { Button,Tabbar,TabbarItem,Search,Toast,Icon,Grid,GridItem,NoticeBar,
+import { Button, Tabbar, TabbarItem, Search, Toast, Icon, Grid, GridItem, NoticeBar,
   Tag, Tab, Tabs, NavBar, PullRefresh, Picker, Field, Popup, Form, RadioGroup, Radio,
   Cell, CellGroup, Card, Switch, Dialog , Swipe, SwipeItem  } from 'vant'
 import 'vant/lib/button/style';

@@ -27,16 +27,43 @@
         name: "login",
         data(){
             return{
-                uname:"",
+                uname:"abo1007",
                 upass:""
             }
         },
         methods:{
             goUser(){
-                this.$router.push('user');
+                if(this.goLogin(0)){
+                    this.$router.push('user');
+                }
             },
             goCom(){
-                this.$router.push('com');
+                if(this.goLogin(1)){
+                    this.$router.push('com');
+                }
+
+            },
+            goLogin(mode){
+                if(this.uname && this.uname.length >= 6 && this.uname.length < 18){
+                    if(this.upass && this.upass.length >= 6 && this.upass.length < 26){
+                        this.$axios.post(this.$API.API_POST_LOGIN,{
+                           username:this.uname,password:this.upass
+                        }).then((res) => {
+                            console.log(res);
+                        }).catch(err => {
+                            console.log(err);
+                        });
+                        this.$toast("登录成功，欢迎 "+this.uname);
+                        return true;
+                    }else{
+                        this.$toast("密码校验错误");
+                        return false;
+                    }
+                }else{
+                    this.$toast("用户名校验错误");
+                    return false;
+                }
+
             }
         }
     }
