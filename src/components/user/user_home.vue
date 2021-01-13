@@ -89,7 +89,6 @@ import user_work from "./user_work";
         },
         methods:{
             onSearch(){
-                // this.$toast('诶呀，没写！')
                 this.$router.push({name:'user_searchRes', query:{value:this.SearchValue}})
             },
             goTab(name){
@@ -100,7 +99,7 @@ import user_work from "./user_work";
             'user-work':user_work
         },
         created() {
-            console.log(this.$API)
+
         }
     }
 </script>
