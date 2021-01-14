@@ -14,7 +14,7 @@
             </template>
         </van-search>
         <van-tabs color="#55cac4" animated>
-            <van-tab v-for="item,index in tabsName" :title="item">
+            <van-tab v-for="item,index in tabsName" :title="item.title">
                 <user-work v-for="item in testMsg[index]" :workmsg="item"></user-work>
             </van-tab>
         </van-tabs>
@@ -28,7 +28,11 @@ import user_work from "./user_work";
         data(){
             return{
                 SearchValue:'',
-                tabsName:['前端','后端','全栈','Java','Node'],
+                tabsName: [
+                    {title: 'Java', cateid: 101}, {title: '前端', cateid: 102},
+                    {title: 'PHP', cateid: 103}, {title: '算法', cateid: 104},
+                    {title: '测试', cateid: 105}, {title: '全栈', cateid: 106}
+                ],
                 testMsg:[
                     [
                         {
@@ -43,10 +47,23 @@ import user_work from "./user_work";
         methods:{
             onSearch(){
                 this.$toast('还没做呢亲!')
+            },
+            getTabsData(){
+                let arr = [];
+                let str = "";
+                for(let i=0;i<this.tabsName.length;i++){
+                    arr.push(this.tabsName[i].cateid);
+                }
+                str = arr.join();
+                console.log(str);
+                
             }
         },
         components:{
             'user-work':user_work
+        },
+        created() {
+            this.getTabsData();
         }
     }
 </script>
