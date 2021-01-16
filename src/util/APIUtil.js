@@ -10,6 +10,7 @@ export default {
     API_GET_WORK_CATE: A1 + "workface/cate/",
     // 工作标题 具体分类数据
     API_GET_WORK_SUBCATE: A1 + "workface/subcate/",
+    API_GET_WORK_SUBCATES: A1 + "workface/subcates/",
     // 登录验证
     API_POST_LOGIN: A1 + "user/login",
     // 免登录验证

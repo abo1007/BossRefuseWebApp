@@ -15,7 +15,7 @@
         </van-search>
         <van-tabs color="#55cac4" animated>
             <van-tab v-for="item,index in tabsName" :title="item.title">
-                <user-work v-for="item in testMsg[index]" :workmsg="item"></user-work>
+                <user-work v-for="item in tabsMsg[index]" :workmsg="item"></user-work>
             </van-tab>
         </van-tabs>
     </div>
@@ -33,7 +33,7 @@ import user_work from "./user_work";
                     {title: 'PHP', cateid: 103}, {title: '算法', cateid: 104},
                     {title: '测试', cateid: 105}, {title: '全栈', cateid: 106}
                 ],
-                testMsg:[
+                tabsMsg:[
                     [
                         {
                             id:0, name:'全栈工程师',money:'1-2k',tag:['3-5年','硕士研究生','Vue','Java'],
@@ -56,7 +56,14 @@ import user_work from "./user_work";
                 }
                 str = arr.join();
                 console.log(str);
-                
+                this.$axios.get(this.$API.API_GET_WORK_SUBCATES+str).then( res =>{
+                    console.log(res);
+                    if(res.data.code == 200){
+                        this.tabsMsg = res.data.data;
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
             }
         },
         components:{

@@ -69,20 +69,20 @@ import user_work from "./user_work";
                 SearchValue:'',
                 testMsgList:[
                     {
-                        id:0, name:'全栈工程师',money:'1-2k',tag:['3-5年','硕士研究生','Vue','Java'],
-                        com:'白嫖科技',person:'0-9',hr:'刘先生·人事',adr:'南京市 鼓楼区'
+                        workId:0, workTitle:'全栈工程师',workSalary:'1-2k',workTag:['3-5年','硕士研究生','Vue','Java'],
+                        workComName:'白嫖科技',workComScale:'0-9',workPublisher:'刘先生·人事',workArea:'南京市 鼓楼区'
                     },
                     {
-                        id:1, name:'富士康普工',money:'4-8K',tag:['经验不限','学历不限','五险','包食宿'],
-                        com:'鸿海精密',person:'10000+',hr:'张先生·人事',adr:'廊坊市 龙河'
+                        workId:1, workTitle:'富士康普工',workSalary:'4-8K',workTag:['经验不限','学历不限','五险','包食宿'],
+                        workComName:'鸿海精密',workComScale:'10000+',workPublisher:'张先生·人事',workArea:'廊坊市 龙河'
                     },
                     {
-                        id:2, name:'PHP工程师',money:'6-10K',tag:['1年以上','大专','Laravel','双休'],
-                        com:'智为科技',person:'20-50',hr:'杨先生·人事',adr:'武汉市 江岸区'
+                        workId:2, workTitle:'PHP工程师',workSalary:'6-10K',workTag:['1年以上','大专','Laravel','双休'],
+                        workComName:'智为科技',workComScale:'20-50',workPublisher:'杨先生·人事',workArea:'武汉市 江岸区'
                     },
                     {
-                        id:3, name:'Laravel开发',money:'8-10K',tag:['2年以上','学历不限','Laravel','双休'],
-                        com:'云集有赞',person:'1000+',hr:'李先生·人事',adr:'杭州市 萧山区'
+                        workId:3, workTitle:'Laravel开发',workSalary:'8-10K',workTag:['2年以上','学历不限','Laravel','双休'],
+                        workComName:'云集有赞',workComScale:'1000+',workPublisher:'李先生·人事',workArea:'杭州市 萧山区'
                     }
                 ]
             }

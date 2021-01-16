@@ -1,19 +1,19 @@
 <template>
     <div class="work-item" @click="goWorkInfo(workmsg.id)">
         <p class="title">
-            <span class="title">{{workmsg.name}}</span>
-            <span class="money">{{workmsg.money}}</span>
+            <span class="title">{{workmsg.workTitle}}</span>
+            <span class="money">{{workmsg.workSalary}}</span>
         </p>
         <p class="cla">
-            <van-tag v-for="item in workmsg.tag">{{item}}</van-tag>
+            <van-tag v-for="item in workmsg.workTag">{{item}}</van-tag>
         </p>
         <p class="com">
-            <span>{{workmsg.com}} </span>
-            <span>{{workmsg.person}}</span>人
+            <span>{{workmsg.workComName}} </span>
+            <span>{{workmsg.workComScale}}</span>人
         </p>
         <p class="hr">
-            <span class="left">{{workmsg.hr}}</span>
-            <span class="right">{{workmsg.adr}}</span>
+            <span class="left">{{workmsg.workPublisher}}</span>
+            <span class="right">{{workmsg.workCity}} {{workmsg.workArea}}</span>
         </p>
     </div>
 </template>
