@@ -47,7 +47,7 @@
                 if(this.uname && this.uname.length >= 6 && this.uname.length < 18){
                     if(this.upass && this.upass.length >= 6 && this.upass.length < 26){
                         this.$axios.post(this.$API.API_POST_LOGIN,{
-                           username:this.uname,password:this.upass
+                           username:this.uname,password:this.upass,mode:mode
                         }).then((res) => {
                             // console.log(res);
                             switch (res.data.code) {

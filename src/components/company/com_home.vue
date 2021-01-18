@@ -18,6 +18,23 @@
                 left-icon="volume-o"
                 text="巴里阿阿集团的社会责任是向社会输送大量人才"
         />
+        <van-grid>
+            <van-grid-item icon="photo-o" text="简历处理" badge="2"/>
+            <van-grid-item icon="photo-o" text="招聘管理" />
+            <van-grid-item icon="photo-o" text="文字" />
+            <van-grid-item icon="photo-o" text="为您推荐" />
+        </van-grid>
+        <van-grid>
+            <van-grid-item icon="photo-o" text="企业信息" badge="2"/>
+            <van-grid-item icon="photo-o" text="文字" />
+            <van-grid-item icon="photo-o" text="文字" />
+            <van-grid-item icon="photo-o" text="为您推荐" />
+        </van-grid>
+        <div id="reg-container">
+            <div class="img">
+                <p>在这里注册企业信息 ></p>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -51,6 +68,28 @@
         margin:10px 0;
         font-size:14px;
         padding-left:16px;
+    }
+    #reg-container{
+        display: flex;
+        justify-content: center;
+        width:100%;
+        padding:5px 0;
+        .img{
+            height:70px;
+            width:96%;
+            /*background-color:#55cac4;*/
+            background-image: linear-gradient(to right,#55cac4,#008B8B);
+            border-radius:20px;
+            display: flex;
+            align-items: center;
+            box-shadow:0px 0px 10px #808080;
+            p{
+                color:#fff;
+                font-weight:bold;
+                font-size:20px;
+                padding-left:20px;
+            }
+        }
     }
 }
 </style>

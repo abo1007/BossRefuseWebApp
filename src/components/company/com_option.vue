@@ -106,6 +106,7 @@
             margin:10px auto;
             width:90%;
             font-size:17px;
+            box-shadow:0px 0px 10px #4d4d4d;
         }
     }
 </style>
