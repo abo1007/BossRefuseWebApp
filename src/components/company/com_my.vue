@@ -10,8 +10,8 @@
                 </div>
             </div>
             <div class="right">
-                <p class="username">老杨同志Abo</p>
-                <p class="level">一切的伟大，源自一个勇敢的开始</p>
+                <p class="username">人事·老王</p>
+                <p class="level">招聘旺季，请各位应聘者排队面试</p>
             </div>
         </div>
         <transition name="fade">

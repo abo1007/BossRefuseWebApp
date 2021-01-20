@@ -5,22 +5,22 @@
                 right-text="切换"
                 @click-right="rightClick"
         />
-<!--        <van-field-->
-<!--                readonly-->
-<!--                clickable-->
-<!--                label="工作种类"-->
-<!--                :value="value"-->
-<!--                placeholder="工作种类"-->
-<!--                @click="showPicker = true"-->
-<!--        />-->
-<!--        <van-popup v-model="showPicker" round position="bottom">-->
-<!--            <van-picker-->
-<!--                    show-toolbar-->
-<!--                    :columns="work_category"-->
-<!--                    @cancel="showPicker = false"-->
-<!--                    @confirm="onConfirm"-->
-<!--            />-->
-<!--        </van-popup>-->
+        <!--        <van-field-->
+        <!--                readonly-->
+        <!--                clickable-->
+        <!--                label="工作种类"-->
+        <!--                :value="value"-->
+        <!--                placeholder="工作种类"-->
+        <!--                @click="showPicker = true"-->
+        <!--        />-->
+        <!--        <van-popup v-model="showPicker" round position="bottom">-->
+        <!--            <van-picker-->
+        <!--                    show-toolbar-->
+        <!--                    :columns="work_category"-->
+        <!--                    @cancel="showPicker = false"-->
+        <!--                    @confirm="onConfirm"-->
+        <!--            />-->
+        <!--        </van-popup>-->
         <van-field
                 v-model="value"
                 is-link
@@ -40,7 +40,7 @@
         </van-popup>
 
         <van-cell-group>
-            <van-field v-model="titleValue" label="标题" placeholder="请输入招聘标题" />
+            <van-field v-model="titleValue" label="标题" placeholder="请输入招聘标题"/>
         </van-cell-group>
         <van-field name="radio" label="薪资类型">
             <template #input>
@@ -51,8 +51,8 @@
             </template>
         </van-field>
 
-        <van-field v-model="workMoney_min" type="digit" label="最低薪资" />
-        <van-field v-model="workMoney_max" type="digit" label="最高薪资" />
+        <van-field v-model="workMoney_min" type="digit" label="最低薪资"/>
+        <van-field v-model="workMoney_max" type="digit" label="最高薪资"/>
 
         <van-field
                 v-model="workMsg"
@@ -71,13 +71,21 @@
                     clearable
                     label="标签"
                     placeholder="请输入要添加的特点标签"
+                    maxlength="8"
             >
                 <template #button>
                     <van-button size="small" type="primary" @click="tagPushList">添加标签</van-button>
                 </template>
             </van-field>
-            <van-field label="标签" :value="tagShow" disabled />
         </van-cell-group>
+
+        <div id="tag-container">
+            <span v-for="item in tagList"
+                  class="tag"
+                  :key="item.id"
+                  @click="delTag(item.id)">{{item.title}}</span>
+            <p class="tip" v-show="tagList.length">点击标签删除</p>
+        </div>
 
 
         <div class="btn-container">
@@ -85,123 +93,144 @@
         </div>
 
 
-
     </div>
 </template>
 
 <script>
-    const optionsData = [
-        {
-            text: '技术',
-            value: 1,
-            children: [
-                { text: 'Java工程师', value:101 },
-                { text: '前端工程师', value:102 },
-                { text: 'PHP工程师', value:103 },
-                { text: '算法工程师', value:104 },
-                { text: '测试工程师', value:105 },
-                { text: '全栈工程师', value:106 }
-            ],
-        },
-        {
-            text: '产品',
-            value: 2,
-            children: [
-                { text: '产品经理', value:201 },
-                { text: '游戏策划', value:202 },
-                { text: '电商产品经理', value:203 },
-                { text: '产品专员', value:204 },
-                { text: '产品VP', value:205 }
-            ],
-        },
-        {
-            text: '设计',
-            value: 3,
-            children: [
-                { text: 'UI设计师', value:301 },
-                { text: '平面设计', value:302 },
-                { text: '室内设计', value:303 },
-                { text: '视觉设计', value:304 },
-                { text: '工业设计', value:305 }
-            ],
-        },
-        {
-            text: '运营',
-            value: 4,
-            children: [
-                { text: '电商运营', value:401 },
-                { text: '新媒体运营', value:402 },
-                { text: '客服专员', value:403 },
-                { text: '网站编辑', value:404 },
-                { text: '产品运营', value:405 }
-            ],
-        },
-        {
-            text: '市场',
-            value: 5,
-            children: [
-                { text: '市场营销', value:501 },
-                { text: '网络营销', value:502 },
-                { text: '品牌公关', value:503 },
-                { text: '广告策划', value:504 },
-                { text: 'SEO/SEM', value:505 }
-            ],
-        },
-        {
-            text: '其他',
-            value: 6,
-            children: [
-                { text: '其他', value:600 }
-            ],
-        },
-    ];
+    import cateData from "../../util/cateData";
+
     export default {
         name: "com_focus",
-        data(){
-            return{
-                work_category:["技术","产品","设计","运营","市场","更多"],
-                value:'',
+        data() {
+            return {
+                value: '',
                 showPicker: false,
-                cascaderValue:"",   // 被选择内容的数字编码
-                options:optionsData,
+                // 被选择工作分类的数字编码
+                cascaderValue: "",
 
-                titleValue:'',
-                workMsg:'',
-                workMoney:'1',
-                workMoney_min:'',
-                workMoney_max:'',
-                tagPush:'',
-                tagList:[],
-                tagShow:''
+
+                // 招聘信息标题
+                titleValue: '',
+                // 招聘描述
+                workMsg: '',
+                // 工资类型 月/日
+                workMoney: '1',
+                // 工资范围
+                workMoney_min: '',
+                workMoney_max: '',
+                tagPush: '',
+                // 标签列表
+                tagList: [
+
+                ],
+                tagShow: '',
+                // 工作分类数据
+                options: cateData.optionsData
             }
         },
-        methods:{
-            rightClick(){
+        methods: {
+            rightClick() {
                 this.$toast("这位客官是想切换到哪里呢？");
             },
             onConfirm(value) {
                 this.value = value;
                 this.showPicker = false;
             },
-            tagPushList(){
-                this.$toast("暂未制作");
+            tagPushList() { // 增加tag
+                if (this.tagList.length === 5) {
+                    this.$toast("最多5个哦");
+                    return;
+                }
+                let tid = this.tagList.length;
+                this.tagList.push({id: tid, title: this.tagPush});
+                this.tagPush = '';
+
             },
-            publishWork(){
+            delTag(id) {    // 删除tag
+                for (let i = 0; i < this.tagList.length; i++) {
+                    if (this.tagList[i].id === id) {
+                        this.tagList.splice(i, 1);
+                    }
+                }
+                for (let i = 0; i < this.tagList.length; i++) {
+                    this.tagList[i].id = i;
+                }
+            },
+            publishWork() {
                 this.$toast("ok");
+                this.getTags();
             },
-            onFinish({ selectedOptions }) {
+            onFinish({selectedOptions}) {
                 this.show = false;
                 this.value = selectedOptions.map((option) => option.text).join('/');
+            },
+            postWorkInfo(){
+                let InfoData = {
+                    workTitle:this.titleValue,
+                    workSalary:this.getSalary(),
+                    workTag:this.getTags(),
+                    workPublisher:"隔壁老王",
+                    workCateId:this.cascaderValue
+                }
+            },
+            getSalary(){    // 得到工资字符串
+                if(this.workMoney == "1"){
+                    return this.workMoney_min + "-" + this.workMoney_max + "k"
+                }else{
+                    return this.workMoney_min + "-" + this.workMoney_max + "/天"
+
+                }
+            },
+            getTags(){  // 将标签数组转换为数据库存储的字符串
+                if(this.tagList.length==0){
+                    this.$toast("最少一个标签哦");
+                    return;
+                }
+                let tagStr = "";
+                for (let i = 0; i < this.tagList.length; i++) {
+                    if(i == this.tagList.length - 1){
+                        tagStr += this.tagList[i].title;
+                    }else{
+                        tagStr += this.tagList[i].title + "，";
+                    }
+
+                }
+                console.log(tagStr);
+                return tagStr;
             }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    #com-focus{
+    #com-focus {
 
-        .btn-container{
-            padding:0 10px;
+        .btn-container {
+            padding: 0 10px;
+        }
+
+        #tag-container {
+            width: 100%;
+            height: 60px;
+            position: relative;
+            padding:10px 0;
+            .tag {
+                background-color: #4d4d4d;
+                color: #fff;
+                font-size: 14px;
+                padding: 4px 5px;
+                margin: 0 2px;
+                border-radius: 4px;
+            }
+
+            .tip {
+                color: #4d4d4d;
+                font-size: 12px;
+                padding-left: 10px;
+                margin:0;
+                position:absolute;
+                top:50px;
+            }
         }
     }
 
