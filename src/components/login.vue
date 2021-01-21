@@ -34,12 +34,12 @@
         methods:{
             goUser(){
                 if(this.goLogin(0)){
-                    this.$router.push('user');
+                    this.$router.push('/user');
                 }
             },
             goCom(){
                 if(this.goLogin(1)){
-                    this.$router.push('com');
+                    this.$router.push('/com');
                 }
 
             },

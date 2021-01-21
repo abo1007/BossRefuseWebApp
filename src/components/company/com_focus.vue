@@ -89,7 +89,7 @@
 
 
         <div class="btn-container">
-            <van-button type="primary" size="large" plain @click="publishWork">点击发布</van-button>
+            <van-button color="#55cac4" size="large" plain @click="publishWork">点击发布</van-button>
         </div>
 
 
@@ -164,7 +164,7 @@
                 this.show = false;
                 this.value = selectedOptions.map((option) => option.text).join('/');
             },
-            postWorkInfo(){
+            postWorkInfo(){     // 提交招聘信息
                 let InfoData = {
                     workTitle:this.titleValue,
                     workSalary:this.getSalary(),

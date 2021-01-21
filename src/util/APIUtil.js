@@ -1,4 +1,3 @@
-
 const serverBase = "http://127.0.0.1:8090/public/"; // 请根据启动方式自行修改
 
 const A1 = serverBase + "api/";
@@ -15,4 +14,6 @@ export default {
     API_POST_LOGIN: A1 + "user/login",
     // 免登录验证
     API_POST_LOGIN_FREE: A1 + "user/loginfree",
+    // 拒绝 沟通中 待面试 录用 收藏数量信息
+    API_GET_OFFER_COUNT: A1 + "offer/getcount/"
 }
