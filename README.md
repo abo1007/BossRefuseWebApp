@@ -51,6 +51,26 @@ composer 2.0.4
 PHP 7.1.9
 ```
 
+### 数据库配置
+
+* 打开根目录下的 `.env` 文件进行数据库配置
+
+> bossServer/.env
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306 
+DB_DATABASE=
+DB_USERNAME=mysql用户名
+DB_PASSWORD=mysql密码
+```
+
+### 导入数据库
+
+1. 建立一个名为 `boss` 的数据库
+2. 将根目录下面的 `boss.sql` 文件导入到库中
+
 ### 启动方式1 Apache
 
 1. 将项目本身放置在Apache站点目录中

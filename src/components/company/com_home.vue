@@ -19,16 +19,16 @@
                 text="巴里阿阿集团的社会责任是向社会输送大量人才"
         />
         <van-grid>
-            <van-grid-item icon="photo-o" text="简历处理" badge="2"/>
-            <van-grid-item icon="photo-o" text="招聘管理" />
-            <van-grid-item icon="photo-o" text="文字" />
-            <van-grid-item icon="photo-o" text="为您推荐" />
+            <van-grid-item icon="notes-o" text="简历处理" badge="2"/>
+            <van-grid-item icon="coupon-o" text="招聘管理" />
+            <van-grid-item icon="fire-o" text="热门" />
+            <van-grid-item icon="points" text="薪资计算" />
         </van-grid>
         <van-grid>
-            <van-grid-item icon="photo-o" text="企业信息" badge="2"/>
-            <van-grid-item icon="photo-o" text="文字" />
-            <van-grid-item icon="photo-o" text="文字" />
-            <van-grid-item icon="photo-o" text="为您推荐" />
+            <van-grid-item icon="friends-o" text="企业信息" badge="2"/>
+            <van-grid-item icon="manager-o" text="个人信息" />
+            <van-grid-item icon="aim" text="招聘意向" />
+            <van-grid-item icon="thumb-circle-o" text="为您推荐" />
         </van-grid>
         <div id="reg-container">
             <div class="img">
