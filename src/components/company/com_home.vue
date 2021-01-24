@@ -19,9 +19,9 @@
                 text="巴里阿阿集团的社会责任是向社会输送大量人才"
         />
         <van-grid>
-            <van-grid-item icon="notes-o" text="简历处理" badge="2"/>
-            <van-grid-item icon="coupon-o" text="招聘管理" />
-            <van-grid-item icon="fire-o" text="热门" />
+            <van-grid-item icon="notes-o" text="简历处理" badge="2" @click="gofunc('com_handler')"/>
+            <van-grid-item icon="coupon-o" text="招聘管理" @click="gofunc('com_workmanager')"/>
+            <van-grid-item icon="fire-o" text="热门" @click="gofunc('com_hotwork')"/>
             <van-grid-item icon="points" text="薪资计算" />
         </van-grid>
         <van-grid>
@@ -49,6 +49,9 @@
         methods:{
             onSearch(){
 
+            },
+            gofunc(Routername){
+                this.$router.push({ name:Routername, params:{from:'com'}  });
             }
         }
     }

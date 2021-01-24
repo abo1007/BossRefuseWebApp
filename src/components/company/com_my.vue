@@ -30,7 +30,7 @@
                 </div>
                 <div class="view" @click="goOverview('star')">
                     <p class="num">{{comData.star}}</p>
-                    <p class="name">收藏</p>
+                    <p class="name">拒绝</p>
                 </div>
             </div>
         </transition>

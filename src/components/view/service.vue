@@ -4,7 +4,6 @@
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
             <p>客服</p>
         </div>
-        <h1>客服</h1>
         <van-card
                 desc="负责线上问题处理"
                 title="客服中心"

@@ -11,7 +11,7 @@
 
 <script>
     import { Toast } from 'vant';
-    import user_home from "./user_home";
+
     export default {
         name: "user_category",
         data(){

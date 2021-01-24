@@ -117,3 +117,21 @@ const serverBase = "http://127.0.0.1:8000/";
 ## 3. boss直拒PC端
 
 * 感谢支持，还没做
+
+## 用户密码(暂未启用)
+
+* 默认个人用户
+
+```
+username:abo1007
+password:abo1007
+```
+
+* 默认企业用户
+
+```
+username:yangbo
+password:yangbo
+```
+
+* 如有需要可在`boss_user`表中添加，`isCom`字段为1表示企业用户，0表示个人用户
