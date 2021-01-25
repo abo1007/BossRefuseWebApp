@@ -7,12 +7,12 @@ import user_home from "../components/user/user_home"
 import user_focus from "../components/user/user_focus"
 import user_msg from "../components/user/user_msg"
 import user_my from "../components/user/user_my"
-import user_option from "../components/user/user_option";
-import user_category from "../components/user/user_category";
-import user_overview from "../components/user/user_overview"; // 用户数据总览
-import user_searchRes from "../components/user/user_searchRes"; // 用户搜索结果页面
-import user_chat from "../components/user/user_chat"; // 用户聊天界面
-
+import user_option from "../components/user/views/user_option";
+import user_category from "../components/user/views/user_category";
+import user_overview from "../components/user/views/user_overview";     // 用户数据总览
+import user_searchRes from "../components/user/views/user_searchRes";   // 用户搜索结果页面
+import user_chat from "../components/user/views/user_chat";             // 用户聊天界面
+import user_resume from "../components/user/views/user_resume";         // 个人简历
 
 import com from "../components/company/com"
 import com_home from "../components/company/com_home"
@@ -37,7 +37,6 @@ import privacy from "../components/view/privacy";
 // 应聘者
 import intention from "../components/view/intention"; // 求职意向
 import assistant from "../components/view/assistant"; // 求职助手
-import resume from "../components/view/resume";       //个人简历
 
 // 公司
 import com_handler from "../components/company/views/com_handler";          //简历处理
@@ -71,6 +70,7 @@ const routes = [
     {path: '/user/home/search', name: 'user_searchRes', component: user_searchRes},
     {path: '/user/home/workinfo/:workid', name: 'work_info', component: work_info},
     {path: '/user/home/chat/:msgid', name: 'user_chat', component: user_chat},
+    {path: '/user/home/resume', name: 'user_resume', component: user_resume},
 
     // 企业部分
     {

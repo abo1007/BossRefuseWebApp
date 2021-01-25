@@ -29,7 +29,7 @@
                     <p class="name">录用</p>
                 </div>
                 <div class="view" @click="goOverview('star')">
-                    <p class="num">{{comData.star}}</p>
+                    <p class="num">{{comData.refuse}}</p>
                     <p class="name">拒绝</p>
                 </div>
             </div>
@@ -121,31 +121,45 @@
 <script>
     export default {
         name: "com_my",
-        data(){
-            return{
-                comData:{
-                    chat:0,interview:0,offer:0,star:0
+        data() {
+            return {
+                comData: {
+                    chat: 0, interview: 0, offer: 0, refuse: 0
                 },
-                strWindow:true
+                strWindow: true
             }
         },
-        methods:{
-            goback(){
+        methods: {
+            goback() {
                 this.$router.push('../');
             },
-            goOption(){
-                this.$router.push({ name: "com_option" });
+            goOption() {
+                this.$router.push({name: "com_option"});
             },
             InfoMore() {
-                // this.$toast("这里什么都没有啦");
                 this.strWindow = !this.strWindow;
             },
-            gofunc(Routername){
-                this.$router.push({ name:Routername, params:{from:'com'}  });
+            gofunc(Routername) {
+                this.$router.push({name: Routername, params: {from: 'com'}});
             },
             goOverview(viewName) {
                 this.$router.push({name: 'com_overview', params: {type: viewName}});
+            },
+            postOfferData() {
+                this.$axios.post(this.$API.API_POST_OFFER_COUNT,{
+                    uid: 1408, type: 1
+                }).then(res => {
+                    this.comData.chat = res.data.data[1];
+                    this.comData.interview = res.data.data[2];
+                    this.comData.offer = res.data.data[3];
+                    this.comData.refuse = res.data.data[0];
+                }).catch(err => {
+                    console.log(err);
+                })
             }
+        },
+        created() {
+            this.postOfferData();
         }
     }
 </script>

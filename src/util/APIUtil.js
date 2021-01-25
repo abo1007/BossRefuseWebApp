@@ -15,5 +15,5 @@ export default {
     // 免登录验证
     API_POST_LOGIN_FREE: A1 + "user/loginfree",
     // 拒绝 沟通中 待面试 录用 收藏数量信息
-    API_GET_OFFER_COUNT: A1 + "offer/getcount/"
+    API_POST_OFFER_COUNT: A1 + "offer/getcount"
 }

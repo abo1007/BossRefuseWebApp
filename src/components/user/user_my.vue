@@ -17,19 +17,19 @@
         <transition name="fade">
             <div class="userdata" v-show="strWindow">
                 <div class="view" @click="goOverview('chat')">
-                    <p class="num">{{userdata.chat}}</p>
+                    <p class="num">{{userData.chat}}</p>
                     <p class="name">沟通中</p>
                 </div>
                 <div class="view" @click="goOverview('interview')">
-                    <p class="num">{{userdata.interview}}</p>
+                    <p class="num">{{userData.interview}}</p>
                     <p class="name">待面试</p>
                 </div>
                 <div class="view" @click="goOverview('offer')">
-                    <p class="num">{{userdata.offer}}</p>
+                    <p class="num">{{userData.offer}}</p>
                     <p class="name">录用</p>
                 </div>
                 <div class="view" @click="goOverview('star')">
-                    <p class="num">{{userdata.star}}</p>
+                    <p class="num">{{userData.star}}</p>
                     <p class="name">收藏</p>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     <van-icon name="arrow" class="icon2"/>
                 </span>
             </div>
-            <div class="item">
+            <div class="item"  @click="gofunc('user_resume')">
                 <span>
                     <van-icon name="todo-list-o" size="26px" class="icon"/>
                     个人简历
@@ -143,7 +143,7 @@
         name: "login-my",
         data(){
             return{
-                userdata:{
+                userData:{
                     chat:0,interview:0,offer:0,star:0
                 },
                 strWindow:true
@@ -157,20 +157,29 @@
                 this.$router.push({name: "user_option"})
             },
             InfoMore() {
-                // this.$toast("偷偷告诉你，没有更多功能了")
                 this.strWindow = !this.strWindow;
-                // if(this.$refs.userdata.className == "userdata"){
-                //     this.$refs.userdata.className = "userdata userdata_active";
-                // }else{
-                //     this.$refs.userdata.className = "userdata";
-                // }
             },
             gofunc(Routername) {
                 this.$router.push({name: Routername, params: {from: 'user'}});
             },
             goOverview(viewName) {
                 this.$router.push({name: 'user_overview', params: {type: viewName}})
+            },
+            postOfferData() {
+                this.$axios.post(this.$API.API_POST_OFFER_COUNT,{
+                    uid: 10001, type: 0
+                }).then(res => {
+                    this.userData.chat = res.data.data[1];
+                    this.userData.interview = res.data.data[2];
+                    this.userData.offer = res.data.data[3];
+                    this.userData.star = res.data.data[4];
+                }).catch(err => {
+                    console.log(err);
+                })
             }
+        },
+        created() {
+            this.postOfferData();
         }
     }
 </script>
@@ -283,7 +292,6 @@
     .content2{
         border-bottom:0;
     }
-
 
     .fade-leave-active ,.fade-enter-active{
         transition:max-height 0.6s;

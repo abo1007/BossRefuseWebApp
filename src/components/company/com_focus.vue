@@ -25,14 +25,14 @@
                 v-model="value"
                 is-link
                 readonly
-                label="工作种类"
-                placeholder="请选择工作种类"
+                label="岗位类型"
+                placeholder="请选择岗位类型"
                 @click="showPicker = true"
         />
         <van-popup v-model="showPicker" round position="bottom">
             <van-cascader
                     v-model="cascaderValue"
-                    title="请选择所在地区"
+                    title="请选择岗位类型"
                     :options="options"
                     @close="showPicker = false"
                     @finish="onFinish"
