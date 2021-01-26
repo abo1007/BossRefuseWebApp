@@ -113,7 +113,8 @@
                     certificate:"",
                     honor:"",
                     expect:["","",""],
-                    intro:""
+                    intro:"",
+                    userId:10001
                 },
                 showPicker: false,  // 城市
                 columns:["北京","天津","沈阳","大连","青岛","郑州",
@@ -144,7 +145,11 @@
                 // this.resumeData.expect[1] = selectedOptions.map((option) => option.text).join('/');
                 console.log(selectedOptions)
                 this.resumeData.expect[1] = selectedOptions[1].text;
-            }
+            },
+            testMsg(){
+
+            },
+
         }
     }
 </script>
