@@ -13,7 +13,7 @@
         </p>
         <p class="hr">
             <span class="left">{{workmsg.workPublisher}}</span>
-            <span class="right">{{workmsg.workCity}} {{workmsg.workArea}}</span>
+            <span class="right">{{workmsg.workComCity}} {{workmsg.workComArea}}</span>
         </p>
     </div>
 </template>

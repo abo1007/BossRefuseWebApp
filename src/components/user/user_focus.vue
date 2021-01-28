@@ -35,10 +35,7 @@ import user_work from "./user_work";
                 ],
                 tabsMsg:[
                     [
-                        {
-                            id:0, name:'全栈工程师',money:'1-2k',tag:['3-5年','硕士研究生','Vue','Java'],
-                            com:'白嫖科技',person:'0-9',hr:'刘先生·人事',adr:'南京市 鼓楼区'
-                        }
+
                     ]
 
                 ]
@@ -55,11 +52,13 @@ import user_work from "./user_work";
                     arr.push(this.tabsName[i].cateid);
                 }
                 str = arr.join();
-                console.log(str);
+                // console.log(str);
                 this.$axios.get(this.$API.API_GET_WORK_SUBCATES+str).then( res =>{
-                    console.log(res);
-                    if(res.data.code == 200){
+                    // console.log(res);
+                    if(res.data.code === 200){
                         this.tabsMsg = res.data.data;
+                    }else{
+                        this.$toast("网络出现了问题");
                     }
                 }).catch(err => {
                     console.log(err);
