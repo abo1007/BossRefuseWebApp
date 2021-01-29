@@ -17,7 +17,9 @@
                     </van-radio-group>
                 </template>
             </van-field>
-            <van-field v-model="resumeData.age" type="digit" label="年龄" placeholder="请输入年龄"/>
+            <van-field v-model="resumeData.age" type="digit"
+                       label="年龄" placeholder="请输入年龄"
+                        maxlength="2"/>
 
             <van-field
                     readonly
