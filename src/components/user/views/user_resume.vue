@@ -169,7 +169,7 @@
                 this.showPicker4 = false;
             },
             onFinish({selectedOptions}) {
-                this.show = false;
+                this.showPicker2 = false;
                 // this.resumeData.expect[1] = selectedOptions.map((option) => option.text).join('/');
                 // console.log(selectedOptions);
                 this.resumeData.expect[1] = selectedOptions[1].text;
@@ -180,7 +180,7 @@
             postResumeData() {   // 提交简历
                 // 拼接 期望 字符串
                 let expect = this.resumeData.expect.join("，");
-                console.log(this.resumeData.expect);
+                // console.log(this.resumeData.expect);
                 if (this.isUpdate !== 0){
                     this.putResumeData(expect);
                 }else{

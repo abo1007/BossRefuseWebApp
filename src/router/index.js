@@ -64,13 +64,14 @@ const routes = [
             {path: '/user/my', name: 'user_my', component: user_my}
         ]
     },
-    {path: '/user/home/category/:name', name: 'user_category', component: user_category},     // 分类通用
+    {path: '/user/home/category/', name: 'user_category', component: user_category},     // 分类通用
     {path: '/user/home/option', name: 'user_option', component: user_option},
     {path: '/user/home/data', name: 'user_overview', component: user_overview},
     {path: '/user/home/search', name: 'user_searchRes', component: user_searchRes},
     {path: '/user/home/workinfo/:workid', name: 'work_info', component: work_info},
     {path: '/user/home/chat/:msgid', name: 'user_chat', component: user_chat},
     {path: '/user/home/resume', name: 'user_resume', component: user_resume},
+    {path: '/user/home/intention', name: 'intention', component: intention},
 
     // 企业部分
     {
@@ -90,6 +91,7 @@ const routes = [
     {path: '/com/handler', name: 'com_handler', component: com_handler},
     {path: '/com/workmanager', name: 'com_workmanager', component: com_workManager},
     {path: '/com/hotwork', name: 'com_hotwork', component: com_hotWork},
+
 
     // 通用页面
     {path: '/about', name: 'about', component: about},

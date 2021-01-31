@@ -33,12 +33,12 @@
                 text="巴里阿阿集团的宗旨是让世界没有好做的生意"
         />
         <van-grid :column-num="3">
-            <van-grid-item icon="fire-o" text="技术" @click="goTab('technology')"/>
-            <van-grid-item icon="gift-o" text="产品" @click="goTab('product')"/>
-            <van-grid-item icon="eye-o" text="设计" @click="goTab('design')"/>
-            <van-grid-item icon="chart-trending-o" text="运营" @click="goTab('operate')"/>
-            <van-grid-item icon="photo-o" text="市场" @click="goTab('market')"/>
-            <van-grid-item icon="more-o" text="更多" @click="goTab('more')"/>
+            <van-grid-item icon="fire-o" text="技术" @click="goTab('technology',1)"/>
+            <van-grid-item icon="gift-o" text="产品" @click="goTab('product',2)"/>
+            <van-grid-item icon="eye-o" text="设计" @click="goTab('design',3)"/>
+            <van-grid-item icon="chart-trending-o" text="运营" @click="goTab('operate',4)"/>
+            <van-grid-item icon="photo-o" text="市场" @click="goTab('market',5)"/>
+            <van-grid-item icon="more-o" text="更多" @click="goTab('more',6)"/>
         </van-grid>
         <div class="banner">
             <img src="../../assets/fupin.png" alt="">
@@ -50,9 +50,8 @@
         <div class="work-container">
             <user-work
                     v-for="(item,index) in testMsgList"
-                    :workmsg="testMsgList[index]"
+                    :workmsg="item"
                     :key="item.id" />
-
         </div>
         <div class="statement">
             <p class="title1">Yangbo@2021</p>
@@ -91,8 +90,8 @@ import user_work from "./user_work";
             onSearch(){
                 this.$router.push({name:'user_searchRes', query:{value:this.SearchValue}})
             },
-            goTab(name){
-                this.$router.push({name:'user_category', params:{name:name}});
+            goTab(name, cateid){
+                this.$router.push({name:'user_category', query:{name:name, cateid:cateid}});
             }
         },
         components:{

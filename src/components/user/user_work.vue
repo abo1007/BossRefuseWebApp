@@ -1,5 +1,5 @@
 <template>
-    <div class="work-item" @click="goWorkInfo(workmsg.id)">
+    <div class="work-item" @click="goWorkInfo(workmsg.workId)">
         <p class="title">
             <span class="title">{{workmsg.workTitle}}</span>
             <span class="money">{{workmsg.workSalary}}</span>

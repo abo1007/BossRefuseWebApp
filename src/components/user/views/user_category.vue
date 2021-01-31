@@ -6,12 +6,18 @@
                 left-arrow
                 @click-left="onClickLeft"
         />
+        <div class="work-container">
+            <user-work v-for="(item, index) in cateData"
+                       :key="item.id"
+                       :workmsg="item"
+                        >
+            </user-work>
+        </div>
     </div>
 </template>
 
 <script>
-    import { Toast } from 'vant';
-
+import user_work from "../user_work";
     export default {
         name: "user_category",
         data(){
@@ -24,7 +30,8 @@
                     { name:'market' , Cname:'市场', Nid:5 },
                     { name:'more' , Cname:'更多', Nid:6 }
                 ],
-                Cname:'loading'
+                Cname:'loading',
+                cateData:[]
             }
         },
         methods:{
@@ -40,11 +47,27 @@
                 this.$router.push({name:'user_home'})
             },
             onClickRight() {
-                Toast('按钮');
+                this.$toast('按钮');
             },
+            getCateData(cateid){
+                this.$axios.get(this.$API.API_GET_WORK_CATE + cateid).then(res => {
+                    if(res.data.code == 200){
+                        this.cateData = res.data.data;
+                    }else if(res.data.code == 204){
+                        this.$toast("这里空空的，什么都没有");
+                    }
+                }).catch(err => {
+                    this.$toast("网络开小差了。。。");
+                    console.log(err);
+                })
+            }
         },
         created() {
-            this.getCname(this.$route.params.name);
+            this.getCname(this.$route.query.name);
+            this.getCateData(this.$route.query.cateid);
+        },
+        components:{
+            "user-work":user_work
         }
     }
 </script>
@@ -52,5 +75,9 @@
 <style lang="scss" scoped>
 #category{
 
+    .work-container{
+        background-color:#f5f5f5;
+        padding-bottom:5px;
+    }
 }
 </style>

@@ -13,7 +13,7 @@ Vue.prototype.$axios = axios;
 
 import { Button, Tabbar, TabbarItem, Search, Toast, Icon, Grid, GridItem, NoticeBar,
   Tag, Tab, Tabs, NavBar, PullRefresh, Picker, Field, Popup, Form, RadioGroup, Radio,
-  Cell, CellGroup, Card, Switch, Dialog , Swipe, SwipeItem, Cascader } from 'vant'
+  Cell, CellGroup, Card, Switch, Dialog , Swipe, SwipeItem, Cascader, Circle } from 'vant'
 import 'vant/lib/button/style';
 import 'vant/lib/tabbar/style';
 import 'vant/lib/tabbar-item/style';
@@ -42,6 +42,7 @@ import 'vant/lib/dialog/style';
 import 'vant/lib/swipe/style';
 import 'vant/lib/swipe-item/style';
 import 'vant/lib/cascader/style';
+import 'vant/lib/circle/style';
 Vue.use(Button);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -70,6 +71,7 @@ Vue.use(Dialog);
 Vue.use(Swipe);
 Vue.use(SwipeItem);
 Vue.use(Cascader);
+Vue.use(Circle);
 Vue.prototype.$dialog = Dialog;
 
 new Vue({
