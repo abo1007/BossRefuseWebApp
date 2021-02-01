@@ -14,7 +14,7 @@
                         v-model="item.outValue"
                         is-link
                         readonly
-                        label="求职意向"
+                        :label="getItemName(item.id)"
                         placeholder="请选择岗位类型"
                         @click="saveItem(index)"
                 />
@@ -30,74 +30,9 @@
                 </van-popup>
             </div>
 
-            <!--            <van-field-->
-            <!--                    v-model="value1"-->
-            <!--                    is-link-->
-            <!--                    readonly-->
-            <!--                    label="求职意向2"-->
-            <!--                    placeholder="请选择岗位类型"-->
-            <!--                    @click="showPicker1 = true"-->
-            <!--            />-->
-            <!--            <van-popup v-model="showPicker1" round position="bottom">-->
-            <!--                <van-cascader-->
-            <!--                        v-model="cascaderValue1"-->
-            <!--                        title="请选择岗位类型"-->
-            <!--                        :options="workCateData"-->
-            <!--                        @close="showPicker1 = false"-->
-            <!--                        @finish="onFinish"-->
-            <!--                />-->
-            <!--            </van-popup>-->
-            <!--            <van-field-->
-            <!--                    v-model="value1"-->
-            <!--                    is-link-->
-            <!--                    readonly-->
-            <!--                    label="求职意向3"-->
-            <!--                    placeholder="请选择岗位类型"-->
-            <!--                    @click="showPicker1 = true"-->
-            <!--            />-->
-            <!--            <van-popup v-model="showPicker1" round position="bottom">-->
-            <!--                <van-cascader-->
-            <!--                        v-model="cascaderValue1"-->
-            <!--                        title="请选择岗位类型"-->
-            <!--                        :options="workCateData"-->
-            <!--                        @close="showPicker1 = false"-->
-            <!--                        @finish="onFinish"-->
-            <!--                />-->
-            <!--            </van-popup>-->
-            <!--            <van-field-->
-            <!--                    v-model="value1"-->
-            <!--                    is-link-->
-            <!--                    readonly-->
-            <!--                    label="求职意向4"-->
-            <!--                    placeholder="请选择岗位类型"-->
-            <!--                    @click="showPicker1 = true"-->
-            <!--            />-->
-            <!--            <van-popup v-model="showPicker1" round position="bottom">-->
-            <!--                <van-cascader-->
-            <!--                        v-model="cascaderValue1"-->
-            <!--                        title="请选择岗位类型"-->
-            <!--                        :options="workCateData"-->
-            <!--                        @close="showPicker1 = false"-->
-            <!--                        @finish="onFinish"-->
-            <!--                />-->
-            <!--            </van-popup>-->
-            <!--            <van-field-->
-            <!--                    v-model="value1"-->
-            <!--                    is-link-->
-            <!--                    readonly-->
-            <!--                    label="求职意向5"-->
-            <!--                    placeholder="请选择岗位类型"-->
-            <!--                    @click="showPicker1 = true"-->
-            <!--            />-->
-            <!--            <van-popup v-model="showPicker1" round position="bottom">-->
-            <!--                <van-cascader-->
-            <!--                        v-model="cascaderValue1"-->
-            <!--                        title="请选择岗位类型"-->
-            <!--                        :options="workCateData"-->
-            <!--                        @close="showPicker1 = false"-->
-            <!--                        @finish="onFinish"-->
-            <!--                />-->
-            <!--            </van-popup>-->
+        </div>
+        <div class="button-container">
+            <button @click="saveIntentData">点击保存</button>
         </div>
     </div>
 </template>
@@ -117,9 +52,9 @@
                     {id: 2, outValue: "", inValue: "", show: false},
                     {id: 3, outValue: "", inValue: "", show: false},
                     {id: 4, outValue: "", inValue: "", show: false},
+                    {id: 5, outValue: "", inValue: "", show: false}
                 ],
-                selectItemIndex:null
-
+                selectItemIndex: null
             }
         },
         methods: {
@@ -131,10 +66,26 @@
                 this.workIntent[this.selectItemIndex].show = false;
                 this.workIntent[this.selectItemIndex].outValue = selectedOptions.map((option) => option.text).join('/');
             },
-            saveItem(i){
+            saveItem(i) {
                 this.workIntent[i].show = true;
                 this.selectItemIndex = i;
+            },
+            getItemName(i){
+                return "求职意向" + i;
+            },
+            saveIntentData(){
+                localStorage.setItem("workIntent",JSON.stringify(this.workIntent));
+                this.$toast("保存成功");
+            },
+            readIntentData(){
+                let data = localStorage.getItem("workIntent");
+                if(data){
+                    this.workIntent = JSON.parse(data);
+                }
             }
+        },
+        created() {
+            this.readIntentData();
         }
     }
 </script>
@@ -161,6 +112,21 @@
                 margin: 0;
                 color: #fff;
                 font-weight: 500;
+            }
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            padding:20px 0;
+            button {
+                border-radius: 4px;
+                border: none;
+                background-color: #55cac4;
+                color:#fff;
+                width:85%;
+                font-size:22px;
+                padding:5px 0;
             }
         }
     }
