@@ -66,7 +66,7 @@ const routes = [
     },
     {path: '/user/home/category/', name: 'user_category', component: user_category},     // 分类通用
     {path: '/user/home/option', name: 'user_option', component: user_option},
-    {path: '/user/home/data', name: 'user_overview', component: user_overview},
+    {path: '/user/home/offer/:cateid', name: 'user_overview', component: user_overview},
     {path: '/user/home/search', name: 'user_searchRes', component: user_searchRes},
     {path: '/user/home/workinfo/:workid', name: 'work_info', component: work_info},
     {path: '/user/home/chat/:msgid', name: 'user_chat', component: user_chat},

@@ -16,21 +16,21 @@
         </div>
         <transition name="fade">
             <div class="userdata" v-show="strWindow">
-                <div class="view" @click="goOverview('chat')">
+                <div class="view" @click="goOverview(1)">
                     <p class="num">{{userData.chat}}</p>
                     <p class="name">沟通中</p>
                 </div>
-                <div class="view" @click="goOverview('interview')">
+                <div class="view" @click="goOverview(2)">
                     <p class="num">{{userData.interview}}</p>
                     <p class="name">待面试</p>
                 </div>
-                <div class="view" @click="goOverview('offer')">
+                <div class="view" @click="goOverview(3)">
                     <p class="num">{{userData.offer}}</p>
                     <p class="name">录用</p>
                 </div>
-                <div class="view" @click="goOverview('star')">
-                    <p class="num">{{userData.star}}</p>
-                    <p class="name">收藏</p>
+                <div class="view" @click="goOverview(4)">
+                    <p class="num">{{userData.refuse}}</p>
+                    <p class="name">拒绝</p>
                 </div>
             </div>
         </transition>
@@ -144,7 +144,7 @@
         data(){
             return{
                 userData:{
-                    chat:0,interview:0,offer:0,star:0
+                    chat:0,interview:0,offer:0,refuse:0,stat:0
                 },
                 strWindow:true
             }
@@ -162,17 +162,18 @@
             gofunc(Routername) {
                 this.$router.push({name: Routername, params: {from: 'user'}});
             },
-            goOverview(viewName) {
-                this.$router.push({name: 'user_overview', params: {type: viewName}})
+            goOverview(cateid) {
+                this.$router.push({name: 'user_overview', params: {cateid:cateid}})
             },
             postOfferData() {
                 this.$axios.post(this.$API.API_POST_OFFER_COUNT,{
                     uid: 10001, type: 0
                 }).then(res => {
+                    this.userData.star = res.data.data[0];
                     this.userData.chat = res.data.data[1];
                     this.userData.interview = res.data.data[2];
                     this.userData.offer = res.data.data[3];
-                    this.userData.star = res.data.data[4];
+                    this.userData.refuse = res.data.data[4];
                 }).catch(err => {
                     console.log(err);
                 })

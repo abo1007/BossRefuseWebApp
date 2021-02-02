@@ -4,65 +4,77 @@
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
             <p>{{pageTitle}}</p>
         </div>
-        {{this.$route.params.type}}
+<!--        {{this.$route.params.cateid}}-->
+        <div class="offer-container">
+            <offer-item v-for="item in offerData"
+                        :offerdata="item"
+                        :key="item.workOfferId"/>
+        </div>
     </div>
 </template>
 
 <script>
+    import offer_item from "../../child/offer_item";
+
     export default {
         name: "user_overview",
-        data(){
-            return{
-                pageTitle:''
+        data() {
+            return {
+                pageTitle: '',
+                pageTitles: ["收藏", "沟通中", "待面试", "录用", "拒绝"],
+                offerData:[]
             }
         },
-        methods:{
-            selectTitle(){
-                switch (this.$route.params.type) {
-                    case "chat":
-                        this.pageTitle = "沟通中";
-                        break;
-                    case "interview":
-                        this.pageTitle = "待面试";
-                        break;
-                    case "offer":
-                        this.pageTitle = "录用";
-                        break;
-                    case "star":
-                        this.pageTitle = "收藏";
-                        break;
-                }
+        methods: {
+            selectTitle() {
+                this.pageTitle = this.pageTitles[this.$route.params.cateid]
             },
-            goback(){
+            goback() {
                 this.$router.push("/user/my");
+            },
+            postOfferCateData() {
+                this.$axios.get(this.$API.API_POST_OFFER_CATEDATA + "10001" + "/" + this.$route.params.cateid).then(res => {
+                    console.log(res.data);
+                    if(res.data.code === 200){
+                        this.offerData = res.data.data;
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
             }
         },
         created() {
             this.selectTitle();
+            this.postOfferCateData();
+        },
+        components:{
+            "offer-item":offer_item
         }
     }
 </script>
 
 <style lang="scss" scoped>
-#overview-container{
-    .header{
-        height:40px;
-        width:100%;
-        background-color:#55cac4;
-        display:flex;
-        align-items:center;
-        .icon{
-            position:absolute;
-            left:10px;
-        }
-        p{
-            text-align:center;
-            width:100%;
-            font-size:18px;
-            margin:0;
-            color:#fff;
-            font-weight:500;
+    #overview-container {
+        .header {
+            height: 40px;
+            width: 100%;
+            background-color: #55cac4;
+            display: flex;
+            align-items: center;
+            border-radius: 0 0 10px 10px;
+            .icon {
+                position: absolute;
+                left: 10px;
+            }
+
+            p {
+                text-align: center;
+                width: 100%;
+                font-size: 18px;
+                margin: 0;
+                color: #fff;
+                font-weight: 500;
+            }
         }
     }
-}
 </style>

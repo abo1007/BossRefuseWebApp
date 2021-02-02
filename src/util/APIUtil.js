@@ -16,6 +16,7 @@ export default {
     API_POST_LOGIN_FREE: A1 + "user/loginfree",
     // 拒绝 沟通中 待面试 录用 收藏数量信息
     API_POST_OFFER_COUNT: A1 + "offer/getcount",
+    API_POST_OFFER_CATEDATA: A1 + "offer/getcate/",
 
     // 获得简历数据
     API_GET_RESUME: A1 + "resume/",

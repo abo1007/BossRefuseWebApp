@@ -124,7 +124,7 @@
         data() {
             return {
                 comData: {
-                    chat: 0, interview: 0, offer: 0, refuse: 0
+                    chat: 0, interview: 0, offer: 0, refuse: 0, star: 0
                 },
                 strWindow: true
             }
@@ -149,10 +149,11 @@
                 this.$axios.post(this.$API.API_POST_OFFER_COUNT,{
                     uid: 1408, type: 1
                 }).then(res => {
+                    this.comData.star = res.data.data[0];
                     this.comData.chat = res.data.data[1];
                     this.comData.interview = res.data.data[2];
                     this.comData.offer = res.data.data[3];
-                    this.comData.refuse = res.data.data[0];
+                    this.comData.refuse = res.data.data[4];
                 }).catch(err => {
                     console.log(err);
                 })
