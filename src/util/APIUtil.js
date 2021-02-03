@@ -17,6 +17,10 @@ export default {
     // 拒绝 沟通中 待面试 录用 收藏数量信息
     API_POST_OFFER_COUNT: A1 + "offer/getcount",
     API_POST_OFFER_CATEDATA: A1 + "offer/getcate/",
+    // 企业分类数据
+    API_GET_COM_OFFER_CATEDATA: A1 + "offer/getcomcate/",
+    // 修改offer状态
+    API_POST_UPDATE_OFFER_TYPE: A1 + "offer/updatetype",
 
     // 获得简历数据
     API_GET_RESUME: A1 + "resume/",

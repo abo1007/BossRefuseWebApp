@@ -16,19 +16,19 @@
         </div>
         <transition name="fade">
             <div class="userdata" v-show="strWindow">
-                <div class="view" @click="goOverview('chat')">
+                <div class="view" @click="goOverview(1)">
                     <p class="num">{{comData.chat}}</p>
                     <p class="name">沟通中</p>
                 </div>
-                <div class="view" @click="goOverview('interview')">
+                <div class="view" @click="goOverview(2)">
                     <p class="num">{{comData.interview}}</p>
                     <p class="name">待面试</p>
                 </div>
-                <div class="view" @click="goOverview('offer')">
+                <div class="view" @click="goOverview(3)">
                     <p class="num">{{comData.offer}}</p>
                     <p class="name">录用</p>
                 </div>
-                <div class="view" @click="goOverview('star')">
+                <div class="view" @click="goOverview(4)">
                     <p class="num">{{comData.refuse}}</p>
                     <p class="name">拒绝</p>
                 </div>
@@ -142,8 +142,8 @@
             gofunc(Routername) {
                 this.$router.push({name: Routername, params: {from: 'com'}});
             },
-            goOverview(viewName) {
-                this.$router.push({name: 'com_overview', params: {type: viewName}});
+            goOverview(cateid) {
+                this.$router.push({name: 'com_overview', params: {cateid: cateid}});
             },
             postOfferData() {
                 this.$axios.post(this.$API.API_POST_OFFER_COUNT,{

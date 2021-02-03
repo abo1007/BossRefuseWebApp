@@ -87,7 +87,7 @@ const routes = [
         ]
     },
     {path: '/com/my/option', name: 'com_option', component: com_option},
-    {path: '/com/my/data', name: 'com_overview', component: com_overview},
+    {path: '/com/my/offer/:cateid', name: 'com_overview', component: com_overview},
     {path: '/com/handler', name: 'com_handler', component: com_handler},
     {path: '/com/workmanager', name: 'com_workmanager', component: com_workManager},
     {path: '/com/hotwork', name: 'com_hotwork', component: com_hotWork},

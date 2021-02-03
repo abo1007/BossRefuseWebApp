@@ -4,41 +4,49 @@
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
             <p>{{pageTitle}}</p>
         </div>
-        {{this.$route.params.type}}
+<!--        {{this.$route.params.cateid}}-->
+        <offer-item v-for="item in offerData"
+                    :offerdata="item"
+                    :key="item.workOfferId"/>
     </div>
 </template>
 
 <script>
+    import offer_item from "../child/offer_item";
+
     export default {
         name: "com_overview",
         data() {
             return {
-                pageTitle: ''
+                pageTitle: '',
+                pageTitles: ["收藏", "沟通中", "待面试", "录用", "拒绝"],
+                offerData:[]
             }
         },
         methods: {
-            selectTitle() {
-                switch (this.$route.params.type) {
-                    case "chat":
-                        this.pageTitle = "沟通中";
-                        break;
-                    case "interview":
-                        this.pageTitle = "待面试";
-                        break;
-                    case "offer":
-                        this.pageTitle = "录用";
-                        break;
-                    case "star":
-                        this.pageTitle = "收藏";
-                        break;
-                }
+            selectTitle(){
+                this.pageTitle = this.pageTitles[this.$route.params.cateid]
             },
             goback() {
                 this.$router.push("/com/my");
+            },
+            postOfferCateData() {
+                this.$axios.get(this.$API.API_POST_OFFER_CATEDATA + "1408" + "/" + this.$route.params.cateid + "/1").then(res => {
+                    console.log(res.data);
+                    if(res.data.code === 200){
+                        this.offerData = res.data.data;
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
             }
         },
         created() {
             this.selectTitle();
+            this.postOfferCateData();
+        },
+        components:{
+            "offer-item":offer_item
         }
     }
 </script>

@@ -21,6 +21,7 @@
             <van-step>待面试</van-step>
             <van-step>{{offerResult}}</van-step>
         </van-steps>
+
     </div>
 </template>
 
