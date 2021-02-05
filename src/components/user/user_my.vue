@@ -6,7 +6,7 @@
         <div class="user">
             <div class="left">
                 <div class="img">
-                    <img src="http://localhost/boss.jpg" alt="">
+                    <img src="http://192.168.31.62:8090/public/img/boss.jpg" alt="">
                 </div>
             </div>
             <div class="right">

@@ -16,22 +16,51 @@
             <div class="tag">
                 <div class="tag-item" v-for="item in tag">{{item}}</div>
             </div>
-            <p class="p1">职位详情</p>
+            <div class="comp">
+                <img src="../../assets/com-header.jpg" alt="">
+                <div class="right">
+                    <p class="com1">
+                        <span class="cname">白嫖科技</span>
+
+                    </p>
+                    <p class="com2">
+                        <span class="trade">计算机软件</span>
+                        <span class="person">1-10人</span>
+                        <span class="area">南京·玄武区</span>
+                    </p>
+                </div>
+            </div>
+<!--            <p class="p1">职位详情</p>-->
 
             <div class="text">
-                岗位职责 <br/>
-                1、能够独立完成需求分析与产品研发工作，按时保质地完成所分配的工作任务；<br/>
-                2、 碰见问题主动与需求方或负责人沟通，最好能提出相应解决方案；<br/>
-                3、参与高可用、高性能服务架构设计与调优。<br/>
-                4、编写开发文档，参与系统需求分析、方案设计、编码等工作。<br/>
-                1、本科及以上学历计算机相关专业，丰富的web系统设计开发经验，熟悉常用设计模式；<br/>
-                2、精通PHP，熟悉PHP常用框架具备良好的团队合作精神，高度的责任感，善于沟通，为人踏实，抗压能力强，拥有严谨的工作态度；<br/>
-                3、优秀的数据库设计优化能力，至少精通一种数据库应用，精通MySql者优先；<br/>
-                4、熟悉LINUX操作，熟悉LNMP环境，能熟练应用一门或几门以下语言：shell/python/java/javascript等；<br/>
-                5、熟悉socket编程，熟悉网络协议，具有网络问题排查能力；<br/>
-                6、具有大规模高并发系统的实战经验，精通分布式、事务、缓存、消息、负载均衡等机制的原理和实现者优先；<br/>
-                7、熟悉TP，laravel，yii等开源框架，熟练使用redis、git，了解消息队列;<br/>
-                8、较强的逻辑思维能力，较强的产品意识，良好的沟通协调能力，良好的团队合作精神。<br/>
+<!--                岗位职责 <br/>-->
+<!--                1、能够独立完成需求分析与产品研发工作，按时保质地完成所分配的工作任务；<br/>-->
+<!--                2、 碰见问题主动与需求方或负责人沟通，最好能提出相应解决方案；<br/>-->
+<!--                3、参与高可用、高性能服务架构设计与调优。<br/>-->
+<!--                4、编写开发文档，参与系统需求分析、方案设计、编码等工作。<br/>-->
+<!--                1、本科及以上学历计算机相关专业，丰富的web系统设计开发经验，熟悉常用设计模式；<br/>-->
+<!--                2、精通PHP，熟悉PHP常用框架具备良好的团队合作精神，高度的责任感，善于沟通，为人踏实，抗压能力强，拥有严谨的工作态度；<br/>-->
+<!--                3、优秀的数据库设计优化能力，至少精通一种数据库应用，精通MySql者优先；<br/>-->
+<!--                4、熟悉LINUX操作，熟悉LNMP环境，能熟练应用一门或几门以下语言：shell/python/java/javascript等；<br/>-->
+<!--                5、熟悉socket编程，熟悉网络协议，具有网络问题排查能力；<br/>-->
+<!--                6、具有大规模高并发系统的实战经验，精通分布式、事务、缓存、消息、负载均衡等机制的原理和实现者优先；<br/>-->
+<!--                7、熟悉TP，laravel，yii等开源框架，熟练使用redis、git，了解消息队列;<br/>-->
+<!--                8、较强的逻辑思维能力，较强的产品意识，良好的沟通协调能力，良好的团队合作精神。<br/>-->
+                岗位职责<br/>
+                1、负责子公司职场系统（HR系统、OA系统、财务系统等）的维护和新功能二次开发；<br/>
+                2、负责HR系统和审核业务系统的打通，如打卡和工作量统计等；<br/>
+                3、参与团队前端技术栈的建设和更新；<br/>
+                岗位要求<br/>
+                1、精通Javasript/HTML/CSS等前端开发技术，基础扎实；<br/>
+                2、熟悉当下主流的前端框架(React/Vue/Angular等)，有React开发经验优先；<br/>
+                3、两年及以上 Node.js 开发工作经验，熟悉 ES6, ES7 语法，有 Express 或 Koa 框架的使用经验；<br/>
+                4、熟悉Linux/Unix平台开发，至少熟悉一种脚本语言，具备优秀的代码习惯；<br/>
+                5、理解微服务架构，有分布式系统搭建与研发经验；<br/>
+                6、熟悉Web应用系统开发，对HTTP、TCP/IP协议及web服务器等有所理解；拥有良好的安全意识，熟悉常见的网络安全攻防策略；<br/>
+                7、有Nginx、Elasticsearch、Kafka等开源工具运维开发经验者优先；<br/>
+                8、有 MySQL, Redis 或 MongoDB 等相关数据库使用经验；<br/>
+                9、有主导开发过中型以上系统经验，有ci/cd等自动化部署经验者优先；<br/>
+                10、良好的沟通表能力和团队合作精神，有责任心，抗压能力好；<br/>
             </div>
         </div>
         <div class="company">
@@ -42,19 +71,7 @@
                     <p class="work">人事</p>
                 </div>
             </div>
-            <div class="comp">
-                <img src="../../assets/com-header.jpg" alt="">
-                <div class="right">
-                    <p>
-                        <span class="cname">白嫖科技</span>
-                        <span class="person">1-10人</span>
-                    </p>
-                    <p>
-                        <span class="trade">计算机软件</span>
-                        <span class="area">南京·玄武区</span>
-                    </p>
-                </div>
-            </div>
+
         </div>
         <div class="action">
             <button class="btn_send">投递简历</button>
@@ -85,6 +102,7 @@
 
 <style lang="scss" scoped>
 #work-info-container{
+    font-family: 微软雅黑;
     padding-bottom:50px;
     .header{
         .top{
@@ -102,7 +120,6 @@
                 font-weight:bold;
             }
         }
-        box-shadow: #ccc 0 5px 5px;
     }
     .content{
         display: flex;
@@ -112,7 +129,7 @@
            width:92%;
         }
         .tag{
-            margin:10px 0;
+            margin:5px 0;
             display: flex;
             align-items: center;
             .tag-item{
@@ -132,7 +149,38 @@
             font-size:20px;
             margin:10px 0;
         }
+        .comp{
+            height:60px;
+            display: flex;
+            align-items: center;
+            background-color:rgba(64,224,208,.6);
+            border-radius:10px;
+            padding:0 10px;
+            margin:10px 0;
+            img{
+                height:50px;
+                border-radius:5px;
+            }
+            .right{
+                height:50px;
+                width:100%;
+                margin:0 5px;
+                p{
+                    margin:5px 0;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .com1{
+                    font-weight:bold;
+                }
+                .com2{
+                    font-size:12px;
+                    color:#4d4d4d;
+                }
+            }
+        }
         .text{
+            width:90%;
             font-size:14px;
             font-weight:200;
             line-height:22px;
@@ -161,29 +209,10 @@
                 padding:0 10px;
                 display: flex;
                 justify-content:space-between;
+
             }
         }
-        .comp{
-            height:60px;
-            display: flex;
-            align-items: center;
-            img{
-                height:50px;
-            }
-            .right{
-                height:50px;
-                width:100%;
-                margin:0 5px;
-                p{
-                    margin:5px 0;
-                    display: flex;
-                    justify-content: space-between;
-                }
-                p:nth-child(2){
-                    font-size:14px;
-                }
-            }
-        }
+
     }
     .action{
         border-top:1px solid #ccc;

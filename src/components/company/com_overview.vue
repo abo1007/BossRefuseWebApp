@@ -5,14 +5,14 @@
             <p>{{pageTitle}}</p>
         </div>
 <!--        {{this.$route.params.cateid}}-->
-        <offer-item v-for="item in offerData"
+        <handler-item v-for="item in offerData"
                     :offerdata="item"
                     :key="item.workOfferId"/>
     </div>
 </template>
 
 <script>
-    import offer_item from "../child/offer_item";
+    import handler_item from "./handler_item";
 
     export default {
         name: "com_overview",
@@ -31,7 +31,7 @@
                 this.$router.push("/com/my");
             },
             postOfferCateData() {
-                this.$axios.get(this.$API.API_POST_OFFER_CATEDATA + "1408" + "/" + this.$route.params.cateid + "/1").then(res => {
+                this.$axios.get(this.$API.API_GET_COM_OFFER_CATEDATA + "1408" + "/" + this.$route.params.cateid).then(res => {
                     console.log(res.data);
                     if(res.data.code === 200){
                         this.offerData = res.data.data;
@@ -46,7 +46,7 @@
             this.postOfferCateData();
         },
         components:{
-            "offer-item":offer_item
+            "handler-item":handler_item
         }
     }
 </script>

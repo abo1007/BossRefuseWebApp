@@ -6,7 +6,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     currentPosition:'user',
-    msgNum:3
+    msgNum:3,
+    userId:10001,
+    comId:1408,
+    comName:"人事·老王"
   },
   mutations: {
     // 更新所处位置

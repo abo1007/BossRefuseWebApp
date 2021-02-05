@@ -42,6 +42,7 @@ import assistant from "../components/view/assistant"; // 求职助手
 import com_handler from "../components/company/views/com_handler";          //简历处理
 import com_workManager from "../components/company/views/com_workManager";  // 招聘管理
 import com_hotWork from "../components/company/views/com_hotWork";          // 热门
+import com_workEdit from "../components/company/views/com_workEdit";
 
 Vue.use(VueRouter);
 
@@ -91,6 +92,7 @@ const routes = [
     {path: '/com/handler', name: 'com_handler', component: com_handler},
     {path: '/com/workmanager', name: 'com_workmanager', component: com_workManager},
     {path: '/com/hotwork', name: 'com_hotwork', component: com_hotWork},
+    {path: '/com/workedit/:workid', name: 'com_workedit', component: com_workEdit},
 
 
     // 通用页面

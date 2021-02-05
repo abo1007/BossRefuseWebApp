@@ -1,5 +1,5 @@
 <template>
-    <div id="com-focus">
+    <div id="com-workEdit">
         <van-nav-bar
                 title="修改信息"
                 right-text="切换"
@@ -117,15 +117,15 @@
         <div class="btn-container">
             <van-button color="#55cac4" size="large" plain @click="postWorkInfo">点击发布</van-button>
         </div>
-
     </div>
 </template>
 
 <script>
-    import cateData from "../../util/cateData";
+    import cateData from "../../../util/cateData";
+
 
     export default {
-        name: "com_focus",
+        name: "com_workEdit",
         data() {
             return {
                 workData: {
@@ -202,28 +202,20 @@
                     workComId: 1408,
                     workIntro: this.workData.workIntro
                 };
-                console.log(InfoData);
 
-                this.$axios.post(this.$API.API_POST_WORK_DATA,InfoData).then(res => {
-                    console.log(res.data);
-                    if(res.data.code == 200){
-                        this.$toast("发布成功");
-                        location.reload();
-                    }else{
-                        this.$toast("发布失败")
-                    }
-                }).catch(err => {
-                    console.log(err);
-                });
+                // this.$axios.post(this.$API.API_POST_WORK_DATA,InfoData).then(res => {
+                //     console.log(res.data);
+                //     if(res.data.code == 200){
+                //         this.$toast("发布成功");
+                //         location.reload();
+                //     }else{
+                //         this.$toast("发布失败")
+                //     }
+                // }).catch(err => {
+                //     console.log(err);
+                // });
 
             },
-            // getSalary() {    // 得到工资字符串
-            //     if (this.workMoney == "1") {
-            //         return this.workMoney_min + "-" + this.workMoney_max + "k"
-            //     } else {
-            //         return this.workMoney_min + "-" + this.workMoney_max + "/天"
-            //     }
-            // },
             getTags() {  // 将标签数组转换为数据库存储的字符串
                 let tagArr = [];
                 if (this.workData.workTag.length == 0) {
@@ -269,40 +261,44 @@
             testMsg(){  // 验证表单内容
                 return true;
             },
+            getWorkInfoData(){
+
+            }
+        },
+        created() {
+            this.getWorkInfoData();
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    #com-focus {
+#com-workEdit{
+    .btn-container {
+        padding: 0 10px;
+    }
+    #tag-container {
+        width: 100%;
+        height: 25px;
+        position: relative;
+        padding: 10px 0;
+        display:flex;
+        justify-content: center;
 
-        .btn-container {
-            padding: 0 10px;
-        }
-        #tag-container {
-            width: 100%;
-            height: 25px;
-            position: relative;
-            padding: 10px 0;
-            display:flex;
-            justify-content: center;
-
-            .tag {
-                background-color: #4d4d4d;
-                color: #fff;
-                font-size: 14px;
-                padding: 4px 5px;
-                margin: 0 2px;
-                border-radius: 4px;
-            }
-        }
-        .tip {
-            color: #4d4d4d;
-            font-size: 12px;
-            padding-left: 10px;
-            margin: 0;
-            top: 50px;
+        .tag {
+            background-color: #4d4d4d;
+            color: #fff;
+            font-size: 14px;
+            padding: 4px 5px;
+            margin: 0 2px;
+            border-radius: 4px;
         }
     }
-
+    .tip {
+        color: #4d4d4d;
+        font-size: 12px;
+        padding-left: 10px;
+        margin: 0;
+        top: 50px;
+    }
+}
 </style>

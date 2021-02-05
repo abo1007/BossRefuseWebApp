@@ -1,4 +1,6 @@
-const serverBase = "http://127.0.0.1:8090/public/"; // 请根据启动方式自行修改
+const serverBase = "http://api.abo.com:8090/public/"; // 根据启动方式自行修改
+
+// const serverBase = "http://192.168.31.62:8090/public/"; // 根据启动方式自行修改
 
 const A1 = serverBase + "api/";
 
@@ -10,6 +12,9 @@ export default {
     // 工作标题 具体分类数据
     API_GET_WORK_SUBCATE: A1 + "workface/subcate/",
     API_GET_WORK_SUBCATES: A1 + "workface/subcates/",
+
+    // 公司发布的招聘数据
+    API_GET_COM_WORK: A1 + "workface/com/",
     // 登录验证
     API_POST_LOGIN: A1 + "user/login",
     // 免登录验证
@@ -27,5 +32,9 @@ export default {
     // 首次上传简历数据
     API_POST_RESUME: A1 + "resume",
     // 更新简历数据
-    API_PUT_RESUME: A1 + "resume/"
+    API_PUT_RESUME: A1 + "resume/",
+    // 录入招聘信息
+    API_POST_WORK_DATA: A1 + "workface",
+    // 获取招聘详情页信息
+    API_GET_WORK: A1 + "workface/"
 }

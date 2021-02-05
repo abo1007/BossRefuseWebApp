@@ -1,5 +1,5 @@
 <template>
-    <div id="Com-container">
+    <div id="com-container">
         <transition>
             <router-view></router-view>
         </transition>
@@ -28,7 +28,7 @@
 
 <style scoped>
 *{margin:0;padding:0;}
-#Com-container{margin-bottom:50px;overflow-x:hidden;}
+#com-container{margin-bottom:50px;overflow-x:hidden;}
 #bar{
     bottom:0;
 }

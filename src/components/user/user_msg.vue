@@ -27,11 +27,11 @@ import msg_item from "../child/msg_item";
                 count:0,
                 MsgTest:[
                     {
-                        mid:0,url:"http://localhost/boss.jpg",name:'AAA廊坊富士康 人事经理',time:'23:08',
+                        mid:0,url:"http://192.168.31.62:8090/public/img/boss.jpg",name:'AAA廊坊富士康 人事经理',time:'23:08',
                         content:'我们这试学一月不收取任何费用...',count:2
                     },
                     {
-                        mid:1,url:"http://localhost/boss.jpg",name:'白嫖科技',time:'00:08',
+                        mid:1,url:"http://192.168.31.62:8090/public/img/boss.jpg",name:'白嫖科技',time:'00:08',
                         content:'我们这里最高可以给到每月1500',count:1
                     },
                 ]
