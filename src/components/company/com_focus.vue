@@ -1,7 +1,7 @@
 <template>
     <div id="com-focus">
         <van-nav-bar
-                title="修改信息"
+                title="我要招聘"
                 right-text="切换"
                 @click-right="rightClick"
         />

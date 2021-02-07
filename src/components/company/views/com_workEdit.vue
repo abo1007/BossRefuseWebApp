@@ -2,8 +2,9 @@
     <div id="com-workEdit">
         <van-nav-bar
                 title="修改信息"
-                right-text="切换"
-                @click-right="rightClick"
+                left-text="返回"
+                left-arrow
+                @click-left="onClickLeft"
         />
         <van-field
                 v-model="cascaderValue"
@@ -26,7 +27,6 @@
         <van-cell-group>
             <van-field v-model="workData.workTitle" label="标题" placeholder="请输入招聘标题" maxlength="30"/>
         </van-cell-group>
-
 
 
         <van-field
@@ -82,11 +82,11 @@
 
         <van-field
                 v-model="workData.workIntro"
-                rows="2"
+                rows="10"
                 autosize
                 label="工作描述"
                 type="textarea"
-                maxlength="300"
+                maxlength="600"
                 placeholder="请输入工作描述"
                 show-word-limit
         />
@@ -115,7 +115,7 @@
         <p class="tip" v-show="workData.workTag.length">点击标签删除</p>
 
         <div class="btn-container">
-            <van-button color="#55cac4" size="large" plain @click="postWorkInfo">点击发布</van-button>
+            <van-button color="#55cac4" size="large" plain @click="putWorkInfo">点击更新</van-button>
         </div>
     </div>
 </template>
@@ -129,15 +129,15 @@
         data() {
             return {
                 workData: {
-                    workTitle:"",
+                    workTitle: "",
                     workSalary: "",
-                    workEdu:"",
-                    workExper:"",
-                    workcateId:null,
-                    workIntro:"",
-                    workTag:[]
+                    workEdu: "",
+                    workExper: "",
+                    workcateId: null,
+                    workIntro: "",
+                    workTag: []
                 },
-
+                workData2: {},
                 cascaderValue: "",
 
                 tagPush: '',
@@ -150,22 +150,22 @@
                 showPicker: false,
 
                 // 岗位薪资
-                salary: ["2k以下", "2-4k", "4-6k", "6-8k", "8-15k", '15-30k',"30k以上"],
-                showPicker1:false,
+                salary: ["2k以下", "2-4k", "4-6k", "6-8k", "8-15k", '15-30k', "30k以上"],
+                showPicker1: false,
 
                 // 学历
                 eduData: ["初中及以下", "高中/中专/职高", "大专", "本科", "硕士", "博士"],
-                showPicker2:false,
+                showPicker2: false,
 
                 // 工作经验
                 experData: ["实习生", "应届生", "1年以内", "1-3年", "3-5年", "5-10年"],
-                showPicker3:false,
+                showPicker3: false,
 
             }
         },
         methods: {
-            rightClick() {
-                this.$toast("这位客官是想切换到哪里呢？");
+            onClickLeft() {
+                this.$router.push({name: 'com_workmanager'})
             },
             onConfirm(value) {
                 this.workData.workcateId = value;
@@ -184,15 +184,17 @@
                 this.showPicker3 = false;
             },
             publishWork() {
-                if(this.testMsg()){
+                if (this.testMsg()) {
                     this.postWorkInfo();
                 }
             },
             onFinish({selectedOptions}) {
                 this.showPicker = false;
-                this.cascaderValue = selectedOptions.map((option) => option.text).join('/');
+                // this.cascaderValue = selectedOptions.map((option) => option.text).join('/');
+                // 修改为只显示二级标题
+                this.cascaderValue = selectedOptions[1].text;
             },
-            postWorkInfo() {     // 提交招聘信息
+            putWorkInfo() {     // 修改招聘信息
                 let InfoData = {
                     workTitle: this.workData.workTitle,
                     workSalary: this.workData.workSalary,
@@ -200,20 +202,22 @@
                     workPublisher: "人事·老王",
                     workCateId: this.workData.workcateId,
                     workComId: 1408,
-                    workIntro: this.workData.workIntro
+                    workIntro: this.workData.workIntro,
                 };
 
-                // this.$axios.post(this.$API.API_POST_WORK_DATA,InfoData).then(res => {
-                //     console.log(res.data);
-                //     if(res.data.code == 200){
-                //         this.$toast("发布成功");
-                //         location.reload();
-                //     }else{
-                //         this.$toast("发布失败")
-                //     }
-                // }).catch(err => {
-                //     console.log(err);
-                // });
+                console.log(InfoData);
+
+                this.$axios.put(this.$API.API_PUT_WORK + this.workData2.workId, InfoData).then(res => {
+                    console.log(res.data);
+                    if (res.data.code == 200) {
+                        this.$toast("修改成功");
+                        location.reload();
+                    } else {
+                        this.$toast("发布失败")
+                    }
+                }).catch(err => {
+                    console.log(err);
+                });
 
             },
             getTags() {  // 将标签数组转换为数据库存储的字符串
@@ -222,11 +226,11 @@
                     this.$toast("最少一个标签哦");
                     return false;
                 }
-                for (let i = 0; i < this.workData.workTag.length; i++){
+                for (let i = 0; i < this.workData.workTag.length; i++) {
                     tagArr[i] = this.workData.workTag[i].title;
                 }
                 // 追加 学历 工作经验信息
-                tagArr.unshift(this.workData.workEdu,this.workData.workExper);
+                tagArr.unshift(this.workData.workEdu, this.workData.workExper);
                 let tagStr = "";
                 for (let i = 0; i < tagArr.length; i++) {
                     if (i == tagArr.length - 1) {
@@ -258,11 +262,41 @@
                     this.workData.workTag[i].id = i;
                 }
             },
-            testMsg(){  // 验证表单内容
+            testMsg() {  // 验证表单内容
                 return true;
             },
-            getWorkInfoData(){
+            getWorkInfoData() {     // 服务器数据获取
+                this.$axios.get(this.$API.API_GET_WORK + this.$route.params.workid).then(res => {
+                    console.log(res.data);
+                    if (res.data.code = 200) {
+                        this.workData2 = res.data.data;
+                        this.updatePage();
+                    } else {
+                        this.$toast("网络开小差了");
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+            },
+            updatePage() {      // 服务器获取数据 进行页面更新
 
+                let newTags = [];
+
+                for (let i = 2; i < this.workData2.workTag.length; i++) {
+                    newTags.push({id: (i - 2), title: this.workData2.workTag[i]});
+                }
+
+                console.log(newTags);
+                this.workData = {
+                    workTitle: this.workData2.workTitle,
+                    workSalary: this.workData2.workSalary,
+                    workEdu: this.workData2.workTag[0],
+                    workExper: this.workData2.workTag[1],
+                    workcateId: this.workData2.workCateId,
+                    workIntro: this.workData2.workIntro,
+                    workTag: newTags
+                };
+                this.cascaderValue = cateData.getCateName(this.workData2.workCateId);
             }
         },
         created() {
@@ -272,33 +306,38 @@
 </script>
 
 <style lang="scss" scoped>
-#com-workEdit{
-    .btn-container {
-        padding: 0 10px;
-    }
-    #tag-container {
-        width: 100%;
-        height: 25px;
-        position: relative;
-        padding: 10px 0;
-        display:flex;
-        justify-content: center;
+    #com-workEdit {
+        .btn-container {
+            padding: 0 10px;
+        }
 
-        .tag {
-            background-color: #4d4d4d;
-            color: #fff;
-            font-size: 14px;
-            padding: 4px 5px;
-            margin: 0 2px;
-            border-radius: 4px;
+        #tag-container {
+            width: 100%;
+            height: 25px;
+            position: relative;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+
+            .tag {
+                background-color: #4d4d4d;
+                color: #fff;
+                font-size: 14px;
+                padding: 4px 5px;
+                margin: 0 2px;
+                border-radius: 4px;
+            }
+        }
+
+        .tip {
+            color: #4d4d4d;
+            font-size: 12px;
+            padding-left: 10px;
+            margin: 0;
+            top: 50px;
+        }
+        .btn-container{
+            padding:10px;
         }
     }
-    .tip {
-        color: #4d4d4d;
-        font-size: 12px;
-        padding-left: 10px;
-        margin: 0;
-        top: 50px;
-    }
-}
 </style>

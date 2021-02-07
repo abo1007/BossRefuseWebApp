@@ -30,7 +30,7 @@
             },
             getWorkData(){
                 this.$axios.get(this.$API.API_GET_COM_WORK + "1408").then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     if (res.data.code === 200){
                         this.workData = res.data.data;
                     }else{

@@ -6,7 +6,7 @@
         <div class="user">
             <div class="left">
                 <div class="img">
-                    <img src="http://192.168.31.62:8090/public/img/boss.jpg" alt="">
+                    <img src="http://localhost:8090/public/img/boss.jpg" alt="">
                 </div>
             </div>
             <div class="right">
@@ -39,7 +39,7 @@
             <van-icon name="ellipsis" color="#fff" size="30" />
         </div>
         <div class="content1">
-            <div class="item">
+            <div class="item" @click="gofunc('assistant')">
                 <span>
                     <van-icon name="balance-list-o" size="26px" class="icon"/>
                     求职助手

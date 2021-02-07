@@ -135,3 +135,4 @@ password:yangbo
 ```
 
 * 如有需要可在`boss_user`表中添加，`isCom`字段为1表示企业用户，0表示个人用户
+

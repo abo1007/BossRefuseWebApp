@@ -36,5 +36,7 @@ export default {
     // 录入招聘信息
     API_POST_WORK_DATA: A1 + "workface",
     // 获取招聘详情页信息
-    API_GET_WORK: A1 + "workface/"
+    API_GET_WORK: A1 + "workface/",
+    // 修改招聘信息
+    API_PUT_WORK: A1 + "workface/"
 }

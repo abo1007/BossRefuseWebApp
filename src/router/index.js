@@ -73,6 +73,7 @@ const routes = [
     {path: '/user/home/chat/:msgid', name: 'user_chat', component: user_chat},
     {path: '/user/home/resume', name: 'user_resume', component: user_resume},
     {path: '/user/home/intention', name: 'intention', component: intention},
+    {path: '/user/home/assistant', name: 'assistant', component: assistant},
 
     // 企业部分
     {
