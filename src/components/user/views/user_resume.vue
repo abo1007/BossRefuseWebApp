@@ -1,9 +1,6 @@
 <template>
     <div id="resume-container">
-        <div class="header">
-            <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
-            <p>个人简历</p>
-        </div>
+        <bo-navbar text="个人简历" @left-fun="goback"/>
         <div class="content">
             <van-cell-group>
                 <van-field v-model="resumeData.name" label="姓名" placeholder="请输入姓名"/>

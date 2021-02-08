@@ -1,13 +1,6 @@
 <template>
     <div id="intention-container">
-        <div class="header">
-            <van-icon name="arrow-left"
-                      color="#fff"
-                      size="30"
-                      class="icon"
-                      @click="goback"/>
-            <p>求职意向</p>
-        </div>
+        <bo-navbar text="求职意向" @left-fun="goback"/>
         <div class="intention-select">
             <div class="item" v-for="(item, index) in workIntent" :key="item.id">
                 <van-field
@@ -92,28 +85,6 @@
 
 <style lang="scss" scoped>
     #intention-container {
-        .header {
-            height: 40px;
-            width: 100%;
-            background-color: #55cac4;
-            display: flex;
-            align-items: center;
-            border-radius: 0 0 10px 10px;
-
-            .icon {
-                position: absolute;
-                left: 10px;
-            }
-
-            p {
-                text-align: center;
-                width: 100%;
-                font-size: 18px;
-                margin: 0;
-                color: #fff;
-                font-weight: 500;
-            }
-        }
 
         .button-container {
             display: flex;

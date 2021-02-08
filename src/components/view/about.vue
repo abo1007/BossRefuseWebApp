@@ -61,7 +61,7 @@
             p{
                 text-align:center;
                 width:100%;
-                font-size:20px;
+                font-size:18px;
                 margin:0;
                 color:#fff;
                 font-weight:500;

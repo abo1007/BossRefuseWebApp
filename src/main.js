@@ -79,6 +79,9 @@ Vue.use(Step);
 Vue.use(Steps);
 Vue.prototype.$dialog = Dialog;
 
+import BoNavbar from "./components/child/bo_navbar";
+Vue.use(BoNavbar);
+
 new Vue({
   router,
   store,

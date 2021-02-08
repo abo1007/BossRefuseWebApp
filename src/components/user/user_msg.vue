@@ -9,7 +9,7 @@
                 class="msg-container"
         >
 <!--                <p>刷新次数: {{ count }}</p>-->
-            <msg-item v-for="(item,index) in MsgTest" :info="item" @click.native="goChat(item.mid)"/>
+            <msg-item v-for="(item,index) in MsgTest" :key="item.mid" :info="item" @click.native="goChat(item.mid)"/>
 
         </van-pull-refresh>
 
