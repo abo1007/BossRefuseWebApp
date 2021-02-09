@@ -19,10 +19,10 @@
                 text="巴里阿阿集团的社会责任是向社会输送大量人才"
         />
         <van-grid>
-            <van-grid-item icon="notes-o" text="简历处理" badge="2" @click="gofunc('com_handler')"/>
+            <van-grid-item icon="notes-o" text="简历处理" :badge="offerNum" @click="gofunc('com_handler')"/>
             <van-grid-item icon="coupon-o" text="招聘管理" @click="gofunc('com_workmanager')"/>
             <van-grid-item icon="fire-o" text="热门" @click="gofunc('com_hotwork')"/>
-            <van-grid-item icon="points" text="薪资计算" />
+            <van-grid-item icon="points" text="薪资计算" @click="gofunc('wages')"/>
         </van-grid>
         <van-grid>
             <van-grid-item icon="friends-o" text="企业信息" badge="2"/>
@@ -43,7 +43,8 @@
         name: "com_home",
         data(){
             return{
-                SearchValue:""
+                SearchValue:"",
+                offerNum:0
             }
         },
         methods:{
@@ -52,7 +53,19 @@
             },
             gofunc(Routername){
                 this.$router.push({ name:Routername, params:{from:'com'}  });
+            },
+            getOfferNum(){
+                this.$axios.post(this.$API.API_POST_OFFER_COUNT,{
+                    uid: 1408, type: 1
+                }).then(res => {
+                    this.offerNum = res.data.data[1] + res.data.data[2];
+                }).catch(err => {
+                    console.log(err);
+                })
             }
+        },
+        created() {
+            this.getOfferNum();
         }
     }
 </script>

@@ -80,7 +80,7 @@
             <div class="item" @click="gofunc('wages')">
                 <span>
                     <van-icon name="chart-trending-o" size="26px" class="icon"/>
-                    薪资查询
+                    薪资计算
                 </span>
                 <span>
                     NEW

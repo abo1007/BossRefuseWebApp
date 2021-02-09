@@ -1,6 +1,6 @@
 <template>
     <div id="wages">
-        <bo-navbar text="薪酬查询" @left-fun="goback"/>
+        <bo-navbar text="薪资计算" @left-fun="goback"/>
         <h1>薪酬查询</h1>
     </div>
 </template>
@@ -15,7 +15,7 @@
         },
         methods:{
             goback(){
-                this.$router.push("/" + this.from + "/my");
+                this.$router.back();
             }
         }
     }

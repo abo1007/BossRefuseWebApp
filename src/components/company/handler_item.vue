@@ -42,7 +42,7 @@
         props: ['offerdata'],
         methods: {
             tagToArr() {
-                console.log(this.offerdata);
+                // console.log(this.offerdata);
                 this.offermsg = this.offerdata;
                 if (this.offermsg.workOfferType === 4) {
                     this.offerResult = "已拒绝";
@@ -71,7 +71,7 @@
             },
             updateOfferType(status) {
 
-                console.log(status);
+                // console.log(status);
                 this.$axios.post(this.$API.API_POST_UPDATE_OFFER_TYPE, {
                     id:1408,workOfferId:this.offermsg.workOfferId,typeId:status
                 }).then(res => {

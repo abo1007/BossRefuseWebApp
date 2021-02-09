@@ -96,8 +96,8 @@
                     center
                     clearable
                     label="标签"
-                    placeholder="请输入要添加的特点标签"
-                    maxlength="8"
+                    placeholder="特点标签 2-6位 无符号"
+                    maxlength="6"
             >
                 <template #button>
                     <van-button size="small" type="primary" @click="addTag">添加标签</van-button>
@@ -243,6 +243,12 @@
                 return tagStr;
             },
             addTag() { // 增加tag
+                // 正则验证规范 要求2-6位
+                let reg = /^[A-Za-z0-9\u4e00-\u9fa5]{2,6}$/;
+                if(!reg.test(this.tagPush)){
+                    this.$toast("不符规范");
+                    return false;
+                }
                 if (this.workData.workTag.length === 5) {
                     this.$toast("最多5个哦");
                     return;
