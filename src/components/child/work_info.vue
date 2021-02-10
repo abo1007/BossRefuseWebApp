@@ -69,8 +69,8 @@
             <div class="hr">
                 <img src="../../assets/hr-header.jpg" alt="">
                 <div class="right">
-                    <p class="hname">张先生</p>
-                    <p class="work">人事</p>
+                    <p class="hname">张先生·人事</p>
+                    <p class="tip">1小时前来过</p>
                 </div>
             </div>
 
@@ -88,7 +88,7 @@
         name: "work_info",
         data(){
             return{
-                tag:['1-3年','本科','PHP','Laravel','ThinkPHP']
+                tag:['本科','1-3年','PHP','Laravel','ThinkPHP']
             }
         },
         methods:{
@@ -152,11 +152,12 @@
             margin:10px 0;
         }
         .comp{
+            color:#FFFAF0;
             height:60px;
             display: flex;
             align-items: center;
             background-color:rgba(64,224,208,.6);
-            border-radius:10px;
+            border-radius:5px;
             padding:0 10px;
             margin:10px 0;
             img{
@@ -167,13 +168,19 @@
                 height:50px;
                 width:100%;
                 margin:0 5px;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
                 p{
-                    margin:5px 0;
+                    width:100%;
+                    margin:0;
                     display: flex;
                     justify-content: space-between;
                 }
                 .com1{
-                    font-weight:bold;
+
+                    font-size:20px;
+                    /*font-weight:bold;*/
                 }
                 .com2{
                     font-size:12px;
@@ -197,21 +204,25 @@
             height:60px;
             display: flex;
             border-top:1px solid #ccc;
-            border-bottom:1px solid #ccc;
+            /*border-bottom:1px solid #ccc;*/
             margin:10px auto;
             padding:5px 0;
             display: flex;
             align-items: center;
             img{
-                height:50px;
-                border-radius:25px;
+                height:40px;
+                border-radius:20px;
             }
             .right{
                 width:100%;
                 padding:0 10px;
                 display: flex;
                 justify-content:space-between;
+                align-items: center;
 
+                .tip{
+                    font-size:12px;
+                }
             }
         }
 
