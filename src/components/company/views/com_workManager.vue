@@ -26,17 +26,17 @@
         },
         methods:{
             onClickLeft() {
-                this.$router.push({name:'com_home'})
+                this.$router.back();
             },
             getWorkData(){
                 this.$axios.get(this.$API.API_GET_COM_WORK + "1408").then(res => {
-                    // console.log(res.data);
                     if (res.data.code === 200){
                         this.workData = res.data.data;
                     }else{
-                        this.$toast("网络开小差了哦。")
+                        this.$toast.fail("网络开小差了哦");
                     }
                 }).catch(err => {
+                    this.$toast.fail("网络开小差了哦");
                     console.log(err)
                 })
             }

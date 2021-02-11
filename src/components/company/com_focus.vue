@@ -2,7 +2,7 @@
     <div id="com-focus">
         <van-nav-bar
                 title="我要招聘"
-                right-text="切换"
+                right-text="我的发布"
                 @click-right="rightClick"
         />
         <van-field
@@ -165,7 +165,7 @@
         },
         methods: {
             rightClick() {
-                this.$toast("这位客官是想切换到哪里呢？");
+                this.$router.push({name:'com_workmanager'})
             },
             onConfirm(value) {
                 this.workData.workcateId = value;

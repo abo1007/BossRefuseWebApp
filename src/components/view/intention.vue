@@ -47,12 +47,13 @@
                     {id: 4, outValue: "", inValue: "", show: false},
                     {id: 5, outValue: "", inValue: "", show: false}
                 ],
-                selectItemIndex: null
+                selectItemIndex: null,
+                changeName:''
             }
         },
         methods: {
             goback() {
-                this.$router.push("/user/my");
+                this.$router.back();
             },
             onFinish({selectedOptions}) {
                 console.log(selectedOptions);
@@ -64,14 +65,26 @@
                 this.selectItemIndex = i;
             },
             getItemName(i){
-                return "求职意向" + i;
+                return this.changeName+ "意向" + i;
             },
             saveIntentData(){
-                localStorage.setItem("workIntent",JSON.stringify(this.workIntent));
+                if(this.$route.params.from == "user"){
+                    localStorage.setItem("workIntent",JSON.stringify(this.workIntent));
+                }else {
+                    localStorage.setItem("recruitIntent",JSON.stringify(this.workIntent));
+                }
                 this.$toast("保存成功");
             },
             readIntentData(){
-                let data = localStorage.getItem("workIntent");
+                let data = [];
+                if(this.$route.params.from == "user"){
+                    data = localStorage.getItem("workIntent");
+                    this.changeName = "求职";
+                }else {
+                    data = localStorage.getItem("recruitIntent");
+                    this.changeName = "招聘";
+
+                }
                 if(data){
                     this.workIntent = JSON.parse(data);
                 }

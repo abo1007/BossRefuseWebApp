@@ -44,6 +44,9 @@ import com_workManager from "../components/company/views/com_workManager";  // �
 import com_hotWork from "../components/company/views/com_hotWork";          // 热门
 import com_workEdit from "../components/company/views/com_workEdit";
 
+import com_vip from "../components/company/views/com_vip";
+
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -94,6 +97,7 @@ const routes = [
     {path: '/com/workmanager', name: 'com_workmanager', component: com_workManager},
     {path: '/com/hotwork', name: 'com_hotwork', component: com_hotWork},
     {path: '/com/workedit/:workid', name: 'com_workedit', component: com_workEdit},
+    {path: '/com/vip', name: 'com-vip', component: com_vip},
 
 
     // 通用页面

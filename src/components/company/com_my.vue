@@ -38,7 +38,7 @@
             <van-icon name="ellipsis" color="#fff" size="30" />
         </div>
         <div class="content1">
-            <div class="item">
+            <div class="item" @click="gofunc('com-vip')">
                 <span>
                     <van-icon name="balance-list-o" size="26px" class="icon"/>
                     急速招聘
@@ -57,7 +57,7 @@
                     <van-icon name="arrow" class="icon2"/>
                 </span>
             </div>
-            <div class="item">
+            <div class="item" @click="gofunc('intention')">
                 <span>
                     <van-icon name="add-o" size="26px" class="icon"/>
                     招聘意向
