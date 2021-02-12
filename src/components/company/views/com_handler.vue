@@ -31,11 +31,11 @@
             },
             postOfferCateData() {
                 this.$axios.get(this.$API.API_GET_COM_OFFER_CATEDATA + "1408" + "/666" ).then(res => {
-                    console.log(res.data);
                     if(res.data.code === 200){
                         this.offerData = res.data.data;
                     }
                 }).catch(err => {
+                    this.$toast.fail("网络开小差了哦");
                     console.log(err);
                 })
             }

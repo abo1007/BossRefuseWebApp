@@ -31,8 +31,14 @@
             <van-grid-item icon="thumb-circle-o" text="为您推荐" />
         </van-grid>
         <div id="reg-container">
-            <div class="img">
+            <div class="img img1" @click="">
                 <p>在这里注册企业信息 ></p>
+            </div>
+            <div class="img img2" @click="gofunc('com_handler')">
+                <p>在这里处理简历消息 ></p>
+            </div>
+            <div class="img img3" @click="gofunc('com_workmanager')">
+                <p>在这里管理招聘信息 ></p>
             </div>
         </div>
     </div>
@@ -87,14 +93,15 @@
     }
     #reg-container{
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         width:100%;
         padding:5px 0;
+
         .img{
             height:70px;
             width:96%;
             /*background-color:#55cac4;*/
-            background-image: linear-gradient(to right,#55cac4,#008B8B);
             border-radius:20px;
             display: flex;
             align-items: center;
@@ -105,6 +112,17 @@
                 font-size:20px;
                 padding-left:20px;
             }
+        }
+        .img1{
+            background-image: linear-gradient(to right,#55cac4,#008B8B);
+        }
+        .img2{
+            background-image: linear-gradient(to right,#FF7F50,#A52A2A);
+            margin-top:10px;
+        }
+        .img3{
+            background-image: linear-gradient(to right,#32CD32,#2E8B57);
+            margin-top:10px;
         }
     }
 }
