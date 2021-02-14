@@ -25,13 +25,13 @@
             <van-grid-item icon="points" text="薪资计算" @click="gofunc('wages')"/>
         </van-grid>
         <van-grid>
-            <van-grid-item icon="friends-o" text="企业信息" badge="2"/>
+            <van-grid-item icon="friends-o" text="企业信息" badge="2" @click="gofunc('com_info')"/>
             <van-grid-item icon="manager-o" text="个人信息" />
             <van-grid-item icon="aim" text="招聘意向" />
             <van-grid-item icon="thumb-circle-o" text="为您推荐" />
         </van-grid>
         <div id="reg-container">
-            <div class="img img1" @click="">
+            <div class="img img1" @click="gofunc('com_info')">
                 <p>在这里注册企业信息 ></p>
             </div>
             <div class="img img2" @click="gofunc('com_handler')">

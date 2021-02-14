@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import login from "../components/login"
 
+// 应聘者主页面
 import user from "../components/user/user"
 import user_home from "../components/user/user_home"
 import user_focus from "../components/user/user_focus"
@@ -14,6 +15,7 @@ import user_searchRes from "../components/user/views/user_searchRes";   // 用�
 import user_chat from "../components/user/views/user_chat";             // 用户聊天界面
 import user_resume from "../components/user/views/user_resume";         // 个人简历
 
+// 招聘者主页面
 import com from "../components/company/com"
 import com_home from "../components/company/com_home"
 import com_focus from "../components/company/com_focus"
@@ -22,9 +24,10 @@ import com_my from "../components/company/com_my"
 import com_option from "../components/company/com_option";  // 公司设置
 import com_overview from "../components/company/com_overview";
 
+// 工作详情页面
 import work_info from "../components/child/work_info";  // 工作详情页面
 
-// 通用
+// 通用页面
 import err404 from "../components/404"
 import about from "../components/view/about";
 import service from "../components/view/service";
@@ -33,18 +36,22 @@ import wages from "../components/view/wages";
 import homePage from "../components/view/homePage";
 import account from "../components/view/account";
 import privacy from "../components/view/privacy";
+import myInfo from "../components/view/myInfo";
 
-// 应聘者
+// 应聘者页面
 import intention from "../components/view/intention"; // 求职意向
 import assistant from "../components/view/assistant"; // 求职助手
 
-// 公司
-import com_handler from "../components/company/views/com_handler";          //简历处理
+
+
+// 招聘者页面
+import com_handler from "../components/company/views/com_handler";          // 简历处理
 import com_workManager from "../components/company/views/com_workManager";  // 招聘管理
 import com_hotWork from "../components/company/views/com_hotWork";          // 热门
-import com_workEdit from "../components/company/views/com_workEdit";
+import com_workEdit from "../components/company/views/com_workEdit";        // 招聘信息编辑
 
-import com_vip from "../components/company/views/com_vip";
+import com_vip from "../components/company/views/com_vip";                  // 急速招聘 vip
+import com_info from "../components/company/views/com_info";                // 公司详情
 
 
 Vue.use(VueRouter);
@@ -97,7 +104,8 @@ const routes = [
     {path: '/com/workmanager', name: 'com_workmanager', component: com_workManager},
     {path: '/com/hotwork', name: 'com_hotwork', component: com_hotWork},
     {path: '/com/workedit/:workid', name: 'com_workedit', component: com_workEdit},
-    {path: '/com/vip', name: 'com-vip', component: com_vip},
+    {path: '/com/vip', name: 'com_vip', component: com_vip},
+    {path: '/com/info', name: 'com_info', component: com_info},
 
 
     // 通用页面
@@ -109,6 +117,8 @@ const routes = [
     // {path: '/setting', name: 'setting', component: setting },
     {path: '/account', name: 'account', component: account},
     {path: '/privacy', name: 'privacy', component: privacy},
+    {path: '/myinfo', name: 'myinfo', component: myInfo},
+
     {
         path: '*',
         name: '404',

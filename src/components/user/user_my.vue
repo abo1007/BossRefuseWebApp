@@ -3,7 +3,7 @@
         <div class="header">
             <van-icon name="setting-o" color="#fff" size="30" class="icon" @click="goOption"/>
         </div>
-        <div class="user">
+        <div class="user" @click="gofunc('myinfo')">
             <div class="left">
                 <div class="img">
                     <img src="http://localhost:8090/public/img/boss.jpg" alt="">
