@@ -2,7 +2,7 @@
     <div id="handler-item-container">
         <p class="title">
             <span class="title">{{offermsg.name}}</span>
-            <span class="money"></span>
+            <span class="money">{{offermsg.workId}}</span>
         </p>
         <p class="cla">
             <van-tag>{{offermsg.edu}}</van-tag>

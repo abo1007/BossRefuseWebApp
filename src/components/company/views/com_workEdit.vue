@@ -165,7 +165,7 @@
         },
         methods: {
             onClickLeft() {
-                this.$router.push({name: 'com_workmanager'})
+                this.$router.back();
             },
             onConfirm(value) {
                 this.workData.workcateId = value;
