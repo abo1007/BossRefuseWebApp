@@ -36,9 +36,15 @@
             </van-popup>
             <!--            <van-field v-model="resumeData.edu" label="学历" />-->
 
-            <van-field v-model="resumeData.school" label="毕业院校"/>
-            <van-field v-model="resumeData.workExper" type="digit" label="工作经验" placeholder="请输入工作经验/年"/>
-            <van-field v-model="resumeData.projectExper" label="项目经验" placeholder="项目经验"/>
+            <van-field v-model="resumeData.school"
+                       label="毕业院校"/>
+            <van-field v-model="resumeData.workExper"
+                       type="digit"
+                       label="工作经验"
+                       placeholder="请输入工作经验/年"/>
+            <van-field v-model="resumeData.projectExper"
+                       label="项目经验"
+                       placeholder="项目经验"/>
             <van-field
                     readonly
                     clickable
