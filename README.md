@@ -4,6 +4,14 @@
 * Boss直拒是一款基于B/S架构的web App，其UI界面酷似Boss直聘，可以实现招聘与应聘、发布职位与管理职位功能、浏览收藏招聘信息。
 * `Boss直拒，为您在被boss拒绝的路上保驾护航`
 
+## 相关技术
+
+* Vue Vue-Cli VueRouter VueX
+* Vant
+* Axios
+* PHP Laravel
+* MySQL
+
 # 运行方式(非常重要)
 
 ### [1. git Clone boss直拒手机端](https://github.com/abo1007/BossRefuseWebApp)
