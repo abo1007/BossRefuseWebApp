@@ -11,17 +11,16 @@
                    label="企业ID"
                    readonly disabled/>
         <van-field v-model="cominfoData.workComName"
-                   label="企业短名"
-                   readonly/>
+                   label="企业短名"/>
+
         <van-field v-model="cominfoData.workComPerson"
                    label="企业法人"
-                   readonly disabled/>
+                   :disabled="Boolean(isUpdate)"/>
+
         <van-field v-model="cominfoData.workComAllName"
                    label="企业全名"
-                   readonly disabled/>
-        <!--        <van-field v-model="cominfoData.workComScale"-->
-        <!--                   label="企业规模"-->
-        <!--                   readonly/>-->
+                   :disabled="Boolean(isUpdate)"/>
+
         <van-field
                 readonly
                 clickable
@@ -41,7 +40,9 @@
 
         <van-field v-model="cominfoData.workComDate"
                    label="注册日期"
-                   readonly @click="show = true"/>
+                   readonly
+                   :disabled="Boolean(isUpdate)"
+                   @click="showDate"/>
         <van-calendar v-model="show"
                       :min-date="minDate"
                       :max-date="maxDate"
@@ -105,10 +106,11 @@
         <van-field v-model="cominfoData.workComCap"
                    type="digit"
                    label="注册资本(万元)"
+                   :disabled="Boolean(isUpdate)"
                    readonly/>
 
         <div class="bottom">
-            <button class="push_btn" @click="getTags">点击保存</button>
+            <button class="push_btn" @click="selFun">点击保存</button>
         </div>
     </div>
 </template>
@@ -125,7 +127,7 @@
                     workComAllName: "南京市白嫖科技发展有限公司",
                     workComScale: "0-9",
                     workComDate: "2010-01-01",
-                    workComCate: "移动互联网",
+                    workComCate: "互联网",
                     workComTag: [{id: 1, title: "朝八晚六"}, {id: 2, title: "收费零食"}, {id: 3, title: "自费团建"}],
                     workComCity: "南京市",
                     workComArea: "鼓楼区",
@@ -152,8 +154,11 @@
                     "信息安全", "智能硬件", "移动互联网", "互联网", "计算机软件", "通信/网络设备", "广告/公关/会展",
                     "互联网金融", "物流/仓储", "贸易/进出口", "咨询", "工程施工", "汽车生产", "其他行业"],
 
-                tagPush: ""
-
+                tagPush: "",
+                // 信息备用变量
+                cominfoData2: {},
+                // 确定是否为首次
+                isUpdate: 0
             }
         },
         methods: {
@@ -226,8 +231,101 @@
                     this.cominfoData.workComTag[i].id = i;
                 }
             },
+            getComInfo() {
+                this.$axios.get(this.$API.API_GET_COM_INFO + "1408").then(res => {
+                    if (res.data.code === 200) {
+                        this.$toast.success("获取成功");
+                        this.cominfoData2 = res.data.data;
+                        console.log(res.data);
+                        this.updatePage();
+                        this.isUpdate++;
+                    } else {
+                        this.$toast.fail("网络开小差了");
+                    }
+                }).catch(err => {
+                    this.$toast.fail("网络开小差了");
+                    console.log(err);
+                })
+            },
+            postComInfo() {
+                this.$axios.post(this.$API.API_POST_COM_INFO).then(res => {
+                    if (res.data.code === 200) {
+                        this.$toast.success("注册企业信息成功");
+                        console.log(res.data);
+                    } else {
+                        this.$toast.fail("网络开小差了");
+                    }
+                }).catch(err => {
+                    this.$toast.fail("网络开小差了");
+                    console.log(err);
+                })
+            },
+            putComInfo() {
+                if (!this.getTags()) {
+                    return false;
+                }
+                let cominfoData = {
+                    workComName: this.cominfoData.workComName,
+                    workComScale: this.cominfoData.workComScale,
+                    workComCate: this.cominfoData.workComCate,
+                    workComTag: this.getTags(),
+                    workComCity: this.cominfoData.workComCity,
+                    workComArea: this.cominfoData.workComArea,
+                    workComIntro: this.cominfoData.workComIntro,
+                };
+                this.$axios.put(this.$API.API_PUT_COM_INFO + this.cominfoData.workComId, cominfoData).then(res => {
+                    console.log(res.data);
+                    if (res.data.code === 200) {
+                        this.$toast.success("修改成功");
+                        location.reload();
+                    } else {
+                        this.$toast.fail("修改失败");
+                    }
+                }).catch(err => {
+                    this.$toast.fail("修改失败");
+                    console.log(err);
+                });
+
+            },
+            updatePage() {
+                this.cominfoData2.workComTag = this.cominfoData2.workComTag.split("，");
+                let newTags = [];
+                for (let i = 0; i < this.cominfoData2.workComTag.length; i++) {
+                    newTags.push({id: i, title: this.cominfoData2.workComTag[i]});
+                }
+                console.log(newTags);
+                this.cominfoData = this.cominfoData2;
+                this.cominfoData.workComTag = newTags;
+                // this.cominfoData = {
+                //     workComId: this.cominfoData2.workComId,
+                //     workComName: this.cominfoData2.workComName,
+                //     workComPerson: this.cominfoData2.workComPerson,
+                //     workComAllName: this.cominfoData2.workComAllName,
+                //     workComScale: this.cominfoData2.workComScale,
+                //     workComDate: this.cominfoData2.workComDate,
+                //     workComCate: this.cominfoData2.workComCate,
+                //     workComTag: newTags,
+                //     workComCity: this.cominfoData2.workComCity,
+                //     workComArea: this.cominfoData2.workComArea,
+                //     workComIntro: this.cominfoData2.workComIntro,
+                //     workComCap: this.cominfoData2.workComCap
+                // }
+            },
+            selFun() {
+                if (this.isUpdate) {
+                    this.putComInfo();
+                } else {
+                    this.postComInfo();
+                }
+            },
+            showDate(){
+                if(!this.isUpdate){
+                    this.show = true;
+                }
+            }
         },
         created() {
+            this.getComInfo();
         }
     }
 </script>

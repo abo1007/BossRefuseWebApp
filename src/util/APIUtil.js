@@ -38,5 +38,11 @@ export default {
     // 获取招聘详情页信息
     API_GET_WORK: A1 + "workface/",
     // 修改招聘信息
-    API_PUT_WORK: A1 + "workface/"
+    API_PUT_WORK: A1 + "workface/",
+
+    // 获取所有企业信息 单个企业信息 注册信息 修改信息
+    API_GET_COM_INFOS: A1 + "cominfo",
+    API_GET_COM_INFO: A1 + "cominfo/",
+    API_POST_COM_INFO: A1 + "cominfo",
+    API_PUT_COM_INFO: A1 + "cominfo/"
 }

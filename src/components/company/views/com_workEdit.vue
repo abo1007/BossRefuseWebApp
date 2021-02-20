@@ -274,7 +274,7 @@
             getWorkInfoData() {     // 服务器数据获取
                 this.$axios.get(this.$API.API_GET_WORK + this.$route.params.workid).then(res => {
                     console.log(res.data);
-                    if (res.data.code = 200) {
+                    if (res.data.code === 200) {
                         this.workData2 = res.data.data;
                         this.updatePage();
                     } else {

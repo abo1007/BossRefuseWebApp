@@ -174,11 +174,10 @@
             onFinish({selectedOptions}) {
                 this.showPicker2 = false;
                 // this.resumeData.expect[1] = selectedOptions.map((option) => option.text).join('/');
-                // console.log(selectedOptions);
                 this.resumeData.expect[1] = selectedOptions[1].text;
             },
             testMsg() {
-
+                return true;
             },
             postResumeData() {   // 提交简历
                 // 拼接 期望 字符串
@@ -189,7 +188,15 @@
                 }else{
                     this.$toast("保存无效");
                     if(this.testMsg()){
-
+                        this.$axios.post(this.$API.API_POST_RESUME).then(res => {
+                            if(res.data.code === 200){
+                                this.$toast("保存成功");
+                                this.$router.push({name:"user_my"})
+                            }
+                        }).catch(err => {
+                            this.$toast("保存失败");
+                            console.log(err)
+                        })
                     }
                 }
             },
