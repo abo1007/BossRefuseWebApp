@@ -148,6 +148,7 @@
                 cascaderValue: "",
                 showPicker2: false,  // 岗位
                 showPicker3: false,  // 学历
+
                 eduData: ["初中及以下", "高中/中专/职高", "大专", "本科", "硕士", "博士"],
                 salary: ["2k以下", "2-4k", "4-6k", "6-8k", "8-15k", "15k以上"],
                 showPicker4: false,   // 薪资
