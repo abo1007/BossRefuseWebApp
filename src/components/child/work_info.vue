@@ -1,11 +1,16 @@
 <template>
     <div id="work-info-container">
         <van-nav-bar
-                :title="getWorkName(this.$route.params.workid)"
+                :title="workInfoItem.workTitle"
                 left-text="返回"
                 left-arrow
                 @click-left="onClickLeft"
-        />
+                @click-right="getWorkName"
+        >
+            <template #right>
+                <van-icon name="warning-o" size="26"/>
+            </template>
+        </van-nav-bar>
         <div class="header">
             <p class="top">
                 <span class="title">{{workInfoItem.workTitle}}</span>
@@ -89,7 +94,8 @@
         data() {
             return {
                 tag: ['本科', '1-3年', 'PHP', 'Laravel', 'ThinkPHP'],
-                workInfoItem: {}
+                workInfoItem: {},
+                id:this.$route.params.workid
             }
         },
         methods: {
@@ -97,7 +103,7 @@
                 this.$router.push({name: 'user_home'})
             },
             getWorkName(id) {
-                return "工作编号" + id;
+                this.$toast.success("工作编号" + this.id);
             },
             getWorkInfo() {
                 this.$axios.get(this.$API.API_GET_WORK + this.$route.params.workid).then(res => {
@@ -227,6 +233,7 @@
                 font-weight: 200;
                 line-height: 22px;
                 padding-bottom: 8px;
+                min-height: 320px;
             }
         }
 

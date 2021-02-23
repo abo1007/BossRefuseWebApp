@@ -25,9 +25,9 @@
             </van-swipe-item>
         </van-swipe>
 
-<!--        <div class="s-banner">-->
-<!--            <img src="../../assets/slide3.png" alt="">-->
-<!--        </div>-->
+        <!--        <div class="s-banner">-->
+        <!--            <img src="../../assets/slide3.png" alt="">-->
+        <!--        </div>-->
         <van-notice-bar
                 left-icon="volume-o"
                 text="巴里阿阿集团的宗旨是让世界没有好做的生意"
@@ -49,9 +49,10 @@
         </p>
         <div class="work-container">
             <user-work
-                    v-for="(item,index) in testMsgList"
+                    v-for="(item,index) in workfaceData"
                     :workmsg="item"
-                    :key="item.id" />
+                    :key="item.id"/>
+            <p class="loader" @click="continueGetWorkFaceData">加载更多</p>
         </div>
         <div class="statement">
             <p class="title1">Yangbo@2021</p>
@@ -60,148 +61,149 @@
 </template>
 
 <script>
-import user_work from "./user_work";
+    import user_work from "./user_work";
+
     export default {
         name: "user_home",
-        data(){
-            return{
-                SearchValue:'',
-                testMsgList:[
+        data() {
+            return {
+                SearchValue: '',
+                workfaceData: [
                     {
-                        workId:0, workTitle:'全栈工程师',workSalary:'1-2k',workTag:['3-5年','硕士研究生','Vue','Java'],
-                        workComName:'白嫖科技',workComScale:'0-9',workPublisher:'刘先生·人事',workArea:'南京市 鼓楼区'
+                        workId: 0, workTitle: '全栈工程师', workSalary: '1-2k', workTag: ['3-5年', '硕士研究生', 'Vue', 'Java'],
+                        workComName: '白嫖科技', workComScale: '0-9', workPublisher: '刘先生·人事', workArea: '南京市 鼓楼区'
                     },
                     {
-                        workId:1, workTitle:'富士康普工',workSalary:'4-8K',workTag:['经验不限','学历不限','五险','包食宿'],
-                        workComName:'鸿海精密',workComScale:'10000+',workPublisher:'张先生·人事',workArea:'廊坊市 龙河'
+                        workId: 1, workTitle: '富士康普工', workSalary: '4-8K', workTag: ['经验不限', '学历不限', '五险', '包食宿'],
+                        workComName: '鸿海精密', workComScale: '10000+', workPublisher: '张先生·人事', workArea: '廊坊市 龙河'
                     },
                     {
-                        workId:2, workTitle:'PHP工程师',workSalary:'6-10K',workTag:['1年以上','大专','Laravel','双休'],
-                        workComName:'智为科技',workComScale:'20-50',workPublisher:'杨先生·人事',workArea:'武汉市 江岸区'
+                        workId: 2, workTitle: 'PHP工程师', workSalary: '6-10K', workTag: ['1年以上', '大专', 'Laravel', '双休'],
+                        workComName: '智为科技', workComScale: '20-50', workPublisher: '杨先生·人事', workArea: '武汉市 江岸区'
                     },
                     {
-                        workId:3, workTitle:'Laravel开发',workSalary:'8-10K',workTag:['2年以上','学历不限','Laravel','双休'],
-                        workComName:'云集有赞',workComScale:'1000+',workPublisher:'李先生·人事',workArea:'杭州市 萧山区'
+                        workId: 3,
+                        workTitle: 'Laravel开发',
+                        workSalary: '8-10K',
+                        workTag: ['2年以上', '学历不限', 'Laravel', '双休'],
+                        workComName: '云集有赞',
+                        workComScale: '1000+',
+                        workPublisher: '李先生·人事',
+                        workArea: '杭州市 萧山区'
                     }
-                ]
+                ],
+                nextUrl: ""
             }
         },
-        methods:{
-            onSearch(){
-                this.$router.push({name:'user_searchRes', query:{value:this.SearchValue}})
+        methods: {
+            onSearch() {
+                this.$router.push({name: 'user_searchRes', query: {value: this.SearchValue}})
             },
-            goTab(name, cateid){
-                this.$router.push({name:'user_category', query:{name:name, cateid:cateid}});
+            goTab(name, cateid) {
+                this.$router.push({name: 'user_category', query: {name: name, cateid: cateid}});
+            },
+            getWorkFaceData() {
+                this.$axios.get(this.$API.API_GET_WORKFACE).then(res => {
+                    if (res.data.code == 200) {
+                        this.workfaceData = res.data.data.data;
+                        this.nextUrl = res.data.data.next_page_url;
+                    }
+                }).catch(err => {
+                    this.$toast.fail("网络开小差了。");
+                    console.log(err);
+                })
+            },
+            // 继续获取数据方法
+            continueGetWorkFaceData() {
+                // 如果 next_page_url为null 停止
+                if (this.nextUrl == null) {
+                    this.$toast("没有更多了。。。");
+                    return false;
+                }
+                this.$axios.get(this.nextUrl).then(res => {
+                    if (res.data.code == 200) {
+                        for (let i = 0; i < res.data.data.data.length; i++) {
+                            this.workfaceData.push(res.data.data.data[i]);
+                        }
+                        this.nextUrl = res.data.data.next_page_url;
+                    }
+                }).catch(err => {
+                    this.$toast.fail("网络开小差了。");
+                    console.log(err);
+                })
             }
         },
-        components:{
-            'user-work':user_work
+        components: {
+            'user-work': user_work
         },
         created() {
-
+            this.getWorkFaceData();
         }
     }
 </script>
 
 <style lang="scss" scoped>
 
-#user-home{
-    width:100%;
-    .icon1{
-        height:34px;
-    }
-    /*.s-banner{*/
-    /*    width:100%;*/
-    /*    height:110px;*/
-    /*    margin:0;*/
-    /*    img{*/
-    /*        width:100%;*/
-    /*        margin:0;*/
-    /*        height:110px;*/
-    /*    }*/
-    /*}*/
-    .my-swipe{
-        img{
-            width:100%;
-            height:110px;
-        }
-    }
-    .banner{
-        margin:5px 0;
-        display: flex;
-        justify-content: center;
-        width:100%;
-        height:150px;
-        img{
-            width:96%;
-            height:100%;
-            border-radius:10px;
-            box-shadow:#cccccc 0px 5px 5px,0px -2px 5px #cccccc;
-        }
-    }
-    .focus{
-        color:#808080;
-        margin:10px 0;
-        font-size:14px;
-        padding-left:16px;
-    }
-    .work-container{
-        background-color:#F5F5F5;
-        padding-bottom:5px;
-        /*.work-info{*/
-        /*    margin-bottom:5px;*/
-        /*    padding:10px 15px;*/
-        /*    background-color:#fff;*/
-        /*    .title{*/
-        /*        display:flex;*/
-        /*        justify-content:space-between;*/
-        /*        font-weight:600;*/
-        /*        line-height:12px;*/
-        /*        .name{*/
+    #user-home {
+        width: 100%;
 
-        /*        }*/
-        /*        .money{*/
-        /*            color:#55cac4;*/
-        /*        }*/
-        /*    }*/
-        /*    .cla{*/
-        /*        font-size:12px;*/
-        /*        position:relative;*/
-        /*        span{*/
-        /*            height:14px;*/
-        /*            margin:0 2px;*/
-        /*            position:relative;*/
-        /*            top:0;*/
-        /*        }*/
-        /*    }*/
-        /*    .com{*/
-        /*        font-size:13px;*/
-        /*        line-height:14px;*/
-        /*        font-weight:300;*/
-        /*    }*/
-        /*    .hr{*/
-        /*        display:flex;*/
-        /*        justify-content:space-between;*/
-        /*        font-size:12px;*/
-        /*        .left{*/
+        .icon1 {
+            height: 34px;
+        }
 
-        /*        }*/
-        /*        .right{*/
-        /*            color:#808080;*/
-        /*        }*/
-        /*    }*/
-        /*}*/
-    }
-    .statement{
-        p{
-            font-weight:100;
-            text-align:center;
-            margin:5px 0;
+        .my-swipe {
+            img {
+                width: 100%;
+                height: 110px;
+            }
         }
-        .title1{
-            font-size:12px;
-            color:#808080;
+
+        .banner {
+            margin: 5px 0;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 150px;
+
+            img {
+                width: 96%;
+                height: 100%;
+                border-radius: 10px;
+                box-shadow: #cccccc 0px 5px 5px, 0px -2px 5px #cccccc;
+            }
+        }
+
+        .focus {
+            color: #808080;
+            margin: 10px 0;
+            font-size: 14px;
+            padding-left: 16px;
+        }
+
+        .work-container {
+            background-color: #F5F5F5;
+            padding-bottom: 5px;
+
+            .loader {
+                text-align: center;
+                margin: 5px 0;
+                font-size: 14px;
+                color: #808080;
+
+            }
+        }
+
+        .statement {
+            p {
+                font-weight: 100;
+                text-align: center;
+                margin: 5px 0;
+            }
+
+            .title1 {
+                font-size: 12px;
+                color: #808080;
+            }
         }
     }
-}
 </style>
