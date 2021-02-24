@@ -81,8 +81,8 @@
 
         </div>
         <div class="action">
-            <button class="btn_send">投递简历</button>
-            <button class="btn_say">立即沟通</button>
+            <button class="btn_send" @click="sendResume">投递简历</button>
+            <button class="btn_say" @click="goChat">立即沟通</button>
         </div>
         <!--        {{this.$route.params.workid}}-->
     </div>
@@ -95,7 +95,7 @@
             return {
                 tag: ['本科', '1-3年', 'PHP', 'Laravel', 'ThinkPHP'],
                 workInfoItem: {},
-                id:this.$route.params.workid
+                id: this.$route.params.workid
             }
         },
         methods: {
@@ -110,11 +110,56 @@
                     if (res.data.code == 200) {
                         console.log(res.data);
                         this.workInfoItem = res.data.data;
+
                     }
                 }).catch(err => {
                     this.$toast.fail("网络开小差了。");
                     console.log(err)
                 })
+            },
+            goChat() {
+
+            },
+            sendResume() {
+                this.$dialog.confirm({
+                    title: '客官且慢',
+                    message: '确定要直接投递简历吗，建议先与招聘者聊聊，应聘成功率大涨哦！',
+                    confirmButtonText: '我要硬刚',
+                    confirmButtonColor: '#ff0000',
+                    cancelButtonText: '去聊聊看',
+                    cancelButtonColor: '#55cac4'
+
+                }).then(() => {
+                    this.$toast("你牛逼，简历已投递");
+                    let data = {
+                        userId: this.$store.state.userId,
+                        workComId: this.workInfoItem.workComId,
+                        candId: this.$store.state.userId,
+                        workId: this.workInfoItem.workId,
+                        // editorId: this.workInfoItem.workPublisher
+                        editorId: 10000
+
+                    };
+                    console.log(data);
+                    this.$axios.post(this.$API.API_POST_OFFER, data).then(res => {
+                        // console.log(res);
+                        if (res.data.code == 200) {
+                            this.$toast.success("投递成功");
+                        } else if (res.data.code == 210) {
+                            this.$toast.fail("您已经投递了这份工作");
+                            return false;
+                        } else {
+                            this.$toast.fail("未知错误...");
+                            return false;
+                        }
+
+                    }).catch(err => {
+                        this.$toast.fail("网络开小差了。");
+                        console.log(err);
+                    })
+                }).catch(() => {
+                    this.$toast.success("听人劝 吃饱饭")
+                });
             }
         },
         created() {

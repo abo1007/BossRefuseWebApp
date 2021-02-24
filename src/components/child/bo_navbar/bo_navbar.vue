@@ -16,7 +16,7 @@
         props:['text'],
         methods:{
             leftFun(){
-                this.$emit('left-fun')
+                this.$emit('left-fun');
             }
         }
     }

@@ -14,7 +14,7 @@ Vue.prototype.$axios = axios;
 import { Button, Tabbar, TabbarItem, Search, Toast, Icon, Grid, GridItem, NoticeBar,
   Tag, Tab, Tabs, NavBar, PullRefresh, Picker, Field, Popup, Form, RadioGroup, Radio,
   Cell, CellGroup, Card, Switch, Dialog , Swipe, SwipeItem, Cascader, Circle,
-  Step, Steps, Calendar  } from 'vant'
+  Step, Steps, Calendar   } from 'vant'
 import 'vant/lib/button/style';
 import 'vant/lib/tabbar/style';
 import 'vant/lib/tabbar-item/style';

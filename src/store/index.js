@@ -8,6 +8,7 @@ export default new Vuex.Store({
     currentPosition:'user',
     msgNum:3,
     userId:10001,
+    candId:10000,
     comId:1408,
     comName:"人事·老王"
   },
