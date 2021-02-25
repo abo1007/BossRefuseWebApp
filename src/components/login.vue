@@ -1,7 +1,7 @@
 <template>
     <div id="login-container">
         <div class="top">
-            <button class="reg_btn">注册</button>
+            <button class="reg_btn" @click="goFunc('register')">注册</button>
         </div>
         <div class="cen">
             <div class="uname">
@@ -48,7 +48,6 @@
                 if (this.goLogin(1)) {
                     this.$router.push('/com');
                 }
-
             },
             goLogin(mode) {
                 if (this.uname && this.uname.length >= 6 && this.uname.length < 18) {
@@ -85,6 +84,9 @@
                     return false;
                 }
 
+            },
+            goFunc(Routername) {
+                this.$router.push({name: Routername});
             }
         }
     }
@@ -111,8 +113,7 @@
                 height: 40px;
                 width: 60px;
                 color: #808080;
-                font-weight:bold;
-                /*background-color:rgba(255,255,255,.4);*/
+                font-weight: bold;
                 background-image: linear-gradient(to right, #fff, #55cac4);
                 position: absolute;
                 right: 20px;

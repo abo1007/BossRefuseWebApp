@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import login from "../components/login"
+import register from "../components/register";
 
 // 应聘者主页面
 import user from "../components/user/user"
@@ -61,6 +62,11 @@ const routes = [
         path: '/',
         name: 'login',
         component: login,
+    },
+    {
+        path: '/reg',
+        name: 'register',
+        component: register,
     },
     // 应聘者用户部分
     {
