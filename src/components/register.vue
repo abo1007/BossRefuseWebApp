@@ -82,7 +82,16 @@
                 this.$router.push({name: "login"});
             },
             registerUser(){
-
+                this.$axios.post().then(res => {
+                    console.log(res.data);
+                    if(res.data.code == 200){
+                        this.$toast.success("注册成功");
+                        this.$router.back();
+                    }
+                }).catch(err => {
+                    this.$toast.fail("网络开小差了。");
+                    console.log(err);
+                })
             }
         }
     }

@@ -86,7 +86,7 @@ const routes = [
     {path: '/user/home/offer/:cateid', name: 'user_overview', component: user_overview},
     {path: '/user/home/search', name: 'user_searchRes', component: user_searchRes},
     {path: '/user/home/workinfo/:workid', name: 'work_info', component: work_info},
-    {path: '/user/home/chat/:msgid', name: 'user_chat', component: user_chat},
+    {path: '/user/home/chat', name: 'user_chat', component: user_chat},
     {path: '/user/home/resume', name: 'user_resume', component: user_resume},
     {path: '/user/home/intention', name: 'intention', component: intention},
     {path: '/user/home/assistant', name: 'assistant', component: assistant},

@@ -118,7 +118,13 @@
                 })
             },
             goChat() {
-
+                this.$router.push({
+                    name: "user_chat", query: {
+                        workid: this.workInfoItem.workId,
+                        userid:this.$store.state.userId,
+                        comid:this.workInfoItem.workComId,
+                    }
+                })
             },
             sendResume() {
                 this.$dialog.confirm({

@@ -1,8 +1,10 @@
 <template>
     <div id="user-chat">
-        <bo-navbar :text="msgid" @left-fun="goback"/>
+        <bo-navbar :text="workId" @left-fun="goback"/>
         <h1>聊天界面</h1>
-        信息ID：{{msgid}}
+        <h2>UserID {{userId}}</h2>
+        <h2>ComID {{comId}}</h2>
+        <h2>workID {{workId}}</h2>
     </div>
 </template>
 
@@ -11,12 +13,15 @@
         name: "user_chat",
         data(){
           return{
-              msgid:this.$route.params.msgid
+              userId:this.$route.query.userid,
+              comId:this.$route.query.comid,
+              workId:this.$route.query.workid
+
           }
         },
         methods:{
             goback(){
-                this.$router.push({name:'user_msg'});
+                this.$router.back();
             }
         },
         created() {
@@ -26,5 +31,9 @@
 </script>
 
 <style lang="scss" scoped>
-
+#user-chat{
+    h2{
+        font-weight:200;
+    }
+}
 </style>
