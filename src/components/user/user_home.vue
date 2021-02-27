@@ -92,7 +92,9 @@
                         workArea: '杭州市 萧山区'
                     }
                 ],
-                nextUrl: ""
+                nextUrl: "",
+                // 限制快速点击
+                clickLimit:true
             }
         },
         methods: {
@@ -115,22 +117,29 @@
             },
             // 继续获取数据方法
             continueGetWorkFaceData() {
-                // 如果 next_page_url为null 停止
-                if (this.nextUrl == null) {
-                    this.$toast("没有更多了。。。");
-                    return false;
-                }
-                this.$axios.get(this.nextUrl).then(res => {
-                    if (res.data.code == 200) {
-                        for (let i = 0; i < res.data.data.data.length; i++) {
-                            this.workfaceData.push(res.data.data.data[i]);
-                        }
-                        this.nextUrl = res.data.data.next_page_url;
+                // 点击限制器 防止多次快速点击
+                if(this.clickLimit){
+                    this.clickLimit = false;
+                    // 如果 next_page_url为null 停止
+                    if (this.nextUrl == null) {
+                        this.$toast("没有更多了。。。");
+                        this.clickLimit = true;
+                        return false;
                     }
-                }).catch(err => {
-                    this.$toast.fail("网络开小差了。");
-                    console.log(err);
-                })
+                    this.$axios.get(this.nextUrl).then(res => {
+                        if (res.data.code == 200) {
+                            for (let i = 0; i < res.data.data.data.length; i++) {
+                                this.workfaceData.push(res.data.data.data[i]);
+                            }
+                            this.nextUrl = res.data.data.next_page_url;
+                            this.clickLimit = true;
+                        }
+                    }).catch(err => {
+                        this.$toast.fail("网络开小差了。");
+                        this.clickLimit = true;
+                        console.log(err);
+                    })
+                }
             }
         },
         components: {

@@ -6,10 +6,10 @@
                 <p>注册类型</p>
             </div>
             <div class="right">
-                <div class="user" @click="selType(1)" :style="btn_style1">
+                <div class="user" @click="selType(0)" :style="btn_style1">
                     <p>找工作</p>
                 </div>
-                <div class="com" @click="selType(2)" :style="btn_style2">
+                <div class="com" @click="selType(1)" :style="btn_style2">
                     <p>我要招聘</p>
                 </div>
             </div>
@@ -62,7 +62,7 @@
 
                 btn_style1: "border: 6px #FF6347 solid;",
                 btn_style2: "",
-                sel_btn: 1,
+                isCom: 1,
 
             }
         },
@@ -71,11 +71,11 @@
                 if (num === 1) {
                     this.btn_style1 = "border: 6px #FF6347 solid;";
                     this.btn_style2 = "";
-                    this.sel_btn = 1;
+                    this.isCom = 1;
                 } else {
                     this.btn_style1 = "";
                     this.btn_style2 = "border: 6px #00BFFF solid;";
-                    this.sel_btn = 2;
+                    this.isCom = 2;
                 }
             },
             goLogin() {

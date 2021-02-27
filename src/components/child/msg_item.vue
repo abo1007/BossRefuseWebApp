@@ -9,7 +9,7 @@
                 <span class="time">{{info.time}}</span>
             </div>
             <div class="content">
-                <p>{{info.content}}</p>
+                <p class="content-text">{{info.content}}</p>
                 <span class="msg-toast">{{info.count}}</span>
             </div>
         </div>
@@ -20,7 +20,6 @@
     export default {
         name: "msg_item",
         props:['info']
-
     }
 </script>
 
@@ -29,13 +28,14 @@
     margin:0;
     height:60px;
     display:flex;
-    padding:0 10px;
+    padding:0 20px 0 10px;
     border-top:#eee 1px solid;
     border-bottom:#eee 1px solid;
     .left{
-        flex:1;
+        width:20%;
         display:flex;
         align-items: center;
+        justify-content: center;
         .img{
             height:50px;
             width:50px;
@@ -45,7 +45,7 @@
         }
     }
     .right{
-        flex:4;
+        width:80%;
         padding:8px 0;
         display:flex;
         flex-direction:column;
@@ -69,6 +69,13 @@
             display:flex;
             justify-content: space-between;
             margin-top:3px;
+            .content-text{
+                max-width:90%;
+                text-align: left;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
             p{
                 margin:0;
                 font-size:14px;

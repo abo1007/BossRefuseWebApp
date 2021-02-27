@@ -110,7 +110,6 @@
                     if (res.data.code == 200) {
                         console.log(res.data);
                         this.workInfoItem = res.data.data;
-
                     }
                 }).catch(err => {
                     this.$toast.fail("网络开小差了。");
