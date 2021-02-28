@@ -94,7 +94,7 @@
                 ],
                 nextUrl: "",
                 // 限制快速点击
-                clickLimit:true
+                clickLimit: true
             }
         },
         methods: {
@@ -118,7 +118,7 @@
             // 继续获取数据方法
             continueGetWorkFaceData() {
                 // 点击限制器 防止多次快速点击
-                if(this.clickLimit){
+                if (this.clickLimit) {
                     this.clickLimit = false;
                     // 如果 next_page_url为null 停止
                     if (this.nextUrl == null) {
