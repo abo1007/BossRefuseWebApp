@@ -59,34 +59,42 @@
                 phonenum:"",
                 nickname:"",
 
-
                 btn_style1: "border: 6px #FF6347 solid;",
                 btn_style2: "",
                 isCom: 1,
-
             }
         },
         methods: {
             selType(num) {
-                if (num === 1) {
+                if (num === 0) {
                     this.btn_style1 = "border: 6px #FF6347 solid;";
                     this.btn_style2 = "";
-                    this.isCom = 1;
+                    this.isCom = 0;
                 } else {
                     this.btn_style1 = "";
                     this.btn_style2 = "border: 6px #00BFFF solid;";
-                    this.isCom = 2;
+                    this.isCom = 1;
                 }
             },
             goLogin() {
                 this.$router.push({name: "login"});
             },
             registerUser(){
-                this.$axios.post().then(res => {
-                    console.log(res.data);
-                    if(res.data.code == 200){
+                let regData = {
+                    username:this.username,
+                    password:this.password,
+                    sex:this.sex,
+                    phonenum:this.phonenum,
+                    nickname:this.nickname,
+                    isCom:this.isCom
+                };
+                this.$axios.post(this.$API.API_POST_REG_USER, regData).then(res => {
+                    // console.log(res.data.data);
+                    if(res.data.code === 200){
                         this.$toast.success("注册成功");
                         this.$router.back();
+                    }else if(res.data.code === 208){
+                        this.$toast.fail("用户名重复！");
                     }
                 }).catch(err => {
                     this.$toast.fail("网络开小差了。");

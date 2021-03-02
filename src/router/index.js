@@ -38,11 +38,11 @@ import homePage from "../components/view/homePage";
 import account from "../components/view/account";
 import privacy from "../components/view/privacy";
 import myInfo from "../components/view/myInfo";
+import activity1 from "../components/view/activity1";   // 活动页面1
 
 // 应聘者页面
 import intention from "../components/view/intention"; // 求职意向
 import assistant from "../components/view/assistant"; // 求职助手
-
 
 
 // 招聘者页面
@@ -124,6 +124,7 @@ const routes = [
     {path: '/account', name: 'account', component: account},
     {path: '/privacy', name: 'privacy', component: privacy},
     {path: '/myinfo', name: 'myinfo', component: myInfo},
+    {path: '/activity1', name: 'activity1', component: activity1},
 
     {
         path: '*',

@@ -41,7 +41,7 @@
             <van-grid-item icon="more-o" text="更多" @click="goTab('more',6)"/>
         </van-grid>
         <div class="banner">
-            <img src="../../assets/fupin.png" alt="">
+            <img src="../../assets/fupin.png" alt="" @click="goFunc('activity1')">
         </div>
         <p class="focus">
             您可能感兴趣的岗位
@@ -70,16 +70,34 @@
                 SearchValue: '',
                 workfaceData: [
                     {
-                        workId: 0, workTitle: '全栈工程师', workSalary: '1-2k', workTag: ['3-5年', '硕士研究生', 'Vue', 'Java'],
-                        workComName: '白嫖科技', workComScale: '0-9', workPublisher: '刘先生·人事', workArea: '南京市 鼓楼区'
+                        workId: 0,
+                        workTitle: '全栈工程师',
+                        workSalary: '1-2k',
+                        workTag: ['3-5年', '硕士研究生', 'Vue', 'Java'],
+                        workComName: '白嫖科技',
+                        workComScale: '0-9',
+                        workPublisher: '刘先生·人事',
+                        workArea: '南京市 鼓楼区'
                     },
                     {
-                        workId: 1, workTitle: '富士康普工', workSalary: '4-8K', workTag: ['经验不限', '学历不限', '五险', '包食宿'],
-                        workComName: '鸿海精密', workComScale: '10000+', workPublisher: '张先生·人事', workArea: '廊坊市 龙河'
+                        workId: 1,
+                        workTitle: '富士康普工',
+                        workSalary: '4-8K',
+                        workTag: ['经验不限', '学历不限', '五险', '包食宿'],
+                        workComName: '鸿海精密',
+                        workComScale: '10000+',
+                        workPublisher: '张先生·人事',
+                        workArea: '廊坊市 龙河'
                     },
                     {
-                        workId: 2, workTitle: 'PHP工程师', workSalary: '6-10K', workTag: ['1年以上', '大专', 'Laravel', '双休'],
-                        workComName: '智为科技', workComScale: '20-50', workPublisher: '杨先生·人事', workArea: '武汉市 江岸区'
+                        workId: 2,
+                        workTitle: 'PHP工程师',
+                        workSalary: '6-10K',
+                        workTag: ['1年以上', '大专', 'Laravel', '双休'],
+                        workComName: '智为科技',
+                        workComScale: '20-50',
+                        workPublisher: '杨先生·人事',
+                        workArea: '武汉市 江岸区'
                     },
                     {
                         workId: 3,
@@ -103,6 +121,9 @@
             },
             goTab(name, cateid) {
                 this.$router.push({name: 'user_category', query: {name: name, cateid: cateid}});
+            },
+            goFunc(Routername) {
+                this.$router.push({name: Routername});
             },
             getWorkFaceData() {
                 this.$axios.get(this.$API.API_GET_WORKFACE).then(res => {

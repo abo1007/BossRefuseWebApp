@@ -58,29 +58,28 @@
                             // console.log(res);
                             switch (res.data.code) {
                                 case 200:
-                                    this.$toast("登录成功，欢迎 " + this.uname);
+                                    this.$toast.success("登录成功，欢迎 " + this.uname);
                                     return true;
                                     break;
                                 case 301:
-                                    this.$toast("用户名不存在");
+                                    this.$toast.fail("用户名不存在");
                                     return false;
                                     break;
                                 case 302:
-                                    this.$toast("密码不正确");
+                                    this.$toast.fail("密码不正确");
                                     return true;
                                     break;
                             }
                         }).catch(err => {
                             console.log(err);
                         });
-                        this.$toast("登录成功，欢迎 " + this.uname);
                         return true;
                     } else {
-                        this.$toast("密码校验错误");
+                        this.$toast.fail("密码校验错误");
                         return false;
                     }
                 } else {
-                    this.$toast("用户名校验错误");
+                    this.$toast.fail("用户名校验错误");
                     return false;
                 }
 

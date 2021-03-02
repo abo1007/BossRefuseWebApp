@@ -20,6 +20,8 @@ export default {
     API_POST_LOGIN: A1 + "user/login",
     // 免登录验证
     API_POST_LOGIN_FREE: A1 + "user/loginfree",
+    // 注册用户
+    API_POST_REG_USER: A1 + "user",
 
 
     // 拒绝 沟通中 待面试 录用 收藏数量信息
