@@ -22,6 +22,8 @@ export default {
     API_POST_LOGIN_FREE: A1 + "user/loginfree",
     // 注册用户
     API_POST_REG_USER: A1 + "user",
+    // 获得昵称
+    API_GET_NICKNAME:A1 + "user/getnickname/",
 
 
     // 拒绝 沟通中 待面试 录用 收藏数量信息

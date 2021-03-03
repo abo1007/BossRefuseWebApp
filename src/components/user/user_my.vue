@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="right">
-                <p class="username">老杨同志Abo</p>
+                <p class="username">{{nickname}}</p>
                 <p class="level">一切的伟大，源自一个勇敢的开始</p>
             </div>
         </div>
@@ -146,7 +146,8 @@
                 userData:{
                     chat:0,interview:0,offer:0,refuse:0,stat:0
                 },
-                strWindow:true
+                strWindow:true,
+                nickname:"****"
             }
         },
         methods:{
@@ -175,12 +176,25 @@
                     this.userData.offer = res.data.data[3];
                     this.userData.refuse = res.data.data[4];
                 }).catch(err => {
+                    this.$toast.fail("网络开小差了。");
+                    console.log(err);
+                })
+            },
+            getNickname(){
+                this.$axios.get(this.$API.API_GET_NICKNAME+this.$store.state.userId).then(res => {
+                    console.log(res.data);
+                    if(res.data.code == 200){
+                        this.nickname = res.data.data.nickname;
+                    }
+                }).catch(err => {
+                    this.$toast.fail("网络开小差了。");
                     console.log(err);
                 })
             }
         },
         created() {
             this.postOfferData();
+            this.getNickname();
         }
     }
 </script>

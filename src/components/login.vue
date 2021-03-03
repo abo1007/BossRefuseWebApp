@@ -55,10 +55,17 @@
                         this.$axios.post(this.$API.API_POST_LOGIN, {
                             username: this.uname, password: this.upass, mode: mode
                         }).then((res) => {
-                            // console.log(res);
+                            console.log(res);
                             switch (res.data.code) {
                                 case 200:
                                     this.$toast.success("登录成功，欢迎 " + this.uname);
+
+                                    if(mode){
+                                        this.$store.commit('updateUserId',res.data.data.id);
+                                    }else{
+                                        this.$store.commit('updateComId',res.data.data.id);
+                                    }
+
                                     return true;
                                     break;
                                 case 301:
