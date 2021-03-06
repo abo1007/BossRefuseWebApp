@@ -140,7 +140,7 @@
                 this.strWindow = !this.strWindow;
             },
             gofunc(Routername) {
-                this.$router.push({name: Routername, params: {from: 'com'}});
+                this.$router.push({name: Routername, query: {from: 'com'}});
             },
             goOverview(cateid) {
                 this.$router.push({name: 'com_overview', params: {cateid: cateid}});

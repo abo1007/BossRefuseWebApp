@@ -20,10 +20,10 @@
         </div>
         <div class="bot">
             <van-button type="primary" round size="large" color="linear-gradient(to right, #40E0D0, #7FFFAA)"
-                        @click="goUser">用户登录
+                        @click="goLogin(0)">用户登录
             </van-button>
             <van-button type="info" round size="large" color="linear-gradient(to right, #4bb0ff, #6149f6)"
-                        @click="goCom">企业登录
+                        @click="goLogin(1)">企业登录
             </van-button>
         </div>
     </div>
@@ -60,13 +60,14 @@
                                 case 200:
                                     this.$toast.success("登录成功，欢迎 " + this.uname);
 
-                                    if(mode){
+                                    if(mode === 0){
                                         this.$store.commit('updateUserId',res.data.data.id);
-                                    }else{
+                                        this.$router.push("/user");
+                                    }else if (mode === 1){
                                         this.$store.commit('updateComId',res.data.data.id);
+                                        this.$router.push("/com");
                                     }
 
-                                    return true;
                                     break;
                                 case 301:
                                     this.$toast.fail("用户名不存在");
@@ -74,13 +75,13 @@
                                     break;
                                 case 302:
                                     this.$toast.fail("密码不正确");
-                                    return true;
+                                    return false;
                                     break;
                             }
                         }).catch(err => {
+                            this.$toast.fail("网络开小差了。")
                             console.log(err);
                         });
-                        return true;
                     } else {
                         this.$toast.fail("密码校验错误");
                         return false;

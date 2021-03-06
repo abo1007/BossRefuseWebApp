@@ -58,6 +58,25 @@
                 this.$router.back();
             },
             getUserData() {
+                let id = null;
+                if(this.$route.query.from == "com"){
+                    id = this.$store.state.comUserId;
+                }else{
+                    id = this.$store.state.userId;
+                }
+
+                this.$axios.get(this.$API.API_GET_USER_DATA + id).then(res => {
+                    if (res.data.code == 200) {
+                        this.userData = res.data.data;
+                        this.userData.sex = this.userData.sex.toString();
+                        this.userData.type = res.data.data.isCom == 1 ? "企业" : "个人";
+                    }
+                }).catch(err => {
+                    this.$toast.fail("网络开小差了。");
+                    console.log(err);
+                })
+            },
+            postUserData(){
 
             }
         },

@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     currentPosition:'user',
     msgNum:3,
-    userId:10001,
+    userId:null,
     candId:10000,
     comUserId:10000,
     comName:"人事·老王"
