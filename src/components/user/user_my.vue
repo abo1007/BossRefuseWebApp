@@ -181,7 +181,7 @@
                 })
             },
             getNickname(){
-                this.$axios.get(this.$API.API_GET_NICKNAME+this.$store.state.userId).then(res => {
+                this.$axios.get(this.$API.API_GET_NICKNAME+this.getID()).then(res => {
                     console.log(res.data);
                     if(res.data.code == 200){
                         this.nickname = res.data.data.nickname;
@@ -190,6 +190,9 @@
                     this.$toast.fail("网络开小差了。");
                     console.log(err);
                 })
+            },
+            getID(){
+                return window.sessionStorage.getItem("ID");
             }
         },
         created() {

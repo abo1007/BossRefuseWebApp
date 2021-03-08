@@ -84,6 +84,9 @@ Vue.prototype.$dialog = Dialog;
 import BoNavbar from "./components/child/bo_navbar";
 Vue.use(BoNavbar);
 
+import toolUtil from "./util/toolUtil";
+Vue.prototype.$ID = toolUtil.getID();
+
 new Vue({
   router,
   store,

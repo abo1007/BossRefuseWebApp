@@ -40,6 +40,7 @@
                 this.$router.push({ name:Routername });
             },
             goOut(){
+                window.sessionStorage.clear();
                 this.$router.push("/");
             },
             onInput(privatemode) {

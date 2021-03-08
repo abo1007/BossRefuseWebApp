@@ -9,7 +9,9 @@ export default new Vuex.Store({
     msgNum:3,
     userId:null,
     candId:10000,
-    comUserId:10000,
+    comUserId:null,
+    // 当前用户登录ID
+    ID:null,
     comName:"人事·老王"
   },
   mutations: {
@@ -24,9 +26,11 @@ export default new Vuex.Store({
     // 登录后存储用户id
     updateUserId(state, position){
       state.userId = position;
+      state.ID = position;
     },
     updateComId(state, position){
       state.comUserId = position;
+      state.ID = position;
     },
   },
   getters:{

@@ -26,6 +26,8 @@ export default {
     API_GET_NICKNAME:A1 + "user/getnickname/",
     // 获得用户数据
     API_GET_USER_DATA:A1 + "user/",
+    // 修改用户数据
+    API_PUT_USER_DATA:A1 + "user/",
 
 
     // 拒绝 沟通中 待面试 录用 收藏数量信息

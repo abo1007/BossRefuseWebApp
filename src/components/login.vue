@@ -60,14 +60,25 @@
                                 case 200:
                                     this.$toast.success("登录成功，欢迎 " + this.uname);
 
-                                    if(mode === 0){
-                                        this.$store.commit('updateUserId',res.data.data.id);
-                                        this.$router.push("/user");
-                                    }else if (mode === 1){
-                                        this.$store.commit('updateComId',res.data.data.id);
-                                        this.$router.push("/com");
-                                    }
+                                    if (mode === 0) {
 
+                                        new Promise((resolve, reject) => {
+                                            window.sessionStorage.setItem("ID",res.data.data.id);
+                                            resolve("");
+                                        }).then(value => {
+                                            this.$router.push("/user");
+                                        });
+
+                                    } else if (mode === 1) {
+                                        new Promise((resolve, reject) => {
+                                            window.sessionStorage.setItem("ID",res.data.data.id);
+                                            resolve("");
+                                        }).then(value => {
+                                            this.$router.push("/com");
+                                        });
+
+                                    }
+                                    window.sessionStorage.setItem("login_token", res.data.data.token);
                                     break;
                                 case 301:
                                     this.$toast.fail("用户名不存在");
@@ -79,7 +90,7 @@
                                     break;
                             }
                         }).catch(err => {
-                            this.$toast.fail("网络开小差了。")
+                            this.$toast.fail("网络开小差了。");
                             console.log(err);
                         });
                     } else {
@@ -94,6 +105,9 @@
             },
             goFunc(Routername) {
                 this.$router.push({name: Routername});
+            },
+            setcook() {
+
             }
         }
     }

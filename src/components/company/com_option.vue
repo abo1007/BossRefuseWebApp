@@ -37,6 +37,7 @@
                 this.$router.push("/com/my");
             },
             goOut(){
+                window.sessionStorage.clear();
                 this.$router.push("/");
             },
             onInput(privatemode) {

@@ -32,7 +32,7 @@
                    label="注册时间" disabled/>
 
         <div class="bottom">
-            <button class="push_btn" @click="">点击保存</button>
+            <button class="push_btn" @click="postUserData">点击保存</button>
         </div>
     </div>
 </template>
@@ -50,7 +50,8 @@
                     nickname: "来去之间",
                     type: "个人",
                     regtime: "2000-10-7 00:00:00"
-                }
+                },
+                ID:null
             }
         },
         methods: {
@@ -58,14 +59,7 @@
                 this.$router.back();
             },
             getUserData() {
-                let id = null;
-                if(this.$route.query.from == "com"){
-                    id = this.$store.state.comUserId;
-                }else{
-                    id = this.$store.state.userId;
-                }
-
-                this.$axios.get(this.$API.API_GET_USER_DATA + id).then(res => {
+                this.$axios.get(this.$API.API_GET_USER_DATA + this.$ID).then(res => {
                     if (res.data.code == 200) {
                         this.userData = res.data.data;
                         this.userData.sex = this.userData.sex.toString();
@@ -77,7 +71,23 @@
                 })
             },
             postUserData(){
-
+                let data = {
+                    phonenum:this.userData.phonenum,
+                    sex:this.userData.sex,
+                    nickname:this.userData.nickname
+                };
+                this.$axios.put(this.$API.API_PUT_USER_DATA + this.$ID, data).then(res => {
+                    if (res.data.code == 200) {
+                        this.$toast.success("修改成功");
+                        location.reload();
+                    }else if(res.data.code == 208){
+                        this.$toast.fail("修改失败");
+                    }
+                    location.reload();
+                }).catch(err => {
+                    this.$toast.fail("网络开小差了。");
+                    console.log(err);
+                })
             }
         },
         created() {

@@ -22,16 +22,10 @@
             }
         },
         methods:{
-            checkUser(){
-                if(this.$store.state.userId == null){
-                    this.$toast.fail("未登录！");
-                    this.$router.push("/");
-                }
-            }
+
         },
         created() {
             this.$store.commit("updatePosition","user");
-            this.checkUser();
         }
     }
 </script>
