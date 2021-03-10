@@ -30,8 +30,8 @@
                 this.$router.push("/user/my");
             },
             postOfferCateData() {
-                this.$axios.get(this.$API.API_POST_OFFER_CATEDATA + "10001" + "/" + this.$route.params.cateid).then(res => {
-                    console.log(res.data);
+                this.$axios.get(this.$API.API_POST_OFFER_CATEDATA + this.$ID + "/" + this.$route.params.cateid).then(res => {
+                    // console.log(res.data);
                     if(res.data.code === 200){
                         this.offerData = res.data.data;
                     }

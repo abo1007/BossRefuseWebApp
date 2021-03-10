@@ -89,13 +89,15 @@
 </template>
 
 <script>
+    import toolUtil from "../../util/toolUtil";
     export default {
         name: "work_info",
         data() {
             return {
                 tag: ['本科', '1-3年', 'PHP', 'Laravel', 'ThinkPHP'],
                 workInfoItem: {},
-                id: this.$route.params.workid
+                id: this.$route.params.workid,
+                candId:null
             }
         },
         methods: {
@@ -110,6 +112,7 @@
                     if (res.data.code == 200) {
                         console.log(res.data);
                         this.workInfoItem = res.data.data;
+                        console.log(this.workInfoItem);
                     }
                 }).catch(err => {
                     this.$toast.fail("网络开小差了。");
@@ -120,7 +123,7 @@
                 this.$router.push({
                     name: "user_chat", query: {
                         workid: this.workInfoItem.workId,
-                        userid:this.$store.state.userId,
+                        userid:this.$ID,
                         comid:this.workInfoItem.workComId,
                     }
                 })
@@ -135,14 +138,18 @@
                     cancelButtonColor: '#55cac4'
 
                 }).then(() => {
+                    if(this.candId == null){
+                        this.$toast.fail("还没有创建简历！")
+                        return false;
+                    }
                     this.$toast("你牛逼，简历已投递");
                     let data = {
-                        userId: this.$store.state.userId,
+                        userId: this.$ID,
                         workComId: this.workInfoItem.workComId,
-                        candId: this.$store.state.userId,
+                        candId: this.$ID,
                         workId: this.workInfoItem.workId,
-                        // editorId: this.workInfoItem.workPublisher
-                        editorId: 10000
+                        editorId: this.workInfoItem.workPublisherId
+                        // editorId: 10000
 
                     };
                     console.log(data);
@@ -165,9 +172,15 @@
                 }).catch(() => {
                     this.$toast.success("听人劝 吃饱饭")
                 });
+            },
+            getCandID(){
+                toolUtil.getCandID(this.$ID,value => {
+                    this.candId = value;
+                });
             }
         },
         created() {
+            this.getCandID();
             this.getWorkInfo();
         }
     }

@@ -36,7 +36,7 @@
         </transition>
 
         <div class="userinfo" @click="InfoMore">
-            <van-icon name="ellipsis" color="#fff" size="30" />
+            <van-icon name="ellipsis" color="#fff" size="30"/>
         </div>
         <div class="content1">
             <div class="item" @click="gofunc('assistant')">
@@ -49,7 +49,7 @@
                     <van-icon name="arrow" class="icon2"/>
                 </span>
             </div>
-            <div class="item"  @click="gofunc('user_resume')">
+            <div class="item" @click="gofunc('user_resume')">
                 <span>
                     <van-icon name="todo-list-o" size="26px" class="icon"/>
                     个人简历
@@ -141,16 +141,16 @@
 <script>
     export default {
         name: "login-my",
-        data(){
-            return{
-                userData:{
-                    chat:0,interview:0,offer:0,refuse:0,stat:0
+        data() {
+            return {
+                userData: {
+                    chat: 0, interview: 0, offer: 0, refuse: 0, stat: 0
                 },
-                strWindow:true,
-                nickname:"****"
+                strWindow: true,
+                nickname: "****"
             }
         },
-        methods:{
+        methods: {
             goback() {
                 this.$router.push('../')
             },
@@ -164,12 +164,13 @@
                 this.$router.push({name: Routername, params: {from: 'user'}});
             },
             goOverview(cateid) {
-                this.$router.push({name: 'user_overview', params: {cateid:cateid}})
+                this.$router.push({name: 'user_overview', params: {cateid: cateid}})
             },
             postOfferData() {
-                this.$axios.post(this.$API.API_POST_OFFER_COUNT,{
-                    uid: 10001, type: 0
+                this.$axios.post(this.$API.API_POST_OFFER_COUNT, {
+                    uid: this.$ID, type: 0
                 }).then(res => {
+                    // console.log(res)
                     this.userData.star = res.data.data[0];
                     this.userData.chat = res.data.data[1];
                     this.userData.interview = res.data.data[2];
@@ -180,146 +181,164 @@
                     console.log(err);
                 })
             },
-            getNickname(){
-                this.$axios.get(this.$API.API_GET_NICKNAME+this.getID()).then(res => {
-                    console.log(res.data);
-                    if(res.data.code == 200){
+            getNickname() {
+                this.$axios.get(this.$API.API_GET_NICKNAME + this.$ID).then(res => {
+                    // console.log(res)
+                    if (res.data.code == 200) {
                         this.nickname = res.data.data.nickname;
                     }
                 }).catch(err => {
                     this.$toast.fail("网络开小差了。");
                     console.log(err);
                 })
-            },
-            getID(){
-                return window.sessionStorage.getItem("ID");
             }
         },
         created() {
-            this.postOfferData();
             this.getNickname();
+            this.postOfferData();
         }
     }
 </script>
 
 <style lang="scss" scoped>
-#user-my{
-    .header{
-        height:40px;
-        width:100%;
-        background-color:#55cac4;
-        display:flex;
-        align-items:center;
-        .icon{
-            position:absolute;
-            right:10px;
+    #user-my {
+        .header {
+            height: 40px;
+            width: 100%;
+            background-color: #55cac4;
+            display: flex;
+            align-items: center;
+
+            .icon {
+                position: absolute;
+                right: 10px;
+            }
         }
-    }
-    .user{
-        height:100px;
-        background-color:#55cac4;
-        display:flex;
-        padding:20px;
-        z-index:99;
-        .left{
-            flex:3;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            .img{
-                height:80px;
-                width:80px;
-                background-color: #fff;
-                border:1px solid #fff;
-                img{
-                    width:100%;
-                    height:100%;
+
+        .user {
+            height: 100px;
+            background-color: #55cac4;
+            display: flex;
+            padding: 20px;
+            z-index: 99;
+
+            .left {
+                flex: 3;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .img {
+                    height: 80px;
+                    width: 80px;
+                    background-color: #fff;
+                    border: 1px solid #fff;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+
+            .right {
+                flex: 7;
+                color: #fff;
+
+                .username {
+                    margin-top: 20px;
+                    margin-bottom: 0;
+                    font-size: 1.2em;
+                }
+
+                .level {
+                    margin: 5px 0 0 0;
                 }
             }
         }
-        .right{
-            flex:7;
-            color:#fff;
-            .username{
-                margin-top:20px;
-                margin-bottom:0;
-                font-size:1.2em;
-            }
-            .level{
-                margin:5px 0 0 0;
-            }
-        }
-    }
-    .userdata{
-        height:80px;
-        background-color:#55cac4;
-        display:flex;
-        padding:0 10px;
-        z-index:0;
-        .view{
-            flex:1;
-            display:flex;
-            /*text-align:center;*/
-            align-items:center;
-            flex-direction:column;
-            padding:20px 0;
 
-            p{
-                margin:0;
-                font-family: 微软雅黑;
-                color:#fff;
+        .userdata {
+            height: 80px;
+            background-color: #55cac4;
+            display: flex;
+            padding: 0 10px;
+            z-index: 0;
+
+            .view {
+                flex: 1;
+                display: flex;
+                /*text-align:center;*/
+                align-items: center;
+                flex-direction: column;
+                padding: 20px 0;
+
+                p {
+                    margin: 0;
+                    font-family: 微软雅黑;
+                    color: #fff;
+                }
+
+                .num {
+                    font-size: 18px;
+                    font-weight: 800;
+                }
+
+                .name {
+                    font-size: 14px;
+                }
             }
-            .num{
-                font-size:18px;
-                font-weight:800;
-            }
-            .name{
-                font-size:14px;
-            }
+
         }
 
-    }
-    .userinfo{
-        position: relative;
-        height:30px;
-        background-color:#55cac4;
-        display:flex;
-        justify-content:center;
-    }
-    .content1{
-        border-bottom:1px solid #cccccc;
-        margin:0 15px;
-        .item{
-            height:55px;
-            margin:0;
-            display:flex;
-            justify-content:space-between;
-            font-size:15px;
-            span{
-                display:flex;
-                align-items:center;
-            }
-            span:nth-child(2){
-                color:#808080;
-            }
-            .icon,.icon2{
-                margin:0 15px;
+        .userinfo {
+            position: relative;
+            height: 30px;
+            background-color: #55cac4;
+            display: flex;
+            justify-content: center;
+        }
+
+        .content1 {
+            border-bottom: 1px solid #cccccc;
+            margin: 0 15px;
+
+            .item {
+                height: 55px;
+                margin: 0;
+                display: flex;
+                justify-content: space-between;
+                font-size: 15px;
+
+                span {
+                    display: flex;
+                    align-items: center;
+                }
+
+                span:nth-child(2) {
+                    color: #808080;
+                }
+
+                .icon, .icon2 {
+                    margin: 0 15px;
+                }
             }
         }
-    }
-    .content2{
-        border-bottom:0;
-    }
 
-    .fade-leave-active ,.fade-enter-active{
-        transition:max-height 0.6s;
-    }
-    .fade-enter, .fade-leave-to {
-        max-height:0px;
-    }
-    .fade-enter-to, .fade-leave{
-        max-height:100px;
-    }
+        .content2 {
+            border-bottom: 0;
+        }
 
-}
+        .fade-leave-active, .fade-enter-active {
+            transition: max-height 0.6s;
+        }
+
+        .fade-enter, .fade-leave-to {
+            max-height: 0px;
+        }
+
+        .fade-enter-to, .fade-leave {
+            max-height: 100px;
+        }
+
+    }
 </style>

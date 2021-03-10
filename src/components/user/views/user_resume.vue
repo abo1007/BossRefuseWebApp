@@ -202,7 +202,7 @@
                 }
             },
             getResumeData() {    // 获取简历
-                this.$axios.get(this.$API.API_GET_RESUME + "10001").then(res => {
+                this.$axios.get(this.$API.API_GET_RESUME + this.$ID).then(res => {
                     // console.log(res.data);
                     if(res.data.code === 200){
                         resumeData = res.data.data;
@@ -231,7 +231,7 @@
                     updateData.expect = expect;
                 }
 
-                this.$axios.put(this.$API.API_PUT_RESUME + "10001",updateData).then(res => {
+                this.$axios.put(this.$API.API_PUT_RESUME + this.$ID,updateData).then(res => {
                     if(res.data.code === 200){
                         this.$toast("保存成功");
                         this.$router.push({name:"user_my"})

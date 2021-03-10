@@ -46,6 +46,8 @@ export default {
     API_POST_RESUME: A1 + "resume",
     // 更新简历数据
     API_PUT_RESUME: A1 + "resume/",
+    // 通过用户ID查找简历ID
+    API_GET_RESUME_ID:A1+"resume/getresumeid/",
 
     // 录入招聘信息
     API_POST_WORK_DATA: A1 + "workface",
