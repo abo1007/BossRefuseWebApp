@@ -147,7 +147,8 @@
                     chat: 0, interview: 0, offer: 0, refuse: 0, stat: 0
                 },
                 strWindow: true,
-                nickname: "****"
+                nickname: "****",
+                ID:this.$ID
             }
         },
         methods: {
@@ -182,7 +183,7 @@
                 })
             },
             getNickname() {
-                this.$axios.get(this.$API.API_GET_NICKNAME + this.$ID).then(res => {
+                this.$axios.get(this.$API.API_GET_NICKNAME + this.ID).then(res => {
                     // console.log(res)
                     if (res.data.code == 200) {
                         this.nickname = res.data.data.nickname;

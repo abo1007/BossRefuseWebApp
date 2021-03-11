@@ -5,8 +5,7 @@
                 shape="round"
                 show-action
                 background="#55cac4"
-                placeholder="看看大家都在关注些什么"
-        >
+                placeholder="看看大家都在关注些什么">
             <template #action>
                 <div class="icon1">
                     <van-icon name="search" @click="onSearch" size="34" color="#fff"/>
@@ -34,16 +33,13 @@ import user_work from "./user_work";
                     {title: '测试', cateid: 105}, {title: '全栈', cateid: 106}
                 ],
                 tabsMsg:[
-                    [
-
-                    ]
-
+                    []
                 ]
             }
         },
         methods:{
             onSearch(){
-                this.$toast('还没做呢亲!')
+                this.$router.push({name: 'user_searchRes', query: {value: this.SearchValue}})
             },
             getTabsData(){
                 let arr = [];

@@ -224,7 +224,7 @@
                 border: none;
                 background-color: #55cac4;
                 color: #fff;
-                margin: 0 5px;
+                margin: 0 8px;
             }
 
             .add {

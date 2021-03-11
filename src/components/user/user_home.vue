@@ -5,8 +5,7 @@
                 shape="round"
                 show-action
                 background="#55cac4"
-                placeholder="Java工程师"
-        >
+                placeholder="Java工程师">
             <template #action>
                 <div class="icon1">
                     <van-icon name="search" @click="onSearch" size="34" color="#fff"/>
@@ -25,9 +24,6 @@
             </van-swipe-item>
         </van-swipe>
 
-        <!--        <div class="s-banner">-->
-        <!--            <img src="../../assets/slide3.png" alt="">-->
-        <!--        </div>-->
         <van-notice-bar
                 left-icon="volume-o"
                 text="巴里阿阿集团的宗旨是让世界没有好做的生意"

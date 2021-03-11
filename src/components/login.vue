@@ -20,10 +20,10 @@
         </div>
         <div class="bot">
             <van-button type="primary" round size="large" color="linear-gradient(to right, #40E0D0, #7FFFAA)"
-                        @click="goLogin(0)">用户登录
+                        @click="checkUserPass(0)">用户登录
             </van-button>
             <van-button type="info" round size="large" color="linear-gradient(to right, #4bb0ff, #6149f6)"
-                        @click="goLogin(1)">企业登录
+                        @click="checkUserPass(1)">企业登录
             </van-button>
         </div>
     </div>
@@ -39,60 +39,10 @@
             }
         },
         methods: {
-            goUser() {
-                if (this.goLogin(0)) {
-                    this.$router.push('/user');
-                }
-            },
-            goCom() {
-                if (this.goLogin(1)) {
-                    this.$router.push('/com');
-                }
-            },
-            goLogin(mode) {
+            checkUserPass(mode) {
                 if (this.uname && this.uname.length >= 6 && this.uname.length < 18) {
                     if (this.upass && this.upass.length >= 6 && this.upass.length < 26) {
-                        this.$axios.post(this.$API.API_POST_LOGIN, {
-                            username: this.uname, password: this.upass, mode: mode
-                        }).then((res) => {
-                            console.log(res);
-                            switch (res.data.code) {
-                                case 200:
-                                    this.$toast.success("登录成功，欢迎 " + this.uname);
-
-                                    if (mode === 0) {
-
-                                        new Promise((resolve, reject) => {
-                                            window.sessionStorage.setItem("ID",res.data.data.id);
-                                            resolve("");
-                                        }).then(value => {
-                                            this.$router.push("/user");
-                                        });
-
-                                    } else if (mode === 1) {
-                                        new Promise((resolve, reject) => {
-                                            window.sessionStorage.setItem("ID",res.data.data.id);
-                                            resolve("");
-                                        }).then(value => {
-                                            this.$router.push("/com");
-                                        });
-
-                                    }
-                                    window.sessionStorage.setItem("login_token", res.data.data.token);
-                                    break;
-                                case 301:
-                                    this.$toast.fail("用户名不存在");
-                                    return false;
-                                    break;
-                                case 302:
-                                    this.$toast.fail("密码不正确");
-                                    return false;
-                                    break;
-                            }
-                        }).catch(err => {
-                            this.$toast.fail("网络开小差了。");
-                            console.log(err);
-                        });
+                        this.goLogin(mode);
                     } else {
                         this.$toast.fail("密码校验错误");
                         return false;
@@ -101,13 +51,47 @@
                     this.$toast.fail("用户名校验错误");
                     return false;
                 }
+            }
+            ,
+            goLogin(mode) {
 
+                this.$axios.post(this.$API.API_POST_LOGIN, {
+                    username: this.uname, password: this.upass, mode: mode
+                }).then((res) => {
+                    // console.log(res);
+                    switch (res.data.code) {
+                        case 200:
+                            this.$toast.success("登录成功，欢迎 " + this.uname);
+
+                            new Promise((resolve, reject) => {
+                                window.sessionStorage.setItem("ID", res.data.data.id);
+                                resolve("");
+                            }).then(value => {
+                                if (mode == 0) {
+                                    this.$router.push("/user");
+
+                                } else if (mode == 1) {
+                                    this.$router.push("/com");
+                                }
+                            });
+                            window.sessionStorage.setItem("login_token", res.data.data.token);
+                            break;
+                        case 301:
+                            this.$toast.fail("用户名不存在");
+                            return false;
+                            break;
+                        case 302:
+                            this.$toast.fail("密码不正确");
+                            return false;
+                            break;
+                    }
+                }).catch(err => {
+                    this.$toast.fail("网络开小差了。");
+                    console.log(err);
+                });
             },
             goFunc(Routername) {
                 this.$router.push({name: Routername});
-            },
-            setcook() {
-
             }
         }
     }
@@ -172,10 +156,7 @@
                     font-size: 16px;
                     text-align: center;
                 }
-
             }
-
-
         }
 
         .bot {
