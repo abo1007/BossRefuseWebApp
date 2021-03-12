@@ -10,11 +10,13 @@
                        placeholder="Username"
                        v-model="uname"
                 />
+                <span class="del d1" @click="uname=''">×</span>
                 <input type="password"
                        name="pass"
                        placeholder="Password"
                        v-model="upass"
                 />
+                <span class="del d2" @click="upass=''">×</span>
             </div>
 
         </div>
@@ -65,6 +67,7 @@
 
                             new Promise((resolve, reject) => {
                                 window.sessionStorage.setItem("ID", res.data.data.id);
+                                window.sessionStorage.setItem("nickname", res.data.data.nickname);
                                 resolve("");
                             }).then(value => {
                                 if (mode == 0) {
@@ -147,6 +150,7 @@
                 background-color: rgba(0, 0, 0, .1);
                 border-radius: 10px;
                 padding: 5px;
+                position: relative;
 
                 input {
                     width: 95%;
@@ -156,6 +160,20 @@
                     font-size: 16px;
                     text-align: center;
                 }
+
+                .del{
+                    font-size:40px;
+                    position: absolute;
+                    color:rgba(0, 0, 0, .1);
+                    right:13px;
+                }
+                .d1{
+                    top:10px;
+                }
+                .d2{
+                    top:60px;
+                }
+
             }
         }
 
@@ -172,7 +190,7 @@
         }
 
         input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-            -webkit-text-fill-color: #ededed !important;
+            -webkit-text-fill-color: #000000 !important;
             -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
             background-color: transparent;
             background-image: none;

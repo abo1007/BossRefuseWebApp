@@ -154,7 +154,8 @@ router.beforeEach((to, from, next)=>{
         next();
     }else{
         // 如果没有session ,访问任何页面。都会进入到 登录页
-        if (to.path === '/') { // 如果是登录页面的话，直接next() -->解决注销后的循环执行bug
+        // 如果是登录或注册页面的话，直接next() -->解决注销后的循环执行bug
+        if (to.path === '/' || to.path === '/reg') {
             next();
         } else { // 否则 跳转到登录页面
             console.log("未登录");

@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="right">
-                <p class="username">人事·老王</p>
+                <p class="username">{{nickname}}</p>
                 <p class="level">招聘旺季，请各位应聘者排队面试</p>
             </div>
         </div>
@@ -126,7 +126,8 @@
                 comData: {
                     chat: 0, interview: 0, offer: 0, refuse: 0, star: 0
                 },
-                strWindow: true
+                strWindow: true,
+                nickname:"人事·老王"
             }
         },
         methods: {
@@ -157,9 +158,22 @@
                 }).catch(err => {
                     console.log(err);
                 })
+            },
+            getNickname() {
+                this.nickname = sessionStorage.getItem("nickname");
+                // this.$axios.get(this.$API.API_GET_NICKNAME + this.$ID).then(res => {
+                //     // console.log(res)
+                //     if (res.data.code == 200) {
+                //         this.nickname = res.data.data.nickname;
+                //     }
+                // }).catch(err => {
+                //     this.$toast.fail("网络开小差了。");
+                //     console.log(err);
+                // })
             }
         },
         created() {
+            this.getNickname();
             this.postOfferData();
         }
     }

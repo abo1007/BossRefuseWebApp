@@ -183,20 +183,24 @@
                 })
             },
             getNickname() {
-                this.$axios.get(this.$API.API_GET_NICKNAME + this.ID).then(res => {
-                    // console.log(res)
-                    if (res.data.code == 200) {
-                        this.nickname = res.data.data.nickname;
-                    }
-                }).catch(err => {
-                    this.$toast.fail("网络开小差了。");
-                    console.log(err);
-                })
+                this.nickname = sessionStorage.getItem("nickname");
+                // this.$axios.get(this.$API.API_GET_NICKNAME + this.ID).then(res => {
+                //     // console.log(res)
+                //     if (res.data.code == 200) {
+                //         this.nickname1 = res.data.data.nickname;
+                //     }
+                // }).catch(err => {
+                //     this.$toast.fail("网络开小差了。");
+                //     console.log(err);
+                // })
             }
         },
         created() {
             this.getNickname();
             this.postOfferData();
+        },
+        beforeDestroy() {
+
         }
     }
 </script>

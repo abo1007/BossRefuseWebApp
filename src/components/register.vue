@@ -15,29 +15,29 @@
             </div>
         </div>
         <div class="cen">
-            <van-field v-model="username"
+            <van-field v-model="regData.username"
                        label="用户名"
-                       placeholder="请输入用户名 6-11位"
+                       placeholder="请输入用户名 6-12位"
                        maxlength="11"/>
-            <van-field v-model="password"
+            <van-field v-model="regData.password"
                        type="password"
                        label="密码"
                        placeholder="请输入密码 8-26位"
                        maxlength="26"/>
             <van-field name="radio" label="性别">
                 <template #input>
-                    <van-radio-group v-model="sex" direction="horizontal">
+                    <van-radio-group v-model="regData.sex" direction="horizontal">
                         <van-radio name="0">男</van-radio>
                         <van-radio name="1">女</van-radio>
                     </van-radio-group>
                 </template>
             </van-field>
-            <van-field v-model="phonenum"
+            <van-field v-model="regData.phonenum"
                        type="digit"
                        label="手机号码"
                        placeholder="请输入11位手机号码"
                        maxlength="11"/>
-            <van-field v-model="nickname"
+            <van-field v-model="regData.nickname"
                        label="昵称"
                        placeholder="请输入昵称 2-8位"
                        maxlength="11"/>
@@ -53,15 +53,16 @@
         name: "register",
         data() {
             return {
-                username: "",
-                password: "",
-                sex:"0",
-                phonenum:"",
-                nickname:"",
-
+                regData:{
+                    username:"",
+                    password:"",
+                    sex:"0",
+                    phonenum:"",
+                    nickname:"",
+                    isCom:0
+                },
                 btn_style1: "border: 6px #FF6347 solid;",
                 btn_style2: "",
-                isCom: 1,
             }
         },
         methods: {
@@ -69,26 +70,21 @@
                 if (num === 0) {
                     this.btn_style1 = "border: 6px #FF6347 solid;";
                     this.btn_style2 = "";
-                    this.isCom = 0;
+                    this.regData.isCom = 0;
                 } else {
                     this.btn_style1 = "";
                     this.btn_style2 = "border: 6px #00BFFF solid;";
-                    this.isCom = 1;
+                    this.regData.isCom = 1;
                 }
             },
             goLogin() {
                 this.$router.push({name: "login"});
             },
             registerUser(){
-                let regData = {
-                    username:this.username,
-                    password:this.password,
-                    sex:this.sex,
-                    phonenum:this.phonenum,
-                    nickname:this.nickname,
-                    isCom:this.isCom
-                };
-                this.$axios.post(this.$API.API_POST_REG_USER, regData).then(res => {
+                if(!this.checkInfo()){
+                    return false;
+                }
+                this.$axios.post(this.$API.API_POST_REG_USER, this.regData).then(res => {
                     // console.log(res.data.data);
                     if(res.data.code === 200){
                         this.$toast.success("注册成功");
@@ -100,6 +96,25 @@
                     this.$toast.fail("网络开小差了。");
                     console.log(err);
                 })
+            },
+            checkInfo(){
+                if(this.regData.username.length < 6 || this.regData.username.length > 12){
+                    this.$toast.fail("用户名不符合规范！");
+                    return false;
+                }
+                if(this.regData.password.length < 8 || this.regData.password.length>26){
+                    this.$toast.fail("密码格式不符合8-26位规范！");
+                    return false;
+                }
+                if(!this.regData.phonenum.length === 11){
+                    this.$toast.fail("手机号必须11位！");
+                    return false;
+                }
+                if(this.regData.nickname.length < 2 || this.regData.nickname.length > 8){
+                    this.$toast.fail("昵称2-8位 不得含敏感字符！");
+                    return false;
+                }
+                return true;
             }
         }
     }
