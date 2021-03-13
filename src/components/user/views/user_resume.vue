@@ -191,6 +191,7 @@
                     if(this.testMsg()){
                         this.$axios.post(this.$API.API_POST_RESUME).then(res => {
                             if(res.data.code === 200){
+                                // 应加入简历id的返回
                                 this.$toast("保存成功");
                                 this.$router.push({name:"user_my"})
                             }

@@ -76,7 +76,7 @@ import user_work from "../user_work";
 #category{
 
     .work-container{
-        background-color:#f5f5f5;
+
         padding-bottom:5px;
     }
 }

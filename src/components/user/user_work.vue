@@ -32,9 +32,10 @@
 
 <style lang="scss" scoped>
     .work-item{
-        margin-bottom:5px;
+        margin-bottom:8px;
         padding:10px 15px;
         background-color:#fff;
+        box-shadow:0px 3px 10px 0px #808080;
         .title{
             display:flex;
             justify-content:space-between;

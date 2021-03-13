@@ -38,7 +38,7 @@
         <div class="userinfo" @click="InfoMore">
             <van-icon name="ellipsis" color="#fff" size="30"/>
         </div>
-        <div class="content1">
+        <div class="content1 content11">
             <div class="item" @click="gofunc('assistant')">
                 <span>
                     <van-icon name="balance-list-o" size="26px" class="icon"/>
@@ -148,7 +148,7 @@
                 },
                 strWindow: true,
                 nickname: "****",
-                ID:this.$ID
+                ID:null
             }
         },
         methods: {
@@ -169,7 +169,7 @@
             },
             postOfferData() {
                 this.$axios.post(this.$API.API_POST_OFFER_COUNT, {
-                    uid: this.$ID, type: 0
+                    uid: this.ID, type: 0
                 }).then(res => {
                     // console.log(res)
                     this.userData.star = res.data.data[0];
@@ -184,6 +184,7 @@
             },
             getNickname() {
                 this.nickname = sessionStorage.getItem("nickname");
+                this.ID = sessionStorage.getItem('ID');
                 // this.$axios.get(this.$API.API_GET_NICKNAME + this.ID).then(res => {
                 //     // console.log(res)
                 //     if (res.data.code == 200) {
@@ -301,8 +302,8 @@
             background-color: #55cac4;
             display: flex;
             justify-content: center;
+            box-shadow:0px -3px 10px 0px #3d9691;
         }
-
         .content1 {
             border-bottom: 1px solid #cccccc;
             margin: 0 15px;
@@ -328,7 +329,10 @@
                 }
             }
         }
-
+        .content11{
+            /*box-shadow :0px -5px 10px 0px #808080;*/
+            z-index:99;
+        }
         .content2 {
             border-bottom: 0;
         }
