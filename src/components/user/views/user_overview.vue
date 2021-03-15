@@ -19,7 +19,8 @@
             return {
                 pageTitle: '',
                 pageTitles: ["收藏", "沟通中", "待面试", "录用", "拒绝"],
-                offerData:[]
+                offerData:[],
+                ID:null
             }
         },
         methods: {
@@ -30,7 +31,7 @@
                 this.$router.push("/user/my");
             },
             postOfferCateData() {
-                this.$axios.get(this.$API.API_POST_OFFER_CATEDATA + this.$ID + "/" + this.$route.params.cateid).then(res => {
+                this.$axios.get(this.$API.API_POST_OFFER_CATEDATA + this.ID + "/" + this.$route.params.cateid).then(res => {
                     // console.log(res.data);
                     if(res.data.code === 200){
                         this.offerData = res.data.data;
@@ -41,6 +42,8 @@
             }
         },
         created() {
+            this.ID = sessionStorage.getItem('ID');
+
             this.selectTitle();
             this.postOfferCateData();
         },

@@ -158,7 +158,9 @@
                 // 信息备用变量
                 cominfoData2: {},
                 // 确定是否为首次
-                isUpdate: 0
+                isUpdate: 0,
+
+                comId:null
             }
         },
         methods: {
@@ -232,7 +234,7 @@
                 }
             },
             getComInfo() {
-                this.$axios.get(this.$API.API_GET_COM_INFO + "1408").then(res => {
+                this.$axios.get(this.$API.API_GET_COM_INFO + this.comId).then(res => {
                     if (res.data.code === 200) {
                         this.$toast.success("获取成功");
                         this.cominfoData2 = res.data.data;
@@ -325,7 +327,9 @@
             }
         },
         created() {
-            this.getComInfo();
+            this.comId = sessionStorage.getItem('comId');
+            if(this.comId)this.getComInfo();
+
         }
     }
 </script>

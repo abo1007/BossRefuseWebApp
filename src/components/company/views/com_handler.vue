@@ -51,7 +51,8 @@
                 active:0,
                 offerData:[
                     [],[],[],[]
-                ]
+                ],
+                comId:null
             }
         },
         methods:{
@@ -59,7 +60,7 @@
                 this.$router.push({name:'com_home'})
             },
             postOfferCateData() {
-                this.$axios.get(this.$API.API_GET_COM_OFFER_CATEDATA + "1408" + "/666" ).then(res => {
+                this.$axios.get(this.$API.API_GET_COM_OFFER_CATEDATA + this.comId + "/666" ).then(res => {
                     if(res.data.code === 200){
                         console.log(res.data.data);
                         this.allOfferData = res.data.data;
@@ -92,6 +93,8 @@
             }
         },
         created() {
+            this.comId = sessionStorage.getItem('comId');
+
             this.postOfferCateData();
         },
         components:{

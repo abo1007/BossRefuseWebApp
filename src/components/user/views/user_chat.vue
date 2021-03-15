@@ -59,7 +59,8 @@
                 userId: this.$route.query.userid,
                 comId: this.$route.query.comid,
                 workId: this.$route.query.workid,
-                workInfo:{}
+                workInfo:{},
+                ID:null
             }
         },
         methods: {
@@ -76,7 +77,8 @@
             }
         },
         created() {
-            this
+            this.ID = sessionStorage.getItem('ID');
+
         }
     }
 </script>

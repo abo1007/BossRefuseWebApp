@@ -20,7 +20,8 @@
             return {
                 pageTitle: '',
                 pageTitles: ["收藏", "沟通中", "待面试", "录用", "拒绝"],
-                offerData:[]
+                offerData:[],
+                comId:null
             }
         },
         methods: {
@@ -31,7 +32,7 @@
                 this.$router.push("/com/my");
             },
             postOfferCateData() {
-                this.$axios.get(this.$API.API_GET_COM_OFFER_CATEDATA + "1408" + "/" + this.$route.params.cateid).then(res => {
+                this.$axios.get(this.$API.API_GET_COM_OFFER_CATEDATA + this.comId + "/" + this.$route.params.cateid).then(res => {
                     console.log(res.data);
                     if(res.data.code === 200){
                         this.offerData = res.data.data;
@@ -42,6 +43,8 @@
             }
         },
         created() {
+            this.comId = sessionStorage.getItem('comId');
+
             this.selectTitle();
             this.postOfferCateData();
         },

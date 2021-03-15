@@ -24,6 +24,7 @@ import com_msg from "../components/company/com_msg"
 import com_my from "../components/company/com_my"
 import com_option from "../components/company/com_option";  // 公司设置
 import com_overview from "../components/company/com_overview";
+import com_chat from "../components/company/views/com_chat";
 
 // 工作详情页面
 import work_info from "../components/child/work_info";  // 工作详情页面
@@ -114,6 +115,7 @@ const routes = [
     {path: '/com/workedit/:workid', name: 'com_workedit', component: com_workEdit},
     {path: '/com/vip', name: 'com_vip', component: com_vip},
     {path: '/com/info', name: 'com_info', component: com_info},
+    {path: '/com/home/chat', name: 'com_chat', component: com_chat},
 
 
     // 通用页面

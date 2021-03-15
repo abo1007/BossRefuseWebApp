@@ -59,7 +59,7 @@
                 this.$router.back();
             },
             getUserData() {
-                this.$axios.get(this.$API.API_GET_USER_DATA + this.$ID).then(res => {
+                this.$axios.get(this.$API.API_GET_USER_DATA + this.ID).then(res => {
                     if (res.data.code == 200) {
                         this.userData = res.data.data;
                         this.userData.sex = this.userData.sex.toString();
@@ -76,7 +76,7 @@
                     sex:this.userData.sex,
                     nickname:this.userData.nickname
                 };
-                this.$axios.put(this.$API.API_PUT_USER_DATA + this.$ID, data).then(res => {
+                this.$axios.put(this.$API.API_PUT_USER_DATA + this.ID, data).then(res => {
                     if (res.data.code == 200) {
                         this.$toast.success("修改成功");
                         location.reload();
@@ -91,6 +91,7 @@
             }
         },
         created() {
+            this.ID = sessionStorage.getItem('ID');
             this.getUserData();
         }
     }

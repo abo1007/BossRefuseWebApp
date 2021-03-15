@@ -6,15 +6,23 @@ import store from './store'
 Vue.config.productionTip = false;
 
 import APIUtil from "./util/APIUtil";
+
 Vue.prototype.$API = APIUtil;
 
 import axios from 'axios';
+
 Vue.prototype.$axios = axios;
 
-import { Button, Tabbar, TabbarItem, Search, Toast, Icon, Grid, GridItem, NoticeBar,
-  Tag, Tab, Tabs, NavBar, PullRefresh, Picker, Field, Popup, Form, RadioGroup, Radio,
-  Cell, CellGroup, Card, Switch, Dialog , Swipe, SwipeItem, Cascader, Circle,
-  Step, Steps, Calendar   } from 'vant'
+import * as echarts from 'echarts';
+
+Vue.prototype.$echarts = echarts;
+
+import {
+    Button, Tabbar, TabbarItem, Search, Toast, Icon, Grid, GridItem, NoticeBar,
+    Tag, Tab, Tabs, NavBar, PullRefresh, Picker, Field, Popup, Form, RadioGroup, Radio,
+    Cell, CellGroup, Card, Switch, Dialog, Swipe, SwipeItem, Cascader, Circle,
+    Step, Steps, Calendar
+} from 'vant'
 import 'vant/lib/button/style';
 import 'vant/lib/tabbar/style';
 import 'vant/lib/tabbar-item/style';
@@ -47,6 +55,7 @@ import 'vant/lib/circle/style';
 import 'vant/lib/step/style';
 import 'vant/lib/steps/style';
 import 'vant/lib/calendar/style'
+
 Vue.use(Button);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -82,14 +91,16 @@ Vue.use(Calendar);
 Vue.prototype.$dialog = Dialog;
 
 import BoNavbar from "./components/child/bo_navbar";
+
 Vue.use(BoNavbar);
 
 import toolUtil from "./util/toolUtil";
+
 Vue.prototype.$ID = toolUtil.getID();
 
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app');

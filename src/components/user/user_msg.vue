@@ -25,7 +25,7 @@
         name: "login-msg",
         data() {
             return {
-                msgNum: 3,
+                msgNum: 0,
                 isLoading: false,
                 count: 0,
                 MsgTest: [
@@ -55,6 +55,11 @@
             },
             goChat(userId, comId, workId) {
                 this.$router.push({name: "user_chat", query: {userid: userId, comid: comId, workid: workId}})
+            },
+            countMsgNum(){
+                this.MsgTest.forEach(item => {
+                    this.msgNum += item.count;
+                })
             }
         },
         components: {
@@ -63,10 +68,13 @@
         created() {
 
         },
+        mounted() {
+            this.countMsgNum();
+        },
         watch: {
-            msgNum: function (val) {
-                this.$store.commit("updateMsgNum", val);
-            }
+            // msgNum: function (val) {
+            //     this.$store.commit("updateMsgNum", val);
+            // }
         }
     }
 </script>

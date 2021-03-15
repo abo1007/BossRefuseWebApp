@@ -51,6 +51,11 @@
 
             <p class="msg">薪资计算器仅供参考，具体工资水平取决您的公司有多抠搜</p>
         </div>
+
+        <p class="map-title">近6年互联网行业应届生薪资涨幅</p>
+        <div id="map">
+
+        </div>
     </div>
 </template>
 
@@ -71,8 +76,11 @@
                 workCity: '',
                 workCityCate: ["一线城市 北京深圳等", "二线城市 武汉天津等", "三线城市"],
                 workCityIndex: null,
-                workSalary: '????'
+                workSalary: '????',
 
+                salaryData: [3500, 4000, 4300, 5000, 6000, 7200],
+                salaryData2: [3000, 3200, 3800, 4100, 5000, 5300],
+                nameData: ["2016", "2017", "2018", "2019", "2020", "2021"]
             }
         },
         methods: {
@@ -99,8 +107,8 @@
                     } else {
                         expers = 1 + (this.workExper * 0.3);
                     }
-                    for (let i=0;i<cateData.smallData.length;i++){
-                        if(cateData.smallData[i].value == this.cascaderValue){
+                    for (let i = 0; i < cateData.smallData.length; i++) {
+                        if (cateData.smallData[i].value == this.cascaderValue) {
                             worksData = cateData.smallData[i].base;
                         }
                     }
@@ -122,7 +130,59 @@
                     return false;
                 }
                 return true;
+            },
+            createEcharts() {
+                let myChart = this.$echarts.init(document.getElementById('map'));
+                myChart.setOption({
+                    xAxis: {
+                        type: 'category',
+                        data: this.nameData
+                    },
+                    yAxis: {
+                        type: 'value',
+                        scale: true
+                    },
+                    grid:{
+                        left:'4%',
+                        right :'4%',
+                        top:'5%',
+                        bottom :'1%',
+                        containLabel:true
+                    },
+                    legend:{data:['互联网','其他']},
+                    series: [
+                        {
+                            name: '互联网',
+                            type: 'line',
+                            markPoint:{
+                                data:[
+                                    {type: 'max', name: '最大值'},
+                                    {type: 'min', name: '最小值'}
+                                ]
+                            },
+                            data:this.salaryData
+                        },
+                        {
+                            name: '其他',
+                            type: 'line',
+                            markPoint:{
+                                data:[
+                                    {type: 'max', name: '最大值'},
+                                    {type: 'min', name: '最小值'}
+                                ]
+                            },
+                            data:this.salaryData2
+                        }
+                    ]
+                })
             }
+        },
+        created() {
+
+        },
+        mounted() {
+            this.createEcharts();
+
         }
     }
 </script>
@@ -146,17 +206,35 @@
         }
 
         .content-container {
-            padding:0 15px;
-            .title{
-                font-size:20px;
+            padding: 0 15px;
+
+            .title {
+                font-size: 20px;
                 text-align: center;
-                span{
+
+                span {
                     font-weight: bold;
-                    color:#55cac4;
+                    color: #55cac4;
                 }
             }
-            .msg{
-                font-size:12px;
+
+            .msg {
+                font-size: 12px;
+            }
+        }
+        .map-title{
+            color:#55cac4;
+            font-weight:bold;
+            font-size:22px;
+            text-align: center;
+            margin:10px 0;
+        }
+        #map {
+            width:100%;
+            height: 280px;
+            div{
+                align-items: center;
+
             }
         }
     }

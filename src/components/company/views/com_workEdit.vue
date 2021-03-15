@@ -160,7 +160,8 @@
                 // 工作经验
                 experData: ["实习生", "应届生", "1年以内", "1-3年", "3-5年", "5-10年"],
                 showPicker3: false,
-
+                // 公司ID
+                comId:null
             }
         },
         methods: {
@@ -201,7 +202,7 @@
                     workTag: this.getTags(),
                     workPublisher: "人事·老王",
                     workCateId: this.workData.workcateId,
-                    workComId: 1408,
+                    workComId: this.comId,
                     workIntro: this.workData.workIntro,
                 };
 
@@ -209,7 +210,7 @@
 
                 this.$axios.put(this.$API.API_PUT_WORK + this.workData2.workId, InfoData).then(res => {
                     console.log(res.data);
-                    if (res.data.code == 200) {
+                    if (res.data.code === 200) {
                         this.$toast("修改成功");
                         location.reload();
                     } else {
@@ -222,7 +223,7 @@
             },
             getTags() {  // 将标签数组转换为数据库存储的字符串
                 let tagArr = [];
-                if (this.workData.workTag.length == 0) {
+                if (this.workData.workTag.length === 0) {
                     this.$toast("最少一个标签哦");
                     return false;
                 }
@@ -292,7 +293,7 @@
                     newTags.push({id: (i - 2), title: this.workData2.workTag[i]});
                 }
 
-                console.log(newTags);
+                // console.log(newTags);
                 this.workData = {
                     workTitle: this.workData2.workTitle,
                     workSalary: this.workData2.workSalary,
@@ -306,6 +307,7 @@
             }
         },
         created() {
+            this.comId = sessionStorage.getItem('comId');
             this.getWorkInfoData();
         }
     }

@@ -96,16 +96,17 @@
             return {
                 tag: ['本科', '1-3年', 'PHP', 'Laravel', 'ThinkPHP'],
                 workInfoItem: {},
-                id: this.$route.params.workid,
-                candId:null
+                workid: this.$route.params.workid,
+                candId:null,
+                ID:null
             }
         },
         methods: {
             onClickLeft() {
                 this.$router.push({name: 'user_home'})
             },
-            getWorkName(id) {
-                this.$toast.success("工作编号" + this.id);
+            getWorkName() {
+                this.$toast.success("工作编号" + this.workid);
             },
             getWorkInfo() {
                 this.$axios.get(this.$API.API_GET_WORK + this.$route.params.workid).then(res => {
@@ -123,7 +124,7 @@
                 this.$router.push({
                     name: "user_chat", query: {
                         workid: this.workInfoItem.workId,
-                        userid:this.$ID,
+                        userid:this.ID,
                         comid:this.workInfoItem.workComId,
                     }
                 })
@@ -144,9 +145,9 @@
                     }
                     this.$toast("你牛逼，简历已投递");
                     let data = {
-                        userId: this.$ID,
+                        userId: this.ID,
                         workComId: this.workInfoItem.workComId,
-                        candId: this.$ID,
+                        candId: this.candId,
                         workId: this.workInfoItem.workId,
                         editorId: this.workInfoItem.workPublisherId
                         // editorId: 10000
@@ -174,12 +175,13 @@
                 });
             },
             getCandID(){
-                toolUtil.getCandID(this.$ID,value => {
+                toolUtil.getCandID(this.ID,value => {
                     this.candId = value;
                 });
             }
         },
         created() {
+            this.ID = sessionStorage.getItem('ID');
             this.getCandID();
             this.getWorkInfo();
         }

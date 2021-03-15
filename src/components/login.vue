@@ -74,6 +74,7 @@
                                     this.$router.push("/user");
 
                                 } else if (mode == 1) {
+                                    sessionStorage.setItem("comId",res.data.data.comId);
                                     this.$router.push("/com");
                                 }
                             });

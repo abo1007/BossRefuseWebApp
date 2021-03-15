@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     currentPosition:'user',
-    msgNum:3,
+    msgNum:"!",
     candId:10000,
     // 当前用户登录ID
     ID:null,
