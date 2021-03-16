@@ -41,7 +41,8 @@
             },
             addegg(){
                 this.show = true;
-            }
+            },
+
         }
     }
 </script>
