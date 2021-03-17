@@ -1,6 +1,6 @@
 <template>
     <div id="intention-container">
-        <bo-navbar text="求职意向" @left-fun="goback"/>
+        <bo-navbar :text="getTitle()" @left-fun="goback"/>
         <div class="intention-select">
             <div class="item" v-for="(item, index) in workIntent" :key="item.id">
                 <van-field
@@ -52,6 +52,9 @@
             }
         },
         methods: {
+            getTitle(){
+                return this.changeName + "意向"
+            },
             goback() {
                 this.$router.back();
             },

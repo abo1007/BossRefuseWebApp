@@ -26,7 +26,7 @@
         </van-grid>
         <van-grid>
             <van-grid-item icon="friends-o" text="企业信息" badge="2" @click="gofunc('com_info')"/>
-            <van-grid-item icon="manager-o" text="个人信息" />
+            <van-grid-item icon="manager-o" text="个人信息" @click="gofunc('myinfo')"/>
             <van-grid-item icon="aim" text="招聘意向" />
             <van-grid-item icon="thumb-circle-o" text="为您推荐" />
         </van-grid>
