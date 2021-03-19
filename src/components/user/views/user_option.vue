@@ -1,18 +1,26 @@
 <template>
-    <div id="option">
+    <div id="option" :style="color">
         <div class="header">
             <van-icon name="arrow-left" color="#fff" size="30" class="icon" @click="goback"/>
             <p>设置</p>
         </div>
         <van-cell-group>
-            <van-cell center title="深色模式">
+            <van-cell center title="深色模式" :style="color">
                 <template #right-icon>
-                    <van-switch v-model="blackmode" size="24" active-color="#55cac4" inactive-color="#ffffff" disabled/>
+                    <van-switch v-model="blackmode"
+                                size="24"
+                                active-color="#55cac4"
+                                @input="onInput2"
+                                inactive-color="#ffffff"/>
                 </template>
             </van-cell>
-            <van-cell center title="隐私状态">
+            <van-cell center title="隐私状态" :style="color">
                 <template #right-icon>
-                    <van-switch :value="privatemode" size="24"  @input="onInput" />
+                    <van-switch :value="privatemode"
+                                size="24"
+                                active-color="#55cac4"
+                                inactive-color="#ffffff"
+                                @input="onInput" />
                 </template>
             </van-cell>
         </van-cell-group>
@@ -29,7 +37,8 @@
         data(){
           return{
               blackmode:false,
-              privatemode:true
+              privatemode:true,
+              color:"background:#ffffff;"
           }
         },
         methods:{
@@ -40,8 +49,13 @@
                 this.$router.push({ name:Routername });
             },
             goOut(){
-                window.sessionStorage.clear();
-                this.$router.push("/");
+                this.$dialog.confirm({
+                    title: '提醒',
+                    message: '确定要退出登录吗？',
+                }).then(() => {
+                    window.sessionStorage.clear();
+                    this.$router.push("/");
+                });
             },
             onInput(privatemode) {
                 let msg = this.privatemode?"确定要关闭吗？关闭后HR将无法主动联系你":"确定要打开吗？大家将能够发现你";
@@ -52,6 +66,14 @@
                     this.privatemode = privatemode;
                 });
             },
+            onInput2(blackmode){
+                if(blackmode){
+                    this.color = "background:#303030;color:#ffffff;";
+                }else{
+                    this.color = "background:#ffffff;color:#323232;";
+                }
+                this.blackmode = blackmode;
+            }
         }
     }
 </script>
@@ -60,6 +82,7 @@
 #option{
 
     width:100%;
+    min-height:100vh;
     .header{
         background-image: linear-gradient(to right,#55cac4,#008B8B);
         height:40px;

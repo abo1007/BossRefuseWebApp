@@ -71,6 +71,7 @@
                                 resolve("");
                             }).then(value => {
                                 if (mode == 0) {
+                                    sessionStorage.setItem("candId",res.data.data.candId);
                                     this.$router.push("/user");
 
                                 } else if (mode == 1) {

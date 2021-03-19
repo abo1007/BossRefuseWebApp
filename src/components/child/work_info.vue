@@ -84,12 +84,10 @@
             <button class="btn_send" @click="sendResume">投递简历</button>
             <button class="btn_say" @click="goChat">立即沟通</button>
         </div>
-        <!--        {{this.$route.params.workid}}-->
     </div>
 </template>
 
 <script>
-    import toolUtil from "../../util/toolUtil";
     export default {
         name: "work_info",
         data() {
@@ -137,10 +135,10 @@
                     confirmButtonColor: '#ff0000',
                     cancelButtonText: '去聊聊看',
                     cancelButtonColor: '#55cac4'
-
                 }).then(() => {
-                    if(this.candId == null){
-                        this.$toast.fail("还没有创建简历！")
+
+                    if(this.candId){
+                        this.$toast.fail("还没有创建简历！");
                         return false;
                     }
                     this.$toast("你牛逼，简历已投递");
@@ -150,15 +148,13 @@
                         candId: this.candId,
                         workId: this.workInfoItem.workId,
                         editorId: this.workInfoItem.workPublisherId
-                        // editorId: 10000
-
                     };
                     console.log(data);
                     this.$axios.post(this.$API.API_POST_OFFER, data).then(res => {
                         // console.log(res);
-                        if (res.data.code == 200) {
+                        if (res.data.code === 200) {
                             this.$toast.success("投递成功");
-                        } else if (res.data.code == 210) {
+                        } else if (res.data.code === 210) {
                             this.$toast.fail("您已经投递了这份工作");
                             return false;
                         } else {
@@ -173,16 +169,11 @@
                 }).catch(() => {
                     this.$toast.success("听人劝 吃饱饭")
                 });
-            },
-            getCandID(){
-                toolUtil.getCandID(this.ID,value => {
-                    this.candId = value;
-                });
             }
         },
         created() {
             this.ID = sessionStorage.getItem('ID');
-            this.getCandID();
+            this.candId = sessionStorage.getItem("candId");
             this.getWorkInfo();
         }
     }

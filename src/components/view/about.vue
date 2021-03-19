@@ -8,7 +8,7 @@
         <div class="content" ref="content">
             <h1>Boss直拒</h1>
             <p>您身边的求职专家</p>
-            <p>版本 0.8.1</p>
+            <p>版本 0.8.3</p>
             <p>Yangbo@2021</p>
             <transition>
                 <p v-show="show" class="hi">Yangbo & Yueying</p>
@@ -49,6 +49,7 @@
 
 <style lang="scss" scoped>
     #about-container{
+        font-family: 微软雅黑;
         .header{
             height:50px;
             width:100%;

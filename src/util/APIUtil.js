@@ -7,6 +7,7 @@ const A1 = serverBase + "api/";
 export default {
     // 服务器地址
     SERVER_URL: serverBase,
+    
     API_GET_WORKFACE: A1 + "workface",
     // 工作标题分类数据
     API_GET_WORK_CATE: A1 + "workface/cate/",
