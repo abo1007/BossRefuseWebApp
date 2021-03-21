@@ -7,7 +7,8 @@ const A1 = serverBase + "api/";
 export default {
     // 服务器地址
     SERVER_URL: serverBase,
-    
+    // 服务器验证
+    API_GET_SERVER: A1 + "user",
     API_GET_WORKFACE: A1 + "workface",
     // 工作标题分类数据
     API_GET_WORK_CATE: A1 + "workface/cate/",
@@ -24,11 +25,11 @@ export default {
     // 注册用户
     API_POST_REG_USER: A1 + "user",
     // 获得昵称
-    API_GET_NICKNAME:A1 + "user/getnickname/",
+    API_GET_NICKNAME: A1 + "user/getnickname/",
     // 获得用户数据
-    API_GET_USER_DATA:A1 + "user/",
+    API_GET_USER_DATA: A1 + "user/",
     // 修改用户数据
-    API_PUT_USER_DATA:A1 + "user/",
+    API_PUT_USER_DATA: A1 + "user/",
 
 
     // 拒绝 沟通中 待面试 录用 收藏数量信息
@@ -48,7 +49,7 @@ export default {
     // 更新简历数据
     API_PUT_RESUME: A1 + "resume/",
     // 通过用户ID查找简历ID
-    API_GET_RESUME_ID:A1+"resume/getresumeid/",
+    API_GET_RESUME_ID: A1 + "resume/getresumeid/",
 
     // 录入招聘信息
     API_POST_WORK_DATA: A1 + "workface",

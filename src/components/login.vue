@@ -97,7 +97,27 @@
             },
             goFunc(Routername) {
                 this.$router.push({name: Routername});
+            },
+            checkServerState(){
+                this.$axios.get(this.$API.API_GET_SERVER).then(res => {
+                    if(res.data.code === 200){
+                        this.$toast.success("服务器状态正常");
+                    }else{
+                        this.$toast.fail("服务器状态未知");
+                    }
+                }).catch(err => {
+                    this.$toast({
+                        message: '您的服务器尚未搭建或启动，无法继续进行操作',
+                        icon: 'cross',
+                        duration:0,
+                        forbidClick: true
+                    });
+                    console.log(err);
+                })
             }
+        },
+        created() {
+            this.checkServerState();
         }
     }
 </script>
