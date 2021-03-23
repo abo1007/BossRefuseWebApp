@@ -1,12 +1,13 @@
 <template>
     <div id="com-my">
         <div class="header">
+            <span class="logo-com">企业端</span>
             <van-icon name="setting-o" color="#fff" size="30" class="icon" @click="goOption"/>
         </div>
         <div class="user" @click="gofunc('myinfo')">
             <div class="left">
                 <div class="img">
-                    <img src="http://localhost:8090/public/img/boss.jpg" alt="">
+                    <img src="http://localhost:8090/public/img/boss.png" alt="">
                 </div>
             </div>
             <div class="right">
@@ -183,13 +184,21 @@
     #com-my{
         .header{
             height:40px;
-            width:100%;
+            width:calc(100% - 20px);
+            padding:0 10px;
             background-color:#55cac4;
             display:flex;
             align-items:center;
+            justify-content: space-between;
+            .logo-com{
+                color:#fff;
+                border:1px solid #fff;
+                border-radius:20px;
+                font-size:10px;
+                padding:5px;
+            }
             .icon{
-                position:absolute;
-                right:10px;
+
             }
         }
         .user{

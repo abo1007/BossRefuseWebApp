@@ -6,7 +6,7 @@
         <div class="user" @click="gofunc('myinfo')">
             <div class="left">
                 <div class="img">
-                    <img src="http://localhost:8090/public/img/boss.jpg" alt="">
+                    <img src="http://localhost:8090/public/img/boss.png" alt="">
                 </div>
             </div>
             <div class="right">
