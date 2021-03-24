@@ -99,15 +99,15 @@
 
         <van-field v-model="cominfoData.workComArea"
                    label="地区"
-                   readonly/>
+                   />
         <van-field v-model="cominfoData.workComIntro"
                    label="公司简介"
-                   readonly/>
+                   />
         <van-field v-model="cominfoData.workComCap"
                    type="digit"
                    label="注册资本(万元)"
                    :disabled="Boolean(isUpdate)"
-                   readonly/>
+                   />
 
         <div class="bottom">
             <button class="push_btn" @click="selFun">点击保存</button>
@@ -121,17 +121,17 @@
         data() {
             return {
                 cominfoData: {
-                    workComId: 1408,
-                    workComName: "白嫖科技",
-                    workComPerson: "杰克马",
-                    workComAllName: "南京市白嫖科技发展有限公司",
-                    workComScale: "0-9",
-                    workComDate: "2010-01-01",
-                    workComCate: "互联网",
-                    workComTag: [{id: 1, title: "朝八晚六"}, {id: 2, title: "收费零食"}, {id: 3, title: "自费团建"}],
-                    workComCity: "南京市",
-                    workComArea: "鼓楼区",
-                    workComIntro: "这个公司很懒，什么都没有留下",
+                    workComId: 1401,
+                    workComName: "",
+                    workComPerson: "",
+                    workComAllName: "",
+                    workComScale: "",
+                    workComDate: "",
+                    workComCate: "",
+                    workComTag: [{id: 1, title: "五险一金"}],
+                    workComCity: "",
+                    workComArea: "",
+                    workComIntro: "",
                     workComCap: 1
 
                 },
@@ -218,7 +218,7 @@
                     this.$toast("最多5个哦");
                     return;
                 }
-                let tid = this.cominfoData.workComTag.length;
+                let tid = this.cominfoData.workComTag.length + 1;
                 this.cominfoData.workComTag.push({id: tid, title: this.tagPush});
                 this.tagPush = '';
 
@@ -242,7 +242,7 @@
                         this.updatePage();
                         this.isUpdate++;
                     } else {
-                        this.$toast.fail("网络开小差了");
+                        this.$toast.fail("空数据");
                     }
                 }).catch(err => {
                     this.$toast.fail("网络开小差了");
@@ -250,10 +250,29 @@
                 })
             },
             postComInfo() {
-                this.$axios.post(this.$API.API_POST_COM_INFO).then(res => {
+                if (!this.getTags()) {
+                    return false;
+                }
+                let cominfoData = {
+                    workComName: this.cominfoData.workComName,
+                    workComAllName:this.cominfoData.workComAllName,
+                    workComScale: this.cominfoData.workComScale,
+                    workComPerson:this.cominfoData.workComPerson,
+                    workComCate: this.cominfoData.workComCate,
+                    workComDate:this.cominfoData.workComDate,
+                    workComTag: this.getTags(),
+                    workComCity: this.cominfoData.workComCity,
+                    workComArea: this.cominfoData.workComArea,
+                    workComIntro: this.cominfoData.workComIntro,
+                    workComCap:this.cominfoData.workComCap,
+                    userId:sessionStorage.getItem("ID")
+                };
+                this.$axios.post(this.$API.API_POST_COM_INFO, cominfoData).then(res => {
                     if (res.data.code === 200) {
                         this.$toast.success("注册企业信息成功");
                         console.log(res.data);
+                        sessionStorage.setItem("comId",res.data.data);
+                        location.reload();
                     } else {
                         this.$toast.fail("网络开小差了");
                     }
