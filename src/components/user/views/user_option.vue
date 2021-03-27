@@ -67,13 +67,17 @@
                 });
             },
             onInput2(blackmode){
+                this.blackmode = blackmode;
                 if(blackmode){
                     this.color = "background:#303030;color:#ffffff;";
                 }else{
                     this.color = "background:#ffffff;color:#323232;";
                 }
-                this.blackmode = blackmode;
+                localStorage.setItem("theme",Number(blackmode));
             }
+        },
+        created() {
+            this.onInput2(Boolean(parseInt(localStorage.getItem("theme"))));
         }
     }
 </script>

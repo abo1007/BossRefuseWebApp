@@ -63,14 +63,24 @@
                     this.privatemode = privatemode;
                 });
             },
-            onInput2(blackmode){
-                if(blackmode){
+            onInput2(blackmode,first){
+                if(first) {
+                    let a = parseInt(localStorage.getItem("theme"));
+                    this.blackmode = Boolean(a);
+                }else {
+                    this.blackmode = blackmode;
+                }
+
+                if(this.blackmode){
                     this.color = "background:#303030;color:#ffffff;";
                 }else{
                     this.color = "background:#ffffff;color:#323232;";
                 }
-                this.blackmode = blackmode;
+                localStorage.setItem("theme",Number(this.blackmode));
             }
+        },
+        created() {
+            this.onInput2(true,1);
         }
     }
 </script>
