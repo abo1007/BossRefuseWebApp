@@ -113,6 +113,14 @@
         },
         methods: {
             onSearch() {
+                if(this.SearchValue === "" || this.SearchValue.length > 10){
+                    this.$dialog.alert({
+                        message: '非法搜索',
+                    }).then(() => {
+
+                    });
+                    return false;
+                }
                 this.$router.push({name: 'user_searchRes', query: {value: this.SearchValue}})
             },
             goTab(name, cateid) {

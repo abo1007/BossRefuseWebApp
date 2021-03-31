@@ -55,7 +55,14 @@
         },
         methods:{
             onSearch(){
+                if(this.SearchValue === "" || this.SearchValue.length > 10){
+                    this.$dialog.alert({
+                        message: '非法搜索',
+                    }).then(() => {
 
+                    });
+                    return false;
+                }
             },
             gofunc(Routername){
                 this.$router.push({ name:Routername, params:{from:'com'}  });

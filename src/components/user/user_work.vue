@@ -5,7 +5,7 @@
             <span class="money">{{workmsg.workSalary}}</span>
         </p>
         <p class="cla">
-            <van-tag v-for="item in workmsg.workTag">{{item}}</van-tag>
+            <van-tag v-for="item in workTag">{{item}}</van-tag>
         </p>
         <p class="com">
             <span>{{workmsg.workComName}} </span>
@@ -21,11 +21,26 @@
 <script>
     export default {
         name: "user_work",
+        data(){
+            return{
+                workTag:[]
+            }
+        },
         props:['workmsg'],
         methods:{
             goWorkInfo(id){
                 this.$router.push({ name:'work_info', params:{workid:id}});
+            },
+            getTags(){
+                if(typeof(this.workmsg.workTag) === 'string'){
+                    this.workTag = this.workmsg.workTag.split("，");
+                }else{
+                    this.workTag = this.workmsg.workTag;
+                }
             }
+        },
+        created() {
+            this.getTags();
         }
     }
 </script>

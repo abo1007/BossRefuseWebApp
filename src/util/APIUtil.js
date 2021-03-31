@@ -15,6 +15,8 @@ export default {
     // 工作标题 具体分类数据
     API_GET_WORK_SUBCATE: A1 + "workface/subcate/",
     API_GET_WORK_SUBCATES: A1 + "workface/subcates/",
+    // 搜索招聘信息
+    API_GET_SEARCH_WORKFACE: A1 + "workface/search/",
 
     // 公司发布的招聘数据
     API_GET_COM_WORK: A1 + "workface/com/",
