@@ -33,7 +33,6 @@ export default {
     // 修改用户数据
     API_PUT_USER_DATA: A1 + "user/",
 
-
     // 拒绝 沟通中 待面试 录用 收藏数量信息
     API_POST_OFFER_COUNT: A1 + "offer/getcount",
     API_POST_OFFER_CATEDATA: A1 + "offer/getcate/",

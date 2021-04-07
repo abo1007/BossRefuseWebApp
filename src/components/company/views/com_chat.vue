@@ -18,26 +18,26 @@
             <ul>
                 <li class="textRight">
                     <p>你好，我是AAA廊坊富士康 人事经理xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                 </li>
                 <li class="textLeft">
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                     <p>你好xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
                 </li>
                 <li class="textRight">
                     <p>我们这试干一月不收取任何费用</p>
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                 </li>
                 <li class="textLeft">
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                     <p>没经验可以去吗</p>
                 </li>
                 <li class="textRight">
                     <p>我们这试干一月不收取任何费用</p>
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                 </li>
                 <li class="textLeft">
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                     <p>？？？</p>
                 </li>
             </ul>
@@ -45,7 +45,7 @@
         <div class="action">
             <button class="add">+</button>
             <input type="text" class="text">
-            <button class="send">发送</button>
+            <button class="send" @click="sendMsg">发送</button>
         </div>
     </div>
 </template>
@@ -74,6 +74,17 @@
                     this.$toast.fail("网络开小差了。");
                     console.log(err);
                 })
+            },
+            getUnreadMsg(){
+                this.$axios.get().then(res => {
+                    console.log(res.data);
+                }).catch(err => {
+                    this.$toast.fail("");
+                    console.log(err)
+                })
+            },
+            sendMsg(){
+
             }
         },
         created() {

@@ -1,9 +1,7 @@
 <template>
     <div id="user-chat">
         <bo-navbar :text="workId" @left-fun="goback"/>
-        <h2>UserID {{userId}}</h2>
-        <h2>ComID {{comId}}</h2>
-        <h2>workID {{workId}}</h2>
+
         <div class="com">
             <p class="title">
                 <span class="name">全栈工程师</span>
@@ -14,38 +12,41 @@
                 <span>Mr.李</span>
             </p>
         </div>
+        <h2>UserID {{userId}}</h2>
+        <h2>ComID {{comId}}</h2>
+        <h2>workID {{workId}}</h2>
         <div class="triangle">
             <ul>
                 <li class="textRight">
                     <p>你好xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                 </li>
                 <li class="textLeft">
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                     <p>你好，我是AAA廊坊富士康 人事经理xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
                 </li>
                 <li class="textRight">
                     <p>没经验可以去吗</p>
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                 </li>
                 <li class="textLeft">
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                     <p>我们这试干一月不收取任何费用</p>
                 </li>
                 <li class="textRight">
                     <p>？？？</p>
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                 </li>
                 <li class="textLeft">
-                    <img src="../../../assets/boss.jpg" alt="">
+                    <img src="../../../assets/boss.png" alt="">
                     <p>我们这试干一月不收取任何费用</p>
                 </li>
             </ul>
         </div>
         <div class="action">
             <button class="add">+</button>
-            <input type="text" class="text">
-            <button class="send">发送</button>
+            <input type="text" v-model="msg" class="text" maxlength="100">
+            <button class="send" @click="sendMsg">发送</button>
         </div>
 
     </div>
@@ -60,7 +61,8 @@
                 comId: this.$route.query.comid,
                 workId: this.$route.query.workid,
                 workInfo:{},
-                ID:null
+                ID:null,
+                msg:""
             }
         },
         methods: {
@@ -74,6 +76,17 @@
                     this.$toast.fail("网络开小差了。");
                     console.log(err);
                 })
+            },
+            getUnreadMsg(){
+                this.$axios.get().then(res => {
+                    console.log(res.data);
+                }).catch(err => {
+                    this.$toast.fail("");
+                    console.log(err)
+                })
+            },
+            sendMsg(){
+
             }
         },
         created() {
@@ -91,13 +104,14 @@
 
         h2 {
             font-weight: 200;
+            margin:10px 0;
         }
 
         .com {
             height: 60px;
             width: 90%;
             border-radius: 8px;
-            margin: 0 auto;
+            margin: 10px auto;
             background-color: #fff;
             padding: 5px 10px;
 
@@ -111,65 +125,54 @@
 
                 }
             }
-
             .title {
                 .name {
                     font-size: 24px;
                 }
-
                 .salary {
                     color: #55cac4;
                     font-weight: bold;
                     font-size: 20px;
                 }
             }
-
             .cominfo {
                 margin-top: 8px;
                 color: #808080;
             }
-
         }
-
         .triangle {
             width: 100%;
-
             ul {
                 padding: 10px;
             }
-
             li {
                 list-style: none;
                 padding: 5px;
                 display: flex;
                 position: relative;
-
                 p {
                     position: relative;
                     border-radius: 7px;
                     background-color: #a6e860;
                     padding: 6px 10px 8px 10px;
                     z-index: 1;
-                    max-width: 75%;
+                    max-width: 70%;
                     word-wrap: break-word;
                     word-break: break-all;
-
+                    font-size:18px;
+                    margin:15px 0;
                 }
-
                 img {
                     height: 40px;
                     width: 40px;
                     padding-top: 10px;
                 }
             }
-
             .textLeft {
                 justify-content: flex-start;
-
                 p {
                     background-color: white;
                 }
-
                 p:before {
                     content: "";
                     display: block;
@@ -181,21 +184,17 @@
                     top: 8px;
                     left: -16px;
                 }
-
                 img {
                     padding-right: 15px;
                 }
             }
-
             .textRight {
                 margin-left: auto;
                 justify-content: flex-end;
-
                 img {
                     padding-left: 15px;
 
                 }
-
                 p:after {
                     content: "";
                     display: block;
