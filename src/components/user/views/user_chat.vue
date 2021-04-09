@@ -87,6 +87,15 @@
             },
             sendMsg(){
 
+            },
+            getMsg(){
+                let data = {
+                    userId:this.userId,
+                    comId:this.comId,
+                    workId:this.workId,
+                    mode:0
+                };
+
             }
         },
         created() {
@@ -165,7 +174,9 @@
                 img {
                     height: 40px;
                     width: 40px;
-                    padding-top: 10px;
+                    /*padding-top: 10px;*/
+                    margin-top:10px;
+                    border-radius:5px;
                 }
             }
             .textLeft {
@@ -185,15 +196,16 @@
                     left: -16px;
                 }
                 img {
-                    padding-right: 15px;
+                    /*padding-right: 15px;*/
+                    margin-right: 15px;
                 }
             }
             .textRight {
                 margin-left: auto;
                 justify-content: flex-end;
                 img {
-                    padding-left: 15px;
-
+                    /*padding-left: 15px;*/
+                    margin-left: 15px;
                 }
                 p:after {
                     content: "";
