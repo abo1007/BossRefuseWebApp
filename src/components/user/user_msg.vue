@@ -33,12 +33,12 @@
                         mid: 0, url: "http://127.0.0.1:8090/public/img/boss.png",
                         name: 'AAA廊坊富士康 人事经理', time: '23:08',
                         content: '我们这试干一月不收取任何费用.xxxxxxxxxx..', count: 2,
-                        userId: "演示数据1", comId: "类1", workId: "模拟"
+                        userId: "10001", comId: "1408", workId: "10001"
                     },
                     {
                         mid: 1, url: "http://127.0.0.1:8090/public/img/boss.png", name: '白嫖科技', time: '00:08',
                         content: '我们最高可以给到每月1500 ', count: 7,
-                        userId: "演示数据2", comId: "类2", workId: "模拟"
+                        userId: "10001", comId: "1408", workId: "10001"
                     },
                 ]
             }

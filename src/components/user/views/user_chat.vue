@@ -4,51 +4,71 @@
 
         <div class="com">
             <p class="title">
-                <span class="name">全栈工程师</span>
-                <span class="salary">1-2K</span>
+                <span class="name">{{workInfo.workTitle}}</span>
+                <span class="salary">{{workInfo.workSalary}}</span>
             </p>
             <p class="cominfo">
-                <span>白嫖科技</span>
-                <span>Mr.李</span>
+                <span>{{workInfo.workComName}}</span>
+                <span>{{workInfo.workPublisher}}</span>
             </p>
         </div>
-        <h2>UserID {{userId}}</h2>
-        <h2>ComID {{comId}}</h2>
-        <h2>workID {{workId}}</h2>
+        <div class="chatinfo" v-show="infoShow">
+            <h2>UserID {{userId}}</h2>
+            <h2>ComID {{comId}}</h2>
+            <h2>workID {{workId}}</h2>
+        </div>
+
         <div class="triangle">
             <ul>
-                <li class="textRight">
-                    <p>你好xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <img src="../../../assets/boss.png" alt="">
-                </li>
-                <li class="textLeft">
-                    <img src="../../../assets/boss.png" alt="">
-                    <p>你好，我是AAA廊坊富士康 人事经理xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                </li>
-                <li class="textRight">
-                    <p>没经验可以去吗</p>
-                    <img src="../../../assets/boss.png" alt="">
-                </li>
-                <li class="textLeft">
-                    <img src="../../../assets/boss.png" alt="">
-                    <p>我们这试干一月不收取任何费用</p>
-                </li>
-                <li class="textRight">
-                    <p>？？？</p>
-                    <img src="../../../assets/boss.png" alt="">
-                </li>
-                <li class="textLeft">
-                    <img src="../../../assets/boss.png" alt="">
-                    <p>我们这试干一月不收取任何费用</p>
-                </li>
+                <template v-for="(item, index) in chat">
+                    <li class="textRight" v-show="item.sendID == ID">
+                        <p>{{item.msgContent}}</p>
+                        <img src="../../../assets/boss.png" alt="">
+                    </li>
+                    <li class="textLeft" v-show="item.acceptID == ID">
+                        <img src="../../../assets/boss.png" alt="">
+                        <p>{{item.msgContent}}</p>
+                    </li>
+                </template>
+
+                <!--                <li class="textRight">-->
+                <!--                    <p>你好xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>-->
+                <!--                    <img src="../../../assets/boss.png" alt="">-->
+                <!--                </li>-->
+                <!--                <li class="textLeft">-->
+                <!--                    <img src="../../../assets/boss.png" alt="">-->
+                <!--                    <p>你好，我是AAA廊坊富士康 人事经理xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>-->
+                <!--                </li>-->
+                <!--                <li class="textRight">-->
+                <!--                    <p>没经验可以去吗</p>-->
+                <!--                    <img src="../../../assets/boss.png" alt="">-->
+                <!--                </li>-->
+                <!--                <li class="textLeft">-->
+                <!--                    <img src="../../../assets/boss.png" alt="">-->
+                <!--                    <p>我们这试干一月不收取任何费用</p>-->
+                <!--                </li>-->
+                <!--                <li class="textRight">-->
+                <!--                    <p>？？？</p>-->
+                <!--                    <img src="../../../assets/boss.png" alt="">-->
+                <!--                </li>-->
+                <!--                <li class="textLeft">-->
+                <!--                    <img src="../../../assets/boss.png" alt="">-->
+                <!--                    <p>我们这试干一月不收取任何费用</p>-->
+                <!--                </li>-->
             </ul>
         </div>
         <div class="action">
-            <button class="add">+</button>
+            <button class="add" @click="actionShow = true">+</button>
             <input type="text" v-model="msg" class="text" maxlength="100">
             <button class="send" @click="sendMsg">发送</button>
         </div>
-
+        <van-action-sheet
+                v-model="actionShow"
+                :actions="actions"
+                cancel-text="取消"
+                close-on-click-action
+                @cancel="onCancel"
+        />
     </div>
 </template>
 
@@ -60,9 +80,23 @@
                 userId: this.$route.query.userid,
                 comId: this.$route.query.comid,
                 workId: this.$route.query.workid,
-                workInfo:{},
-                ID:null,
-                msg:""
+                workInfo: {
+                    workTitle: "全栈工程师",
+                    workSalary: "1-2K",
+                    workPublisher: "人力张",
+                    workComName: "白嫖科技"
+                },
+                ID: null,
+                msg: "",
+                chat: [],
+
+                actionShow: false,
+                actions: [
+                    {id: 1, name: "显示数据ID"},
+                    {id: 2, name: "选项2"},
+                    {id: 3, name: "选项3"}
+                ],
+                infoShow:false
             }
         },
         methods: {
@@ -70,14 +104,14 @@
                 this.$router.back();
             },
             getWorkface() {
-                this.$axios.get(this.$API.API_GET_WORK+this.workId).then(res => {
+                this.$axios.get(this.$API.API_GET_WORK + this.workId).then(res => {
                     console.log(res.data)
                 }).catch(err => {
                     this.$toast.fail("网络开小差了。");
                     console.log(err);
                 })
             },
-            getUnreadMsg(){
+            getUnreadMsg() {
                 this.$axios.get().then(res => {
                     console.log(res.data);
                 }).catch(err => {
@@ -85,22 +119,36 @@
                     console.log(err)
                 })
             },
-            sendMsg(){
+            sendMsg() {
 
             },
-            getMsg(){
+            getMsg() {
                 let data = {
-                    userId:this.userId,
-                    comId:this.comId,
-                    workId:this.workId,
-                    mode:0
+                    userId: this.userId,
+                    comId: this.comId,
+                    workId: this.workId,
+                    mode: 0
                 };
+                this.$axios.post(this.$API.API_POST_MSG_USERID, data).then(res => {
+                    console.log(res.data);
+                    if (res.data.code === 200) {
+                        this.workInfo = res.data.data.work;
+                        this.chat = res.data.data.msg;
+                    } else {
+                        this.$toast.fail("无数据");
+                    }
+                }).catch(err => {
+                    this.$toast.fail("网络开小差了。");
+                    console.log(err);
+                })
+            },
+            onCancel() {
 
-            }
+            },
         },
         created() {
             this.ID = sessionStorage.getItem('ID');
-
+            this.getMsg();
         }
     }
 </script>
@@ -113,7 +161,7 @@
 
         h2 {
             font-weight: 200;
-            margin:10px 0;
+            margin: 10px 0;
         }
 
         .com {
@@ -134,31 +182,41 @@
 
                 }
             }
+
             .title {
                 .name {
                     font-size: 24px;
                 }
+
                 .salary {
                     color: #55cac4;
                     font-weight: bold;
                     font-size: 20px;
                 }
             }
+
             .cominfo {
                 margin-top: 8px;
                 color: #808080;
             }
         }
+        .chatinfo{
+            text-align: center;
+        }
+
         .triangle {
             width: 100%;
+
             ul {
                 padding: 10px;
             }
+
             li {
                 list-style: none;
                 padding: 5px;
                 display: flex;
                 position: relative;
+
                 p {
                     position: relative;
                     border-radius: 7px;
@@ -168,22 +226,26 @@
                     max-width: 70%;
                     word-wrap: break-word;
                     word-break: break-all;
-                    font-size:18px;
-                    margin:15px 0;
+                    font-size: 18px;
+                    margin: 15px 0;
                 }
+
                 img {
                     height: 40px;
                     width: 40px;
                     /*padding-top: 10px;*/
-                    margin-top:10px;
-                    border-radius:5px;
+                    margin-top: 10px;
+                    border-radius: 5px;
                 }
             }
+
             .textLeft {
                 justify-content: flex-start;
+
                 p {
                     background-color: white;
                 }
+
                 p:before {
                     content: "";
                     display: block;
@@ -195,18 +257,22 @@
                     top: 8px;
                     left: -16px;
                 }
+
                 img {
                     /*padding-right: 15px;*/
                     margin-right: 15px;
                 }
             }
+
             .textRight {
                 margin-left: auto;
                 justify-content: flex-end;
+
                 img {
                     /*padding-left: 15px;*/
                     margin-left: 15px;
                 }
+
                 p:after {
                     content: "";
                     display: block;

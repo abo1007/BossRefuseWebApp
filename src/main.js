@@ -21,7 +21,7 @@ import {
     Button, Tabbar, TabbarItem, Search, Toast, Icon, Grid, GridItem, NoticeBar,
     Tag, Tab, Tabs, NavBar, PullRefresh, Picker, Field, Popup, Form, RadioGroup, Radio,
     Cell, CellGroup, Card, Switch, Dialog, Swipe, SwipeItem, Cascader, Circle,
-    Step, Steps, Calendar
+    Step, Steps, Calendar, ActionSheet
 } from 'vant'
 import 'vant/lib/button/style';
 import 'vant/lib/tabbar/style';
@@ -55,6 +55,7 @@ import 'vant/lib/circle/style';
 import 'vant/lib/step/style';
 import 'vant/lib/steps/style';
 import 'vant/lib/calendar/style'
+import 'vant/lib/action-sheet/style';
 
 Vue.use(Button);
 Vue.use(Tabbar);
@@ -88,6 +89,7 @@ Vue.use(Circle);
 Vue.use(Step);
 Vue.use(Steps);
 Vue.use(Calendar);
+Vue.use(ActionSheet);
 Vue.prototype.$dialog = Dialog;
 
 import BoNavbar from "./components/child/bo_navbar";

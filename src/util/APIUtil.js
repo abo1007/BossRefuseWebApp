@@ -63,5 +63,8 @@ export default {
     API_GET_COM_INFOS: A1 + "cominfo",
     API_GET_COM_INFO: A1 + "cominfo/",
     API_POST_COM_INFO: A1 + "cominfo",
-    API_PUT_COM_INFO: A1 + "cominfo/"
+    API_PUT_COM_INFO: A1 + "cominfo/",
+
+    // 获取当前用户与workid所有聊天消息
+    API_POST_MSG_USERID: A1 + "msg/userid",
 }
