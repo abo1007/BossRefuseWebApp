@@ -13,9 +13,9 @@
             </p>
         </div>
         <div class="chatinfo" v-show="infoShow">
-            <h2>UserID {{userId}}</h2>
-            <h2>ComID {{comId}}</h2>
-            <h2>workID {{workId}}</h2>
+            <p>UserID {{userId}}</p>
+            <p>ComID {{comId}}</p>
+            <p>workID {{workId}}</p>
         </div>
 
         <div class="triangle">
@@ -68,6 +68,7 @@
                 cancel-text="取消"
                 close-on-click-action
                 @cancel="onCancel"
+                @select="selectAction"
         />
     </div>
 </template>
@@ -92,8 +93,8 @@
 
                 actionShow: false,
                 actions: [
-                    {id: 1, name: "显示数据ID"},
-                    {id: 2, name: "选项2"},
+                    {id: 1, name: "显示各类数据ID"},
+                    {id: 2, name: "隐藏各类数据ID"},
                     {id: 3, name: "选项3"}
                 ],
                 infoShow:false
@@ -115,7 +116,7 @@
                 this.$axios.get().then(res => {
                     console.log(res.data);
                 }).catch(err => {
-                    this.$toast.fail("");
+                    this.$toast.fail("网络开小差了。");
                     console.log(err)
                 })
             },
@@ -145,6 +146,16 @@
             onCancel() {
 
             },
+            selectAction(action, index) {
+                switch (action.id) {
+                    case 1:
+                        this.infoShow  = true;
+                        break;
+                    case 2:
+                        this.infoShow = false;
+                }
+
+            }
         },
         created() {
             this.ID = sessionStorage.getItem('ID');
@@ -202,6 +213,13 @@
         }
         .chatinfo{
             text-align: center;
+            width:80%;
+            margin:0 auto;
+            background-color:rgba(255,255,255,.6);
+            border-radius:20px;
+            p{
+                margin:5px 0;
+            }
         }
 
         .triangle {

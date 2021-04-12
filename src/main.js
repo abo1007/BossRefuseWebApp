@@ -98,7 +98,7 @@ Vue.use(BoNavbar);
 
 import toolUtil from "./util/toolUtil";
 
-Vue.prototype.$ID = toolUtil.getID();
+// Vue.prototype.$ID = toolUtil.getID();
 
 
 new Vue({
