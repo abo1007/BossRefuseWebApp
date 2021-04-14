@@ -38,7 +38,7 @@
                     {
                         mid: 1, url: "http://127.0.0.1:8090/public/img/boss.png", name: '白嫖科技', time: '00:08',
                         content: '我们最高可以给到每月1500 ', count: 7,
-                        userId: "10001", comId: "1408", workId: "10001"
+                        userId: "10001", comId: "1408", workId: "10002"
                     },
                 ]
             }

@@ -1,8 +1,8 @@
 <template>
     <div id="user-chat">
-        <bo-navbar :text="workId" @left-fun="goback"/>
+        <bo-navbar :text="workInfo.workComName" @left-fun="goback"/>
 
-        <div class="com">
+        <div class="com" @click="goWorkInfo(workId)">
             <p class="title">
                 <span class="name">{{workInfo.workTitle}}</span>
                 <span class="salary">{{workInfo.workSalary}}</span>
@@ -104,17 +104,9 @@
             goback() {
                 this.$router.back();
             },
-            getWorkface() {
-                this.$axios.get(this.$API.API_GET_WORK + this.workId).then(res => {
-                    console.log(res.data)
-                }).catch(err => {
-                    this.$toast.fail("网络开小差了。");
-                    console.log(err);
-                })
-            },
             getUnreadMsg() {
                 this.$axios.get().then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                 }).catch(err => {
                     this.$toast.fail("网络开小差了。");
                     console.log(err)
@@ -131,11 +123,12 @@
                     mode: 0
                 };
                 this.$axios.post(this.$API.API_POST_MSG_USERID, data).then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     if (res.data.code === 200) {
                         this.workInfo = res.data.data.work;
                         this.chat = res.data.data.msg;
                     } else {
+                        this.workInfo = res.data.data.work;
                         this.$toast.fail("无数据");
                     }
                 }).catch(err => {
@@ -153,8 +146,13 @@
                         break;
                     case 2:
                         this.infoShow = false;
+                        break;
+
                 }
 
+            },
+            goWorkInfo(id){
+                this.$router.push({ name:'work_info', params:{workid:id}});
             }
         },
         created() {
