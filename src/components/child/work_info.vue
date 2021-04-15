@@ -109,7 +109,7 @@
             getWorkInfo() {
                 this.$axios.get(this.$API.API_GET_WORK + this.$route.params.workid).then(res => {
                     if (res.data.code == 200) {
-                        console.log(res.data);
+                        // console.log(res.data);
                         this.workInfoItem = res.data.data;
                         console.log(this.workInfoItem);
                     }

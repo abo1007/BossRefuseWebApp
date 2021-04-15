@@ -10,7 +10,7 @@
             </div>
             <div class="content">
                 <p class="content-text">{{info.content}}</p>
-                <span class="msg-toast">{{info.count}}</span>
+                <span class="msg-toast" v-if="info.count">{{info.count}}</span>
             </div>
         </div>
     </div>
