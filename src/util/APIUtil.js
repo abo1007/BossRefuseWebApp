@@ -67,4 +67,7 @@ export default {
 
     // 获取当前用户与workid所有聊天消息
     API_POST_MSG_USERID: A1 + "msg/userid",
+
+    // 发送消息
+    API_POST_MSG: A1 + "msg"
 }

@@ -97,7 +97,7 @@
                     {id: 2, name: "隐藏各类数据ID"},
                     {id: 3, name: "选项3"}
                 ],
-                infoShow:false
+                infoShow: false
             }
         },
         methods: {
@@ -113,6 +113,30 @@
                 })
             },
             sendMsg() {
+                if(this.msg == ""){
+                    this.$toast.fail("发送内容不得为空");
+                    return;
+                }
+
+                let data = {
+                    userId: this.userId,
+                    comId: this.comId,
+                    workId: this.workId,
+                    mode: 0,
+                    msgContent: this.msg
+                };
+
+                this.$axios.post(this.$API.API_POST_MSG, data).then(res => {
+                    if (res.data.code === 200) {
+                        this.$toast.success("发送成功");
+                        window.location.reload();
+                    } else {
+                        this.$toast.fail("发送失败");
+                    }
+                }).catch(err => {
+                    this.$toast.fail("发送失败");
+                    console.log(err)
+                })
 
             },
             getMsg() {
@@ -142,7 +166,7 @@
             selectAction(action, index) {
                 switch (action.id) {
                     case 1:
-                        this.infoShow  = true;
+                        this.infoShow = true;
                         break;
                     case 2:
                         this.infoShow = false;
@@ -151,8 +175,8 @@
                 }
 
             },
-            goWorkInfo(id){
-                this.$router.push({ name:'work_info', params:{workid:id}});
+            goWorkInfo(id) {
+                this.$router.push({name: 'work_info', params: {workid: id}});
             }
         },
         created() {
@@ -209,14 +233,16 @@
                 color: #808080;
             }
         }
-        .chatinfo{
+
+        .chatinfo {
             text-align: center;
-            width:80%;
-            margin:0 auto;
-            background-color:rgba(255,255,255,.6);
-            border-radius:20px;
-            p{
-                margin:5px 0;
+            width: 80%;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, .6);
+            border-radius: 20px;
+
+            p {
+                margin: 5px 0;
             }
         }
 
