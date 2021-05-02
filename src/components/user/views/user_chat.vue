@@ -1,8 +1,8 @@
 <template>
     <div id="user-chat">
-        <bo-navbar :text="workInfo.workComName" @left-fun="goback"/>
+        <bo-navbar :text="getTitleName()" @left-fun="goback"/>
 
-        <div class="com" @click="goWorkInfo(workId)">
+        <div class="com" @click="goWorkInfo(workId)" v-show="comShow">
             <p class="title">
                 <span class="name">{{workInfo.workTitle}}</span>
                 <span class="salary">{{workInfo.workSalary}}</span>
@@ -30,31 +30,6 @@
                         <p>{{item.msgContent}}</p>
                     </li>
                 </template>
-
-                <!--                <li class="textRight">-->
-                <!--                    <p>你好xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>-->
-                <!--                    <img src="../../../assets/boss.png" alt="">-->
-                <!--                </li>-->
-                <!--                <li class="textLeft">-->
-                <!--                    <img src="../../../assets/boss.png" alt="">-->
-                <!--                    <p>你好，我是AAA廊坊富士康 人事经理xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>-->
-                <!--                </li>-->
-                <!--                <li class="textRight">-->
-                <!--                    <p>没经验可以去吗</p>-->
-                <!--                    <img src="../../../assets/boss.png" alt="">-->
-                <!--                </li>-->
-                <!--                <li class="textLeft">-->
-                <!--                    <img src="../../../assets/boss.png" alt="">-->
-                <!--                    <p>我们这试干一月不收取任何费用</p>-->
-                <!--                </li>-->
-                <!--                <li class="textRight">-->
-                <!--                    <p>？？？</p>-->
-                <!--                    <img src="../../../assets/boss.png" alt="">-->
-                <!--                </li>-->
-                <!--                <li class="textLeft">-->
-                <!--                    <img src="../../../assets/boss.png" alt="">-->
-                <!--                    <p>我们这试干一月不收取任何费用</p>-->
-                <!--                </li>-->
             </ul>
         </div>
         <div class="action">
@@ -95,14 +70,18 @@
                 actions: [
                     {id: 1, name: "显示各类数据ID"},
                     {id: 2, name: "隐藏各类数据ID"},
-                    {id: 3, name: "选项3"}
+                    {id: 3, name: "加入黑名单"}
                 ],
-                infoShow: false
+                infoShow: false,
+                comShow:false
             }
         },
         methods: {
             goback() {
                 this.$router.back();
+            },
+            getTitleName() {
+                return "招聘者：" + this.userId;
             },
             getUnreadMsg() {
                 this.$axios.get().then(res => {
@@ -113,7 +92,7 @@
                 })
             },
             sendMsg() {
-                if(this.msg == ""){
+                if (this.msg == "") {
                     this.$toast.fail("发送内容不得为空");
                     return;
                 }
@@ -155,6 +134,7 @@
                         this.workInfo = res.data.data.work;
                         this.$toast.fail("无数据");
                     }
+                    this.comShow = true;
                 }).catch(err => {
                     this.$toast.fail("网络开小差了。");
                     console.log(err);
@@ -171,7 +151,9 @@
                     case 2:
                         this.infoShow = false;
                         break;
-
+                    case 3:
+                        this.$toast.fail("拉黑失败，请重试！");
+                        break;
                 }
 
             },

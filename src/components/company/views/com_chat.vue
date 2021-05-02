@@ -1,52 +1,49 @@
 <template>
     <div id="com-chat">
         <bo-navbar :text="workId" @left-fun="goback"/>
-        <h2>UserID {{userId}}</h2>
-        <h2>ComID {{comId}}</h2>
-        <h2>workID {{workId}}</h2>
-        <div class="com">
+        <div class="com"  v-show="comShow">
             <p class="title">
-                <span class="name">全栈工程师</span>
-                <span class="salary">1-2K</span>
+                <span class="name">{{workInfo.workTitle}}</span>
+                <span class="salary">{{workInfo.workSalary}}</span>
             </p>
             <p class="cominfo">
-                <span>白嫖科技</span>
-                <span>Mr.李</span>
+                <span>{{workInfo.workComName}}</span>
+                <span>{{workInfo.workPublisher}}</span>
             </p>
+        </div>
+        <div class="chatinfo" v-show="infoShow">
+            <p>UserID {{userId}}</p>
+            <p>ComID {{comId}}</p>
+            <p>workID {{workId}}</p>
         </div>
         <div class="triangle">
             <ul>
-                <li class="textRight">
-                    <p>你好，我是AAA廊坊富士康 人事经理xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <img src="../../../assets/boss.png" alt="">
-                </li>
-                <li class="textLeft">
-                    <img src="../../../assets/boss.png" alt="">
-                    <p>你好xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                </li>
-                <li class="textRight">
-                    <p>我们这试干一月不收取任何费用</p>
-                    <img src="../../../assets/boss.png" alt="">
-                </li>
-                <li class="textLeft">
-                    <img src="../../../assets/boss.png" alt="">
-                    <p>没经验可以去吗</p>
-                </li>
-                <li class="textRight">
-                    <p>我们这试干一月不收取任何费用</p>
-                    <img src="../../../assets/boss.png" alt="">
-                </li>
-                <li class="textLeft">
-                    <img src="../../../assets/boss.png" alt="">
-                    <p>？？？</p>
-                </li>
+                <template v-for="(item, index) in chat">
+                    <li class="textRight" v-show="item.sendID == ComId">
+                        <p>{{item.msgContent}}</p>
+                        <img src="../../../assets/boss.png" alt="">
+                    </li>
+                    <li class="textLeft" v-show="item.acceptID == ComId">
+                        <img src="../../../assets/boss.png" alt="">
+                        <p>{{item.msgContent}}</p>
+                    </li>
+                </template>
+
             </ul>
         </div>
         <div class="action">
-            <button class="add">+</button>
-            <input type="text" class="text">
+            <button class="add" @click="actionShow = true">+</button>
+            <input type="text" v-model="msg" class="text" maxlength="100"/>
             <button class="send" @click="sendMsg">发送</button>
         </div>
+        <van-action-sheet
+                v-model="actionShow"
+                :actions="actions"
+                cancel-text="取消"
+                close-on-click-action
+                @cancel="onCancel"
+                @select="selectAction"
+        />
     </div>
 </template>
 
@@ -58,24 +55,31 @@
                 userId: this.$route.query.userid,
                 comId: this.$route.query.comid,
                 workId: this.$route.query.workid,
-                workInfo: {},
-                ID: null,
-                IComId: null
+                workInfo: {
+                    workTitle: "全栈工程师",
+                    workSalary: "1-2K",
+                    workPublisher: "人力张",
+                    workComName: "白嫖科技"
+                },
+                ComId: null,
+                msg: "",
+                chat: [],
+
+                actionShow: false,
+                actions: [
+                    {id: 1, name: "显示各类数据ID"},
+                    {id: 2, name: "隐藏各类数据ID"},
+                    {id: 3, name: "加入黑名单"}
+                ],
+                infoShow: false,
+                comShow: false
             }
         },
         methods: {
             goback() {
                 this.$router.back();
             },
-            getWorkface() {
-                this.$axios.get(this.$API.API_GET_WORK + this.workId).then(res => {
-                    console.log(res.data)
-                }).catch(err => {
-                    this.$toast.fail("网络开小差了。");
-                    console.log(err);
-                })
-            },
-            getUnreadMsg(){
+            getUnreadMsg() {
                 this.$axios.get().then(res => {
                     console.log(res.data);
                 }).catch(err => {
@@ -83,13 +87,79 @@
                     console.log(err)
                 })
             },
-            sendMsg(){
+            sendMsg() {
+                if (this.msg == "") {
+                    this.$toast.fail("发送内容不得为空");
+                    return;
+                }
+                let data = {
+                    userId: this.userId,
+                    comId: this.comId,
+                    workId: this.workId,
+                    mode: 1,
+                    msgContent: this.msg
+                };
+                this.$axios.post(this.$API.API_POST_MSG, data).then(res => {
+                    if (res.data.code === 200) {
+                        this.$toast.success("发送成功");
+                        window.location.reload();
+                    } else {
+                        this.$toast.fail("发送失败");
+                    }
+                }).catch(err => {
+                    this.$toast.fail("发送失败");
+                    console.log(err)
+                })
 
+            },
+            getMsg() {
+                let data = {
+                    userId: this.userId,
+                    comId: this.comId,
+                    workId: this.workId,
+                    mode: 1
+                };
+                this.$axios.post(this.$API.API_POST_MSG_USERID, data).then(res => {
+                    console.log(res.data)
+                    if (res.data.code === 200) {
+                        this.workInfo = res.data.data.work;
+                        this.chat = res.data.data.msg;
+                    } else {
+                        console.log(111)
+                        this.workInfo = res.data.data.work;
+                        this.$toast.fail("无数据");
+                    }
+                    this.comShow = true;
+                }).catch(err => {
+                    this.$toast.fail("网络开小差了。");
+                    console.log(err);
+                })
+            },
+            onCancel() {
+
+            },
+            selectAction(action, index) {
+                switch (action.id) {
+                    case 1:
+                        this.infoShow = true;
+                        break;
+                    case 2:
+                        this.infoShow = false;
+                        break;
+                    case 3:
+                        this.$toast.fail("拉黑失败，请重试！");
+                        break;
+                }
+
+            },
+            goWorkInfo(id) {
+                this.$router.push({name: 'work_info', params: {workid: id}});
             }
         },
         created() {
             this.ID = sessionStorage.getItem('ID');
-            this.IComId = sessionStorage.getItem('comId')
+            this.ComId = sessionStorage.getItem('comId');
+            this.getMsg();
         }
     }
 </script>
@@ -102,13 +172,15 @@
 
         h2 {
             font-weight: 200;
+            margin: 10px 0;
+
         }
 
         .com {
             height: 60px;
             width: 90%;
             border-radius: 8px;
-            margin: 0 auto;
+            margin: 10px auto;
             background-color: #fff;
             padding: 5px 10px;
 
@@ -139,6 +211,18 @@
 
         }
 
+        .chatinfo {
+            text-align: center;
+            width: 80%;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, .6);
+            border-radius: 20px;
+
+            p {
+                margin: 5px 0;
+            }
+        }
+
         .triangle {
             width: 100%;
 
@@ -158,9 +242,11 @@
                     background-color: #a6e860;
                     padding: 6px 10px 8px 10px;
                     z-index: 1;
-                    max-width: 75%;
+                    max-width: 70%;
                     word-wrap: break-word;
                     word-break: break-all;
+                    font-size: 18px;
+                    margin: 15px 0;
 
                 }
 
@@ -192,7 +278,6 @@
                 }
 
                 img {
-                    /*padding-right: 15px;*/
                     margin-right: 15px;
                 }
             }
@@ -202,7 +287,6 @@
                 justify-content: flex-end;
 
                 img {
-                    /*padding-left: 15px;*/
                     margin-left: 15px;
                 }
 
