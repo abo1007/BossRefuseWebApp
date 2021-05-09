@@ -7,6 +7,7 @@ const A1 = serverBase + "api/";
 export default {
     // 服务器地址
     SERVER_URL: serverBase,
+    A1: A1,
     // 服务器验证
     API_GET_SERVER: A1 + "user",
     API_GET_WORKFACE: A1 + "workface",
@@ -68,6 +69,8 @@ export default {
     // 获取当前用户与workid所有聊天消息
     API_POST_MSG_USERID: A1 + "msg/userid",
 
-    // 发送消息
-    API_POST_MSG: A1 + "msg"
+    // 发送消息(临时)
+    API_POST_MSG: A1 + "msg",
+    // 获取最后一条消息(临时)
+    API_GET_MAX_MSG: A1 + "msg/userid/"
 }
