@@ -65,7 +65,7 @@
             },
             getLateMsg() {
                 this.$axios.get(this.$API.API_GET_MAX_MSG + this.ID).then(res => {
-                    // console.log(res);
+
                     if (res.data.code === 200) {
                         if(res.data.data instanceof Array){
                             this.handlerToMsg(res.data.data);
