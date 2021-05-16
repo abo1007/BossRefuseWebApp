@@ -123,7 +123,7 @@ const routes = [
     {path: '/service', name: 'service', component: service},
     {path: '/help', name: 'help', component: help},
     {path: '/wages', name: 'wages', component: wages},
-    {path: '/homepage', name: 'homepage', component: homePage},
+    {path: '/homepage/:from', name: 'homepage', component: homePage},
     // {path: '/setting', name: 'setting', component: setting },
     {path: '/account', name: 'account', component: account},
     {path: '/privacy', name: 'privacy', component: privacy},
