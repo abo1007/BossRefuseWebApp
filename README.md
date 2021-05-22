@@ -1,14 +1,16 @@
 # bossrefuse
 # 找工作 就上Boss直拒
 
+# boss直拒手机端
+
 * Boss直拒是一款基于B/S架构的web App，其UI界面酷似Boss直聘，可以实现招聘与应聘、发布职位与管理职位功能、浏览收藏招聘信息。
 * `Boss直拒，为您在被boss拒绝的路上保驾护航`
 
 ## 相关技术
 
-* Vue Vue-Cli VueRouter VueX
-* Vant
-* Axios
+* `Vue` `Vue-Cli` `VueRouter` `VueX`
+* `Vant`
+* `Axios`
 * PHP Laravel
 * MySQL
 
@@ -18,7 +20,9 @@
 
 ### [2. git Clone boss直拒后端服务支持](https://github.com/abo1007/BossRefuseServer)
 
-### [3. git Clone boss直拒PC端](https://github.com/abo1007/BossRefuseWebApp)
+### [3. git Clone boss直拒PC端(尚未开发)](https://github.com/abo1007/BossRefuseWebApp)
+
+* 提示：由于本项目已经与后端连通，因此不启动并配置好Laravel后端服务将无法正常运行前端项目
 
 ## 1. boss直拒手机端
 
@@ -47,6 +51,8 @@ npm run serve
 ```
 npm run build
 ```
+
+4. 默认启动于`8083`端口
 
 ## 2. boss直拒后端服务支持
 
@@ -130,7 +136,7 @@ const serverBase = "http://127.0.0.1:8000/";
 
 * 感谢支持，还没做
 
-## 用户密码(暂未启用)
+## 用户密码(已启用)
 
 * 默认个人用户
 
