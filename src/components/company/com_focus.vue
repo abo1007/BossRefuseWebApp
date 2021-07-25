@@ -135,7 +135,7 @@
                     workExper:"",
                     workcateId:null,
                     workIntro:"",
-                    workTag:[]
+                    workTag:[],
                 },
 
                 cascaderValue: "",
@@ -160,6 +160,10 @@
                 // 工作经验
                 experData: ["实习生", "应届生", "1年以内", "1-3年", "3-5年", "5-10年"],
                 showPicker3:false,
+
+                comId:null,
+                nickname:"",
+                ID:null
 
             }
         },
@@ -193,13 +197,18 @@
                 this.cascaderValue = selectedOptions.map((option) => option.text).join('/');
             },
             postWorkInfo() {     // 提交招聘信息
+                if(!this.comId){
+                    this.$toast.fail("请先注册企业");
+                    return false;
+                }
                 let InfoData = {
                     workTitle: this.workData.workTitle,
                     workSalary: this.workData.workSalary,
                     workTag: this.getTags(),
-                    workPublisher: "人事·老王",
+                    workPublisherId: this.ID,
+                    workPublisher:this.nickname,
                     workCateId: this.workData.workcateId,
-                    workComId: 1408,
+                    workComId: this.comId,
                     workIntro: this.workData.workIntro
                 };
                 console.log(InfoData);
@@ -217,13 +226,6 @@
                 });
 
             },
-            // getSalary() {    // 得到工资字符串
-            //     if (this.workMoney == "1") {
-            //         return this.workMoney_min + "-" + this.workMoney_max + "k"
-            //     } else {
-            //         return this.workMoney_min + "-" + this.workMoney_max + "/天"
-            //     }
-            // },
             getTags() {  // 将标签数组转换为数据库存储的字符串
                 let tagArr = [];
                 if (this.workData.workTag.length == 0) {
@@ -279,6 +281,11 @@
             testMsg(){  // 验证表单内容
                 return true;
             },
+        },
+        created() {
+            this.comId = sessionStorage.getItem("comId");
+            this.nickname = sessionStorage.getItem("nickname");
+            this.ID = sessionStorage.getItem("ID");
         }
     }
 </script>

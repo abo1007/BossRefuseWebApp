@@ -41,7 +41,9 @@
         </div>
         <p class="focus">
             您可能感兴趣的岗位
-            <van-tag type="success" style="margin:0 6px;">前端</van-tag>
+            <span @click="tagToSearch('前端')">前端</span>
+            <span @click="tagToSearch('Java')">Java</span>
+
         </p>
         <div class="work-container">
             <user-work
@@ -165,6 +167,9 @@
                         console.log(err);
                     })
                 }
+            },
+            tagToSearch(value){
+                this.$router.push({name: 'user_searchRes', query: {value: value}})
             }
         },
         components: {
@@ -212,6 +217,13 @@
             margin: 10px 0;
             font-size: 14px;
             padding-left: 16px;
+            span{
+                background-color: #55cac4;
+                padding:4px 6px;
+                border-radius: 4px;
+                color: #fff;
+                margin: 0 6px;
+            }
         }
 
         .work-container {

@@ -124,11 +124,10 @@
                     cancelButtonColor: '#55cac4'
                 }).then(() => {
 
-                    if(this.candId){
+                    if(!this.candId){
                         this.$toast.fail("还没有创建简历！");
                         return false;
                     }
-                    this.$toast("你牛逼，简历已投递");
                     let data = {
                         userId: this.ID,
                         workComId: this.workInfoItem.workComId,
@@ -140,7 +139,9 @@
                     this.$axios.post(this.$API.API_POST_OFFER, data).then(res => {
                         // console.log(res);
                         if (res.data.code === 200) {
-                            this.$toast.success("投递成功");
+                            // this.$toast.success("投递成功");
+                            this.$toast("你牛逼，简历已投递");
+
                         } else if (res.data.code === 210) {
                             this.$toast.fail("您已经投递了这份工作");
                             return false;

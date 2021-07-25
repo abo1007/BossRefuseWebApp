@@ -128,7 +128,8 @@
                     chat: 0, interview: 0, offer: 0, refuse: 0, star: 0
                 },
                 strWindow: true,
-                nickname:"人事·老王"
+                nickname:"",
+                comId:null
             }
         },
         methods: {
@@ -148,8 +149,16 @@
                 this.$router.push({name: 'com_overview', params: {cateid: cateid}});
             },
             postOfferData() {
+                if (!this.comId){
+                    this.comData.star = 0;
+                    this.comData.chat = 0;
+                    this.comData.interview = 0;
+                    this.comData.offer = 0;
+                    this.comData.refuse = 0;
+                    return false;
+                }
                 this.$axios.post(this.$API.API_POST_OFFER_COUNT,{
-                    uid: 1408, type: 1
+                    uid: this.comId, type: 1
                 }).then(res => {
                     this.comData.star = res.data.data[0];
                     this.comData.chat = res.data.data[1];
@@ -174,6 +183,7 @@
             }
         },
         created() {
+            this.comId = sessionStorage.getItem("comId");
             this.getNickname();
             this.postOfferData();
         }

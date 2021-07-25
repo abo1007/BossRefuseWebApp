@@ -21,7 +21,8 @@
         name: "com_workManager",
         data(){
             return{
-                workData:[]
+                workData:[],
+                comId:null
             }
         },
         methods:{
@@ -29,10 +30,11 @@
                 this.$router.back();
             },
             getWorkData(){
-                this.$axios.get(this.$API.API_GET_COM_WORK + "1408").then(res => {
+                this.$axios.get(this.$API.API_GET_COM_WORK + this.comId).then(res => {
                     if (res.data.code === 200){
                         this.workData = res.data.data;
                     }else{
+                        console.log(res)
                         this.$toast.fail("网络开小差了哦");
                     }
                 }).catch(err => {
@@ -42,6 +44,7 @@
             }
         },
         created() {
+            this.comId = sessionStorage.getItem("comId");
             this.getWorkData();
         },
         components:{
