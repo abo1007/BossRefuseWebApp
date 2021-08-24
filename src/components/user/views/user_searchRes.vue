@@ -11,11 +11,23 @@
         <van-tabs v-model="activeName" color="#55cac4" :before-change="beforeChange">
             <van-tab title="职位" name="1">
                 <div class="work-container">
-                    <user-work v-for="item in searchResult" :workmsg="item" style="margin-top:5px"/>
+                    <user-work v-for="item in searchResult.works" :workmsg="item" style="margin-top:5px"/>
                 </div>
             </van-tab>
             <van-tab title="公司" name="2">
-
+                <div class="work-container">
+                    <div class="com-item" v-for="item in searchResult.coms" :key="item.id">
+                        <p class="title">{{item.workComName}}</p>
+                        <p class="row">
+                            <span>{{item.workComScale}}人</span>
+                            <span>{{item.workComCate}}</span>
+                        </p>
+                        <p class="row2">
+                            <span>{{item.workComAllName}}</span>
+                            <span>{{item.workComCity}} {{item.workComArea}}</span>
+                        </p>
+                    </div>
+                </div>
             </van-tab>
             <van-tab title="内容" name="3">
 
@@ -33,7 +45,7 @@
         data() {
             return {
                 SearchValue: this.$route.query.value,
-                searchResult:[],
+                searchResult:{},
                 activeName: '1'
             }
         },
@@ -57,7 +69,7 @@
             beforeChange(index){
                 return new Promise((resolve) => {
                     // 在 resolve 函数中返回 true 或 false
-                    if(index == "2" || index == "3"){
+                    if(index == "3"){
                         this.tips();
                     }
                     resolve(true);
@@ -90,6 +102,36 @@
             color: #55cac4;
             font-weight:200;
             margin:0 0 15px 40px;
+        }
+        .work-container{
+            padding-top: 10px;
+        }
+        .com-item{
+            margin-bottom:8px;
+            padding:10px 15px;
+            background-color:#fff;
+            box-shadow:0px 3px 10px 0px #808080;
+            .title{
+                color:#55cac4;
+                font-weight:600;
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
+            p{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin:10px 0;
+
+            }
+            .row{
+                font-size: 18px;
+            }
+            .row2{
+                font-size: 14px;
+
+            }
+
         }
     }
 </style>

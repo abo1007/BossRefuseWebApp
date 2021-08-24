@@ -72,5 +72,7 @@ export default {
     // 发送消息(临时)
     API_POST_MSG: A1 + "msg",
     // 获取最后一条消息(临时)
-    API_GET_MAX_MSG: A1 + "msg/userid/"
+    API_GET_MAX_MSG: A1 + "msg/userid/",
+    // 获取轮播图
+    API_GET_BANNER:A1 + "banner"
 }

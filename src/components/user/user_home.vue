@@ -13,14 +13,8 @@
             </template>
         </van-search>
         <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-            <van-swipe-item>
-                <img src="../../assets/slide1.png" alt="">
-            </van-swipe-item>
-            <van-swipe-item>
-                <img src="../../assets/slide2.png" alt="">
-            </van-swipe-item>
-            <van-swipe-item>
-                <img src="../../assets/slide3.png" alt="">
+            <van-swipe-item v-for="item in bannerList" :key="item.id">
+                <img :src="baseURL + item.imgUrl" alt="加载失败">
             </van-swipe-item>
         </van-swipe>
 
@@ -65,6 +59,7 @@
         name: "user_home",
         data() {
             return {
+                baseURL:"http://api.abo.com:8090/public",
                 SearchValue: '',
                 workfaceData: [
                     {
@@ -110,7 +105,8 @@
                 ],
                 nextUrl: "",
                 // 限制快速点击
-                clickLimit: true
+                clickLimit: true,
+                bannerList:[]
             }
         },
         methods: {
@@ -170,6 +166,13 @@
             },
             tagToSearch(value){
                 this.$router.push({name: 'user_searchRes', query: {value: value}})
+            },
+            getBanner() {
+                this.$axios.get(this.$API.API_GET_BANNER).then(res => {
+                    if(res.data.code == 200){
+                        this.bannerList = res.data.data;
+                    }
+                })
             }
         },
         components: {
@@ -177,6 +180,7 @@
         },
         created() {
             this.getWorkFaceData();
+            this.getBanner();
         }
     }
 </script>
