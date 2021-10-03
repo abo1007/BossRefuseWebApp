@@ -33,6 +33,11 @@ export default {
     API_GET_USER_DATA: A1 + "user/",
     // 修改用户数据
     API_PUT_USER_DATA: A1 + "user/",
+// 获得验证码
+    API_GET_CODE: A1 + "user/getcode",
+    // 修改密码
+    API_POST_UPDATE_PASSWORD: A1 + "user/updatepass",
+
 
     // 拒绝 沟通中 待面试 录用 收藏数量信息
     API_POST_OFFER_COUNT: A1 + "offer/getcount",

@@ -19,6 +19,16 @@
                 <van-field v-model="fieldText" label="网络检测" readonly/>
                 <van-field v-model="fieldText" label="信息检测" readonly/>
             </van-cell-group>
+            <div class="item" @click="gofunc('/updatepass')">
+                <span>
+                    <van-icon name="user-circle-o" size="26px" class="icon"/>
+                    修改密码
+                </span>
+                <span>
+                    <van-icon name="arrow" class="icon2"/>
+                </span>
+            </div>
+
         </div>
     </div>
 </template>
@@ -49,6 +59,9 @@
                         clearInterval(inter);
                     }
                 },50)
+            },
+            gofunc(url){
+                this.$router.push(url)
             }
         },
         created() {
@@ -71,6 +84,26 @@
             flex:1;
         }
 
+
+    }
+    .content{
+        .item{
+            height:55px;
+            margin:0;
+            display:flex;
+            justify-content:space-between;
+            font-size:15px;
+            span{
+                display:flex;
+                align-items:center;
+            }
+            span:nth-child(2){
+                color:#808080;
+            }
+            .icon,.icon2{
+                margin:0 15px;
+            }
+        }
     }
 
 }

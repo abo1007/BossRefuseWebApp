@@ -41,7 +41,7 @@
             },
             addegg(){
                 this.show = true;
-            },
+            }
 
         }
     }

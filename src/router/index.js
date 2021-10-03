@@ -40,6 +40,7 @@ import account from "../components/view/account";
 import privacy from "../components/view/privacy";
 import myInfo from "../components/view/myInfo";
 import activity1 from "../components/view/activity1";   // 活动页面1
+import updatePass from "../components/view/updatePass"; // 修改密码
 
 // 应聘者页面
 import intention from "../components/view/intention"; // 求职意向
@@ -129,6 +130,7 @@ const routes = [
     {path: '/privacy', name: 'privacy', component: privacy},
     {path: '/myinfo', name: 'myinfo', component: myInfo},
     {path: '/activity1', name: 'activity1', component: activity1},
+    {path: '/updatepass', name: 'updatepass', component: updatePass},
 
     {
         path: '*',

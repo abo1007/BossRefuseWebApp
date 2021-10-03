@@ -11,7 +11,7 @@
         <van-tabs v-model="activeName" color="#55cac4" :before-change="beforeChange">
             <van-tab title="职位" name="1">
                 <div class="work-container">
-                    <user-work v-for="item in searchResult.works" :workmsg="item" style="margin-top:5px"/>
+                    <user-work v-for="item in searchResult.works" :key="item.id" :workmsg="item" style="margin-top:5px"/>
                 </div>
             </van-tab>
             <van-tab title="公司" name="2">

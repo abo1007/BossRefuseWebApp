@@ -65,6 +65,7 @@
 <style lang="scss" scoped>
     #homePage-container {
         background-color: #55cac4;
+        min-height: 100vh;
 
 
         h1 {
