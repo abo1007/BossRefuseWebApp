@@ -32,6 +32,7 @@
 </template>
 
 <script>
+    import ApiList from "../util/ApiList";
     export default {
         name: "login",
         data() {
@@ -56,42 +57,39 @@
             }
             ,
             goLogin(mode) {
-
-                this.$axios.post(this.$API.API_POST_LOGIN, {
-                    username: this.uname, password: this.upass, mode: mode
-                }).then((res) => {
-                    // console.log(res);
-                    switch (res.data.code) {
+                let that = this;
+                ApiList.Login({username: this.uname, password: this.upass, mode: mode}).then(res => {
+                    switch (res.code) {
                         case 200:
-                            this.$toast.success("登录成功，欢迎 " + this.uname);
+                            that.$toast.success("登录成功，欢迎 " + this.uname);
 
                             new Promise((resolve, reject) => {
-                                window.sessionStorage.setItem("ID", res.data.data.id);
-                                window.sessionStorage.setItem("nickname", res.data.data.nickname);
+                                window.sessionStorage.setItem("ID", res.data.id);
+                                window.sessionStorage.setItem("nickname", res.data.nickname);
                                 resolve("");
                             }).then(value => {
                                 if (mode == 0) {
-                                    sessionStorage.setItem("candId",res.data.data.candId);
-                                    this.$router.push("/user");
+                                    sessionStorage.setItem("candId",res.data.candId);
+                                    that.$router.push("/user");
 
                                 } else if (mode == 1) {
-                                    sessionStorage.setItem("comId",res.data.data.comId);
-                                    this.$router.push("/com");
+                                    sessionStorage.setItem("comId",res.data.comId);
+                                    that.$router.push("/com");
                                 }
                             });
-                            window.sessionStorage.setItem("login_token", res.data.data.token);
+                            window.sessionStorage.setItem("login_token", res.data.token);
                             break;
                         case 301:
-                            this.$toast.fail("用户名不存在");
+                            that.$toast.fail("用户名不存在");
                             return false;
                             break;
                         case 302:
-                            this.$toast.fail("密码不正确");
+                            that.$toast.fail("密码不正确");
                             return false;
                             break;
                     }
                 }).catch(err => {
-                    this.$toast.fail("网络开小差了。");
+                    that.$toast.fail("网络开小差了。");
                     console.log(err);
                 });
             },
@@ -99,8 +97,8 @@
                 this.$router.push({name: Routername});
             },
             checkServerState(){
-                this.$axios.get(this.$API.API_GET_SERVER).then(res => {
-                    if(res.data.code === 200){
+                ApiList.checkServer().then(res => {
+                    if(res.code === 200){
                         this.$toast.success("服务器状态正常");
                     }else{
                         this.$toast.fail("服务器状态未知");

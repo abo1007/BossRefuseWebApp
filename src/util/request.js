@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const service = axios.create({
-    baseURL: process.env.VUE_APP_BASE_API,
+    baseURL: "http://api.abo.com:8090/public/api",
     timeout: 5000
 })
 
@@ -25,14 +25,7 @@ service.interceptors.response.use(
 
     response => {
         const res = response.data;
-
-        if(res.code === 203){
-            return Promise.reject(new Error('未登录'))
-        }else if(res.code !== 200) {
-            return Promise.reject(new Error(res.message || 'Error'))
-        } else {
-            return res
-        }
+        return res
     },
     error => {
         console.log('err' + error)
