@@ -2,7 +2,9 @@ const serverBase = "http://api.abo.com:8090/public/"; // 根据启动方式自�
 
 // const serverBase = "http://192.168.31.62:8090/public/"; // 根据启动方式自行修改
 
-const A1 = serverBase + "api/";
+// const A1 = serverBase + "api/";
+
+const A1 = "/api/";
 
 export default {
     // 服务器地址

@@ -77,8 +77,8 @@
                     id: this.username,
                     password: this.password
                 };
-                this.$axios.post(this.$API.API_POST_UPDATE_PASSWORD, data).then(res => {
-                    if (res.data.code === 200) {
+                this.$apiList.updatePassword(data).then(res => {
+                    if (res.code === 200) {
                         this.$dialog.alert({
                             title: '修改密码',
                             message: '修改成功',
@@ -97,11 +97,10 @@
 
             },
             getCode() {
-
-                this.$axios(this.$API.API_GET_CODE).then(res => {
-                    if (res.data.code === 200) {
-                        console.log(res.data.data)
-                        this.code = res.data.data;
+                this.$apiList.getCode().then(res => {
+                    if (res.code === 200) {
+                        console.log(res.data)
+                        this.code = res.data;
                         this.$Notify({ type: 'primary', message: '验证码已发送' });
                     }
                 })

@@ -13,6 +13,9 @@ import axios from 'axios';
 
 Vue.prototype.$axios = axios;
 
+import ApiList from "@/util/ApiList";
+Vue.prototype.$apiList = ApiList;
+
 import * as echarts from 'echarts';
 
 Vue.prototype.$echarts = echarts;

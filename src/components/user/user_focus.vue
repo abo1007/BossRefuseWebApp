@@ -49,6 +49,7 @@ import user_work from "./user_work";
                 }
                 str = arr.join();
                 // console.log(str);
+
                 this.$axios.get(this.$API.API_GET_WORK_SUBCATES+str).then( res =>{
                     // console.log(res);
                     if(res.data.code === 200){

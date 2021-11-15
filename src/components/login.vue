@@ -32,7 +32,6 @@
 </template>
 
 <script>
-    import ApiList from "../util/ApiList";
     export default {
         name: "login",
         data() {
@@ -58,7 +57,7 @@
             ,
             goLogin(mode) {
                 let that = this;
-                ApiList.Login({username: this.uname, password: this.upass, mode: mode}).then(res => {
+                this.$apiList.Login({username: this.uname, password: this.upass, mode: mode}).then(res => {
                     switch (res.code) {
                         case 200:
                             that.$toast.success("登录成功，欢迎 " + this.uname);
@@ -97,7 +96,7 @@
                 this.$router.push({name: Routername});
             },
             checkServerState(){
-                ApiList.checkServer().then(res => {
+                this.$apiList.checkServer().then(res => {
                     if(res.code === 200){
                         this.$toast.success("服务器状态正常");
                     }else{

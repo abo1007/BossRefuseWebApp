@@ -59,16 +59,26 @@
                 this.$router.back();
             },
             getUserData() {
-                this.$axios.get(this.$API.API_GET_USER_DATA + this.ID).then(res => {
-                    if (res.data.code == 200) {
-                        this.userData = res.data.data;
+                this.$apiList.getUserInfo(this.ID).then(res => {
+                    if (res.code === 200) {
+                        this.userData = res.data;
                         this.userData.sex = this.userData.sex.toString();
-                        this.userData.type = res.data.data.isCom == 1 ? "企业" : "个人";
+                        this.userData.type = res.data.isCom == 1 ? "企业" : "个人";
                     }
                 }).catch(err => {
                     this.$toast.fail("网络开小差了。");
                     console.log(err);
                 })
+                // this.$axios.get(this.$API.API_GET_USER_DATA + ).then(res => {
+                //     if (res.data.code == 200) {
+                //         this.userData = res.data.data;
+                //         this.userData.sex = this.userData.sex.toString();
+                //         this.userData.type = res.data.data.isCom == 1 ? "企业" : "个人";
+                //     }
+                // }).catch(err => {
+                //     this.$toast.fail("网络开小差了。");
+                //     console.log(err);
+                // })
             },
             postUserData(){
                 let data = {
@@ -76,18 +86,30 @@
                     sex:this.userData.sex,
                     nickname:this.userData.nickname
                 };
-                this.$axios.put(this.$API.API_PUT_USER_DATA + this.ID, data).then(res => {
-                    if (res.data.code == 200) {
+                this.$apiList.updateUserInfo(this.ID,data).then(res => {
+                    if (res.code == 200) {
                         this.$toast.success("修改成功");
-                        location.reload();
-                    }else if(res.data.code == 208){
+
+                    }else if(res.code == 208){
                         this.$toast.fail("修改失败");
                     }
-                    location.reload();
+                    this.getUserData()
                 }).catch(err => {
                     this.$toast.fail("网络开小差了。");
                     console.log(err);
                 })
+                // this.$axios.put(this.$API.API_PUT_USER_DATA + this.ID, data).then(res => {
+                //     if (res.data.code == 200) {
+                //         this.$toast.success("修改成功");
+                //         location.reload();
+                //     }else if(res.data.code == 208){
+                //         this.$toast.fail("修改失败");
+                //     }
+                //     location.reload();
+                // }).catch(err => {
+                //     this.$toast.fail("网络开小差了。");
+                //     console.log(err);
+                // })
             }
         },
         created() {

@@ -41,15 +41,21 @@
                 }
             },
             getUserData(){
-                this.$axios.get(this.$API.API_GET_USER_DATA + sessionStorage.getItem("ID")).then(res => {
-                    if (res.data.code === 200){
+                this.$apiList.getUserInfo(sessionStorage.getItem("ID")).then(res => {
+                    if (res.code === 200){
                         console.log(res.data);
-                        this.userData = res.data.data;
+                        this.userData = res.data;
                     }
                 }).catch(err => {
                     console.log(err);
                     this.$toast.fail("网络开小差了。");
                 })
+                // this.$axios.get(this.$API.API_GET_USER_DATA + sessionStorage.getItem("ID")).then(res => {
+                //
+                // }).catch(err => {
+                //     console.log(err);
+                //     this.$toast.fail("网络开小差了。");
+                // })
             },
             getComData(){
 
