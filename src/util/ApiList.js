@@ -113,5 +113,149 @@ export default {
     })
   },
 
+  // 拒绝 沟通中 待面试 录用 收藏数量信息
+  getOfferCount(data) {
+    return request({
+      url: `/offer/getcount`,
+      method: 'post',
+      data
+    })
+  },
+  // 拒绝 沟通中 待面试 录用 收藏分类信息
+  getOfferCateData(id, cateid) {
+    return request({
+      url: `/offer/getcate/${id}/${cateid}`,
+      method: 'get'
+    })
+  },
+  // 企业分类数据
+  getComOfferCateData(id, cateid) {
+    return request({
+      url: `/offer/getcomcate/${id}/${cateid}`,
+      method: 'get'
+    })
+  },
+  // 修改offer状态
+  updateOfferType(data) {
+    return request({
+      url: `/offer/updatetype`,
+      method: 'post',
+      data
+    })
+  },
+  // 投递简历 添加offer数据
+  postOffer(data) {
+    return request({
+      url: `/offer`,
+      method: 'post',
+      data
+    })
+  },
+  // 获得简历数据
+  getResume(id) {
+    return request({
+      url: `/resume/${id}`,
+      method: 'get'
+    })
+  },
+  // 首次上传简历数据
+  postResume(data) {
+    return request({
+      url: `/resume`,
+      method: 'post',
+      data
+    })
+  },
+  // 更新简历数据
+  putResume(id, data) {
+    return request({
+      url: `/resume/${id}`,
+      method: 'put',
+      data
+    })
+  },
+  // 通过用户ID查找简历ID
+  getResumeForId(id) {
+    return request({
+      url: `/resume/getresumeid/${id}`,
+      method: 'get'
+    })
+  },
 
+  // 录入招聘信息
+  postWorkData(data) {
+    return request({
+      url: `/workface`,
+      method: 'post',
+      data
+    })
+  },
+  // 招聘信息
+  getWork(id) {
+    return request({
+      url: `/resume/getresumeid/${id}`,
+      method: 'get'
+    })
+  },
+  // 录入招聘信息
+  updateWorkData(id, data) {
+    return request({
+      url: `/workface/${id}`,
+      method: 'put',
+      data
+    })
+  },
+
+  // 获取所有企业信息 单个企业信息 注册信息 修改信息
+  getComList(){
+    return request({
+      url:`/cominfo`,
+      method:'get'
+    })
+  },
+  postComInfo(data) {
+    return request({
+      url: `/cominfo`,
+      method: 'post',
+      data
+    })
+  },
+  // 招聘信息
+  getComInfo(id) {
+    return request({
+      url: `/cominfo/${id}`,
+      method: 'get'
+    })
+  },
+  // 录入招聘信息
+  updateComInfo(id, data) {
+    return request({
+      url: `/cominfo/${id}`,
+      method: 'put',
+      data
+    })
+  },
+
+  // 发送消息(临时)
+  sendMsg(data){
+    return request({
+      url: `/msg`,
+      method: 'post',
+      data
+    })
+  },
+  // 获取最后一条消息(临时)
+  getMaxMsg(id){
+    return request({
+      url: `/msg/userid/${id}`,
+      method: 'get'
+    })
+  },
+  // 获取轮播图
+  getBanner(){
+    return request({
+      url: `/banner`,
+      method: 'get'
+    })
+  }
 }

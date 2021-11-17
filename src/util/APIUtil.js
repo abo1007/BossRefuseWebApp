@@ -60,6 +60,9 @@ export default {
     // 通过用户ID查找简历ID
     API_GET_RESUME_ID: A1 + "resume/getresumeid/",
 
+    //  ----------------------------------
+
+
     // 录入招聘信息
     API_POST_WORK_DATA: A1 + "workface",
     // 获取招聘详情页信息
