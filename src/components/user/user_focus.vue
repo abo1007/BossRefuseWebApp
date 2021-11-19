@@ -50,16 +50,26 @@ import user_work from "./user_work";
                 str = arr.join();
                 // console.log(str);
 
-                this.$axios.get(this.$API.API_GET_WORK_SUBCATES+str).then( res =>{
-                    // console.log(res);
-                    if(res.data.code === 200){
-                        this.tabsMsg = res.data.data;
-                    }else{
-                        this.$toast("网络出现了问题");
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
+              this.$apiList.getWorkSubcates(str).then(res => {
+                if(res.code === 200){
+                  this.tabsMsg = res.data;
+                }else{
+                  this.$toast("网络出现了问题");
+                }
+              }).catch(err => {
+                console.log(err);
+              })
+
+                // this.$axios.get(this.$API.API_GET_WORK_SUBCATES+str).then( res =>{
+                //     // console.log(res);
+                //     if(res.data.code === 200){
+                //         this.tabsMsg = res.data.data;
+                //     }else{
+                //         this.$toast("网络出现了问题");
+                //     }
+                // }).catch(err => {
+                //     console.log(err);
+                // })
             }
         },
         components:{

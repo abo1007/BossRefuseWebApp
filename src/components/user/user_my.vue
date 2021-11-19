@@ -168,19 +168,29 @@
                 this.$router.push({name: 'user_overview', params: {cateid: cateid}})
             },
             postOfferData() {
-                this.$axios.post(this.$API.API_POST_OFFER_COUNT, {
-                    uid: this.ID, type: 0
-                }).then(res => {
-                    // console.log(res)
-                    this.userData.star = res.data.data[0];
-                    this.userData.chat = res.data.data[1];
-                    this.userData.interview = res.data.data[2];
-                    this.userData.offer = res.data.data[3];
-                    this.userData.refuse = res.data.data[4];
+                this.$apiList.getOfferCount({uid:this.ID,type:0}).then(res => {
+                  this.userData.star = res.data[0];
+                  this.userData.chat = res.data[1];
+                  this.userData.interview = res.data[2];
+                  this.userData.offer = res.data[3];
+                  this.userData.refuse = res.data[4];
                 }).catch(err => {
-                    this.$toast.fail("网络开小差了。");
-                    console.log(err);
+                  this.$toast.fail("网络开小差了。");
+                  console.log(err);
                 })
+                // this.$axios.post(this.$API.API_POST_OFFER_COUNT, {
+                //     uid: this.ID, type: 0
+                // }).then(res => {
+                //     // console.log(res)
+                //     this.userData.star = res.data.data[0];
+                //     this.userData.chat = res.data.data[1];
+                //     this.userData.interview = res.data.data[2];
+                //     this.userData.offer = res.data.data[3];
+                //     this.userData.refuse = res.data.data[4];
+                // }).catch(err => {
+                //     this.$toast.fail("网络开小差了。");
+                //     console.log(err);
+                // })
             },
             getNickname() {
                 this.nickname = sessionStorage.getItem("nickname");

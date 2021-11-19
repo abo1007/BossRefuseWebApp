@@ -70,9 +70,9 @@ export default {
     })
   },
   // 职位信息数据
-  getWorkface() {
+  getWorkface(page=1) {
     return request({
-      url: '/workface',
+      url: `/workface?page=${page}`,
       method: 'get'
     })
   },
@@ -220,14 +220,12 @@ export default {
       data
     })
   },
-  // 招聘信息
   getComInfo(id) {
     return request({
       url: `/cominfo/${id}`,
       method: 'get'
     })
   },
-  // 录入招聘信息
   updateComInfo(id, data) {
     return request({
       url: `/cominfo/${id}`,
@@ -236,6 +234,14 @@ export default {
     })
   },
 
+  // 获取当前用户与workid所有聊天消息
+  postMsgForId(data){
+    return request({
+      url: `/msg/userid`,
+      method: 'post',
+      data
+    })
+  },
   // 发送消息(临时)
   sendMsg(data){
     return request({

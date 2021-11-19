@@ -64,19 +64,31 @@
                 })
             },
             getLateMsg() {
-                this.$axios.get(this.$API.API_GET_MAX_MSG + this.ID).then(res => {
-
-                    if (res.data.code === 200) {
-                        if(res.data.data instanceof Array){
-                            this.handlerToMsg(res.data.data);
-                        }else{
-                            this.handlerToMsg([res.data.data]);
-                        }
+                this.$apiList.getMaxMsg(this.ID).then(res => {
+                  if (res.code === 200) {
+                    if(res.data instanceof Array){
+                      this.handlerToMsg(res.data);
+                    }else{
+                      this.handlerToMsg([res.data]);
                     }
+                  }
                 }).catch(err => {
-                    this.$toast.fail("网络开小差了。");
-                    console.log(err)
+                  this.$toast.fail("网络开小差了。");
+                  console.log(err)
                 })
+                // this.$axios.get(this.$API.API_GET_MAX_MSG + this.ID).then(res => {
+                //
+                //     if (res.data.code === 200) {
+                //         if(res.data.data instanceof Array){
+                //             this.handlerToMsg(res.data.data);
+                //         }else{
+                //             this.handlerToMsg([res.data.data]);
+                //         }
+                //     }
+                // }).catch(err => {
+                //     this.$toast.fail("网络开小差了。");
+                //     console.log(err)
+                // })
             },
             handlerToMsg(res) {
                 // let obj = {
