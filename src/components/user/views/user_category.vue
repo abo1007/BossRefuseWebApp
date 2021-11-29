@@ -50,16 +50,26 @@ import user_work from "../user_work";
                 this.$toast('按钮');
             },
             getCateData(cateid){
-                this.$axios.get(this.$API.API_GET_WORK_CATE + cateid).then(res => {
-                    if(res.data.code == 200){
-                        this.cateData = res.data.data;
-                    }else if(res.data.code == 204){
-                        this.$toast("这里空空的，什么都没有");
-                    }
-                }).catch(err => {
-                    this.$toast("网络开小差了。。。");
-                    console.log(err);
-                })
+              this.$apiList.getWorkCate(cateid).then(res => {
+                if(res.code == 200){
+                  this.cateData = res.data;
+                }else if(res.code == 204){
+                  this.$toast("这里空空的，什么都没有");
+                }
+              }).catch(err => {
+                this.$toast("网络开小差了。。。");
+                console.log(err);
+              })
+                // this.$axios.get(this.$API.API_GET_WORK_CATE + cateid).then(res => {
+                //     if(res.data.code == 200){
+                //         this.cateData = res.data.data;
+                //     }else if(res.data.code == 204){
+                //         this.$toast("这里空空的，什么都没有");
+                //     }
+                // }).catch(err => {
+                //     this.$toast("网络开小差了。。。");
+                //     console.log(err);
+                // })
             }
         },
         created() {

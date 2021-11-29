@@ -31,14 +31,21 @@
                 this.$router.push("/user/my");
             },
             postOfferCateData() {
-                this.$axios.get(this.$API.API_POST_OFFER_CATEDATA + this.ID + "/" + this.$route.params.cateid).then(res => {
-                    // console.log(res.data);
-                    if(res.data.code === 200){
-                        this.offerData = res.data.data;
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
+              this.$apiList.getOfferCateData(this.ID,this.$route.params.cateid).then(res => {
+                if(res.code === 200){
+                  this.offerData = res.data;
+                }
+              }).catch(err => {
+                console.log(err);
+              })
+                // this.$axios.get(this.$API.API_POST_OFFER_CATEDATA + this.ID + "/" + this.$route.params.cateid).then(res => {
+                //     // console.log(res.data);
+                //     if(res.data.code === 200){
+                //         this.offerData = res.data.data;
+                //     }
+                // }).catch(err => {
+                //     console.log(err);
+                // })
             }
         },
         created() {

@@ -54,17 +54,28 @@
                 this.$router.push({name: Routername});
             },
             getSearchRes() {
-                this.$axios.get(this.$API.API_GET_SEARCH_WORKFACE + this.SearchValue).then(res => {
-                    if (res.data.code == 200) {
-                        // console.log(res.data.data);
-                        this.searchResult = res.data.data;
-                    } else {
-                        this.$toast.fail("这里空落落的，什么都没有");
-                    }
-                }).catch(err => {
-                    this.$toast.fail("网络开小差了。");
-                    console.log(err)
-                })
+              this.$apiList.getWorkSearch(this.SearchValue).then(res => {
+                if (res.code == 200) {
+                  // console.log(res.data.data);
+                  this.searchResult = res.data;
+                } else {
+                  this.$toast.fail("这里空落落的，什么都没有");
+                }
+              }).catch(err => {
+                this.$toast.fail("网络开小差了。");
+                console.log(err)
+              })
+                // this.$axios.get(this.$API.API_GET_SEARCH_WORKFACE + this.SearchValue).then(res => {
+                //     if (res.data.code == 200) {
+                //         // console.log(res.data.data);
+                //         this.searchResult = res.data.data;
+                //     } else {
+                //         this.$toast.fail("这里空落落的，什么都没有");
+                //     }
+                // }).catch(err => {
+                //     this.$toast.fail("网络开小差了。");
+                //     console.log(err)
+                // })
             },
             beforeChange(index){
                 return new Promise((resolve) => {

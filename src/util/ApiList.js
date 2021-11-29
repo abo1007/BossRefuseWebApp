@@ -80,8 +80,7 @@ export default {
   getWorkCate(id) {
     return request({
       url: `/workface/cate/${id}`,
-      method: 'get',
-      data
+      method: 'get'
     })
   },
   // 职位细分类数据
