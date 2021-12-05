@@ -157,16 +157,14 @@
                     this.comData.refuse = 0;
                     return false;
                 }
-                this.$axios.post(this.$API.API_POST_OFFER_COUNT,{
-                    uid: this.comId, type: 1
-                }).then(res => {
-                    this.comData.star = res.data.data[0];
-                    this.comData.chat = res.data.data[1];
-                    this.comData.interview = res.data.data[2];
-                    this.comData.offer = res.data.data[3];
-                    this.comData.refuse = res.data.data[4];
+                this.$apiList.getOfferCount({uid: this.comId, type: 1}).then(res => {
+                  this.comData.star = res.data[0];
+                  this.comData.chat = res.data[1];
+                  this.comData.interview = res.data[2];
+                  this.comData.offer = res.data[3];
+                  this.comData.refuse = res.data[4];
                 }).catch(err => {
-                    console.log(err);
+                  console.log(err);
                 })
             },
             getNickname() {

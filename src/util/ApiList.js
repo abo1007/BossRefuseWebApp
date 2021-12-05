@@ -250,11 +250,19 @@ export default {
     })
   },
   // 获取最后一条消息(临时)
-  getMaxMsg(id){
-    return request({
-      url: `/msg/userid/${id}`,
-      method: 'get'
-    })
+  getMaxMsg(id,type){
+    if(type){
+      return request({
+        url: `/msg/userid/${id}?type=${type}`,
+        method: 'get'
+      })
+    }else{
+      return request({
+        url: `/msg/userid/${id}`,
+        method: 'get'
+      })
+    }
+
   },
   // 获取轮播图
   getBanner(){

@@ -212,18 +212,27 @@
                     workIntro: this.workData.workIntro
                 };
                 console.log(InfoData);
-
-                this.$axios.post(this.$API.API_POST_WORK_DATA,InfoData).then(res => {
-                    console.log(res.data);
-                    if(res.data.code == 200){
-                        this.$toast("发布成功");
-                        location.reload();
-                    }else{
-                        this.$toast("发布失败")
-                    }
+                this.$apiList.postWorkData(InfoData).then(res => {
+                  if(res.code == 200){
+                    this.$toast("发布成功");
+                    location.reload();
+                  }else{
+                    this.$toast("发布失败")
+                  }
                 }).catch(err => {
-                    console.log(err);
+                  console.log(err);
                 });
+                // this.$axios.post(this.$API.API_POST_WORK_DATA,InfoData).then(res => {
+                //     console.log(res.data);
+                //     if(res.data.code == 200){
+                //         this.$toast("发布成功");
+                //         location.reload();
+                //     }else{
+                //         this.$toast("发布失败")
+                //     }
+                // }).catch(err => {
+                //     console.log(err);
+                // });
 
             },
             getTags() {  // 将标签数组转换为数据库存储的字符串
