@@ -8,6 +8,7 @@
                 <input type="text"
                        name="name"
                        placeholder="Username"
+                       autocomplete="off"
                        v-model="uname"
                 />
                 <span class="del d1" @click="uname=''">×</span>

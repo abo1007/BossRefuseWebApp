@@ -60,16 +60,26 @@
                 this.$router.push({name:'com_home'})
             },
             postOfferCateData() {
-                this.$axios.get(this.$API.API_GET_COM_OFFER_CATEDATA + this.comId + "/666" ).then(res => {
-                    if(res.data.code === 200){
-                        console.log(res.data.data);
-                        this.allOfferData = res.data.data;
-                        this.classifyData();
-                    }
-                }).catch(err => {
-                    this.$toast.fail("网络开小差了哦");
-                    console.log(err);
-                })
+              this.$apiList.getComOfferCateData(this.comId,"666").then(res => {
+                if(res.code === 200){
+                  console.log(res.data);
+                  this.allOfferData = res.data;
+                  this.classifyData();
+                }
+              }).catch(err => {
+                this.$toast.fail("网络开小差了哦");
+                console.log(err);
+              })
+                // this.$axios.get(this.$API.API_GET_COM_OFFER_CATEDATA + this.comId + "/666" ).then(res => {
+                //     if(res.data.code === 200){
+                //         console.log(res.data.data);
+                //         this.allOfferData = res.data.data;
+                //         this.classifyData();
+                //     }
+                // }).catch(err => {
+                //     this.$toast.fail("网络开小差了哦");
+                //     console.log(err);
+                // })
             },
             classifyData(){
                 for (let i=0;i<this.allOfferData.length;i++){

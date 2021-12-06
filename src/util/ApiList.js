@@ -270,5 +270,12 @@ export default {
       url: `/banner`,
       method: 'get'
     })
-  }
+  },
+  // 获取招聘详情页信息
+  getWorkInfo(id){
+    return request({
+      url: `/workface/${id}`,
+      method: 'get'
+    })
+  },
 }
