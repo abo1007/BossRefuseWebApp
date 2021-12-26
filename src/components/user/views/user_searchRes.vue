@@ -54,7 +54,13 @@
                 this.$router.push({name: Routername});
             },
             getSearchRes() {
+              this.$toast.loading({
+                message: '加载中...',
+                forbidClick: true,
+              });
               this.$apiList.getWorkSearch(this.SearchValue).then(res => {
+                this.$toast.clear()
+
                 if (res.code == 200) {
                   // console.log(res.data.data);
                   this.searchResult = res.data;

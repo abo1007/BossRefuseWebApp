@@ -215,7 +215,12 @@ export default {
       }
     },
     getResumeData() {    // 获取简历
+      this.$toast.loading({
+        message: '加载中...',
+        forbidClick: true,
+      });
       this.$apiList.getResume(this.ID).then(res => {
+        this.$toast.clear()
         if (res.code === 200) {
           resumeData = res.data;
           resumeData.expect = resumeData.expect.split("，");
@@ -287,6 +292,8 @@ export default {
   },
   created() {
     this.ID = sessionStorage.getItem('ID');
+  },
+  mounted() {
     this.getResumeData();
   }
 }
