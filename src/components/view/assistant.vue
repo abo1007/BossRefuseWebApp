@@ -30,7 +30,11 @@
                 this.$router.push({name: "user_my"});
             },
             openVIP(){
-
+                this.$dialog.alert({
+                  message: '开通成功',
+                }).then(() => {
+                  this.goback();
+                });
             },
             createEcharts() {
                 let myChart = this.$echarts.init(document.getElementById('map'));
