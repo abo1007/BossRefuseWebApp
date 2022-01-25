@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import local from "@/util/local";
 export default {
   name: "user_option",
   data() {
@@ -56,7 +57,8 @@ export default {
       this.$router.push("/user/my");
     },
     getOptions() {
-      let opt = JSON.parse(localStorage.getItem("options"));
+      // let opt = JSON.parse(localStorage.getItem("options"));
+      let opt = local.getObj("options");
       if (opt.dark) {
         this.blackmode = true;
       } else {
@@ -86,15 +88,15 @@ export default {
     },
     onInput2(blackmode) {
       this.blackmode = blackmode;
+      local.setObj("options","dark",Number(blackmode))
 
-      let opt = JSON.parse(localStorage.getItem("options"));
-      if (JSON.stringify(opt) !== '{}'){
-        opt.dark = Number(blackmode);
-        localStorage.setItem("options", JSON.stringify(opt));
-      }else {
-        console.log(2)
-        localStorage.setItem("options", JSON.stringify({dark:Number(blackmode)}));
-      }
+      // let opt = JSON.parse(localStorage.getItem("options"));
+      // if (JSON.stringify(opt) !== '{}'){
+      //   opt.dark = Number(blackmode);
+      //   localStorage.setItem("options", JSON.stringify(opt));
+      // }else {
+      //   localStorage.setItem("options", JSON.stringify({dark:Number(blackmode)}));
+      // }
 
     }
   },

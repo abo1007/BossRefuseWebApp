@@ -44,28 +44,21 @@
                     <van-icon name="balance-list-o" size="26px" class="icon"/>
                     求职助手
                 </span>
-        <span>
-                    VIP
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
+        <span>VIP<van-icon name="arrow" class="icon2"/></span>
       </div>
       <div class="item" @click="gofunc('user_resume')">
                 <span>
                     <van-icon name="todo-list-o" size="26px" class="icon"/>
                     个人简历
                 </span>
-        <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
+        <span><van-icon name="arrow" class="icon2"/></span>
       </div>
       <div class="item" @click="gofunc('intention')">
                 <span>
                     <van-icon name="add-o" size="26px" class="icon"/>
                     求职意向
                 </span>
-        <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
+        <span><van-icon name="arrow" class="icon2"/></span>
       </div>
     </div>
     <div class="content1 content2">
@@ -74,64 +67,49 @@
                     <van-icon name="home-o" size="26px" class="icon"/>
                     个人主页
                 </span>
-        <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
+        <span><van-icon name="arrow" class="icon2"/></span>
       </div>
       <div class="item" @click="gofunc('wages')">
                 <span>
                     <van-icon name="chart-trending-o" size="26px" class="icon"/>
                     薪资查询
                 </span>
-        <span>
-                    NEW
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
+        <span>NEW<van-icon name="arrow" class="icon2"/></span>
       </div>
       <div class="item" @click="gofunc('help')">
                 <span>
                     <van-icon name="question-o" size="26px" class="icon"/>
                     帮助与反馈
                 </span>
-        <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
+        <span><van-icon name="arrow" class="icon2"/></span>
       </div>
       <div class="item" @click="gofunc('service')">
                 <span>
                     <van-icon name="more-o" size="26px" class="icon"/>
                     客服
                 </span>
-        <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
+        <span><van-icon name="arrow" class="icon2"/></span>
       </div>
       <div class="item" @click="gofunc('account')">
                 <span>
                     <van-icon name="user-circle-o" size="26px" class="icon"/>
                     账号与安全
                 </span>
-        <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
+        <span><van-icon name="arrow" class="icon2"/></span>
       </div>
       <div class="item" @click="gofunc('privacy')">
                 <span>
                     <van-icon name="browsing-history-o" size="26px" class="icon"/>
                     隐私
                 </span>
-        <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
+        <span><van-icon name="arrow" class="icon2"/></span>
       </div>
       <div class="item" @click="gofunc('about')">
                 <span>
                     <van-icon name="info-o" size="26px" class="icon"/>
                     关于
                 </span>
-        <span>
-                    <van-icon name="arrow" class="icon2"/>
-                </span>
+        <span><van-icon name="arrow" class="icon2"/></span>
       </div>
     </div>
 
@@ -139,6 +117,8 @@
 </template>
 
 <script>
+import local from "@/util/local";
+
 export default {
   name: "login-my",
   data() {
@@ -158,23 +138,26 @@ export default {
     goOption() {
       this.$router.push({name: "user_option"})
     },
-    getOptions(){
-      let opt = JSON.parse(localStorage.getItem("options"));
+    getOptions() {
+      let opt = local.getObj("options");
+      console.log(opt)
       if (opt.tab) {
         this.strWindow = true;
-      }else{
+      } else {
         this.strWindow = false;
       }
     },
     InfoMore() {
       this.strWindow = !this.strWindow;
-      let opt = JSON.parse(localStorage.getItem("options"));
-      if (JSON.stringify(opt) !== "{}") {
-        opt.tab = this.strWindow ? 1 : 0;
-        localStorage.setItem("options", JSON.stringify(opt))
-      } else {
-        localStorage.setItem("options", JSON.stringify({tab: this.strWindow ? 1 : 0}))
-      }
+      local.setObj("options","tab",this.strWindow ? 1 : 0);
+
+      // let opt = JSON.parse(localStorage.getItem("options"));
+      // if (JSON.stringify(opt) !== "{}") {
+      //   opt.tab = this.strWindow ? 1 : 0;
+      //   localStorage.setItem("options", JSON.stringify(opt))
+      // } else {
+      //   localStorage.setItem("options", JSON.stringify({tab: this.strWindow ? 1 : 0}))
+      // }
     },
     gofunc(Routername) {
       this.$router.push({name: Routername, params: {from: 'user'}});
